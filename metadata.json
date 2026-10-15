@@ -1,0 +1,6 @@
+{
+  "name": "Nigeria PSR AI Assistant - Public Service Rules 2021",
+  "description": "Central RAG-powered Public Service Rule (PSR 2021) AI Assistant for Nigeria Public Service Officers with role-based access controls, interactive policy guides, query drafts, and statutory rule interpretations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

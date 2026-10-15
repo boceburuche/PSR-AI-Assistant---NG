@@ -1,0 +1,283 @@
+import React, { useState } from 'react';
+import { Header } from './components/Header';
+import { ChatView } from './components/ChatView';
+import { RulebookView } from './components/RulebookView';
+import { DisciplinaryHub } from './components/DisciplinaryHub';
+import { CalculatorsView } from './components/CalculatorsView';
+import { AccessControlView } from './components/AccessControlView';
+import { RoleSwitcherModal } from './components/RoleSwitcherModal';
+import { OfficerProfile, AuditLogEntry, PSRRule } from './types/psr';
+import { DEMO_OFFICER_PROFILES } from './data/psrCorpus';
+import { useOnlineStatus } from './hooks/usePWAInstall';
+import { 
+  MessageSquare, 
+  BookOpen, 
+  ShieldAlert, 
+  Calculator, 
+  Lock, 
+  WifiOff, 
+  ChevronRight,
+  ExternalLink
+} from 'lucide-react';
+
+export default function App() {
+  const [currentProfile, setCurrentProfile] = useState<OfficerProfile>(DEMO_OFFICER_PROFILES[0]);
+  const [activeTab, setActiveTab] = useState<'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access'>('chat');
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [selectedRuleForModal, setSelectedRuleForModal] = useState<PSRRule | null>(null);
+  const [queryDefenseContext, setQueryDefenseContext] = useState<string>('');
+  
+  const isOnline = useOnlineStatus();
+
+  // Audit Trail Logs
+  const [auditLogs, setAuditLogs] = useState<AuditLogEntry[]>([
+    {
+      id: 'log-1',
+      timestamp: new Date(Date.now() - 1000 * 60 * 15).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      officerName: 'Bello Danjuma Adebayo',
+      staffNo: 'FGN/FED/ADM/88219',
+      role: 'Senior Officer (GL 10)',
+      action: 'Session Authentication',
+      details: 'Officer verified via IPPIS Federal Database with Secret clearance.',
+      status: 'Allowed'
+    },
+    {
+      id: 'log-2',
+      timestamp: new Date(Date.now() - 1000 * 60 * 10).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      officerName: 'Bello Danjuma Adebayo',
+      staffNo: 'FGN/FED/ADM/88219',
+      role: 'Senior Officer (GL 10)',
+      action: 'RAG Grounding Loaded',
+      details: 'Initialized Revised Public Service Rules (PSR 2021) OAGF vector corpus.',
+      status: 'Allowed'
+    }
+  ]);
+
+  const addAuditLog = (action: string, details: string, status: 'Allowed' | 'Restricted' | 'Flagged' = 'Allowed') => {
+    const newEntry: AuditLogEntry = {
+      id: 'log-' + Date.now(),
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      officerName: currentProfile.name,
+      staffNo: currentProfile.staffNumber,
+      role: `${currentProfile.cadre} (${currentProfile.gradeLevel})`,
+      action,
+      details,
+      status
+    };
+    setAuditLogs(prev => [newEntry, ...prev.slice(0, 49)]);
+  };
+
+  const handleProfileChange = (newProfile: OfficerProfile) => {
+    setCurrentProfile(newProfile);
+    addAuditLog('Role / Cadre Switched', `Officer switched profile to ${newProfile.name} (${newProfile.gradeLevel}, ${newProfile.role})`);
+  };
+
+  const handleAskAIAboutRule = (rule: PSRRule) => {
+    setActiveTab('chat');
+    // Scroll or trigger in chat
+    addAuditLog('Rule Deep-Dive', `Officer requested RAG legal analysis on Rule ${rule.ruleNumber}: ${rule.title}`);
+  };
+
+  const handleDraftQueryReply = (contextText: string) => {
+    setQueryDefenseContext(contextText);
+    setActiveTab('disciplinary');
+    addAuditLog('Exculpation Transition', 'Navigated to Disciplinary Hub to draft official query defense.');
+  };
+
+  const handleOpenRuleDetail = (rule: PSRRule) => {
+    setSelectedRuleForModal(rule);
+    setActiveTab('rulebook');
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900 pb-16 sm:pb-0">
+      {/* Header with Profile & PWA */}
+      <Header
+        currentProfile={currentProfile}
+        onOpenProfileSwitcher={() => setIsProfileModalOpen(true)}
+        activeTab={activeTab}
+      />
+
+      {/* Offline Toast Notification */}
+      {!isOnline && (
+        <div className="bg-amber-600 text-white px-4 py-1.5 text-xs font-semibold flex items-center justify-center gap-2 shadow-inner">
+          <WifiOff className="w-4 h-4 animate-pulse" />
+          <span>Offline PWA Mode Active: Using cached PSR 2021 statutory database and local heuristic engine.</span>
+        </div>
+      )}
+
+      {/* Main Navigation Tabs (Desktop & Tablet) */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <nav className="flex space-x-1 sm:space-x-4 overflow-x-auto no-scrollbar py-2 text-xs font-semibold">
+            <button
+              onClick={() => setActiveTab('chat')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
+                activeTab === 'chat'
+                  ? 'bg-emerald-800 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
+              }`}
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span>PSR AI Assistant</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('rulebook')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
+                activeTab === 'rulebook'
+                  ? 'bg-emerald-800 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
+              }`}
+            >
+              <BookOpen className="w-4 h-4" />
+              <span>PSR 2021 Rulebook</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('disciplinary')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
+                activeTab === 'disciplinary'
+                  ? 'bg-emerald-800 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
+              }`}
+            >
+              <ShieldAlert className="w-4 h-4" />
+              <span>Query & Discipline Hub</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('calculators')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
+                activeTab === 'calculators'
+                  ? 'bg-emerald-800 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
+              }`}
+            >
+              <Calculator className="w-4 h-4" />
+              <span>Retirement & Allowances</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('access')}
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
+                activeTab === 'access'
+                  ? 'bg-emerald-800 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
+              }`}
+            >
+              <Lock className="w-4 h-4" />
+              <span>Access Control & Audit</span>
+            </button>
+          </nav>
+        </div>
+      </div>
+
+      {/* Main Content Area */}
+      <main className="flex-1 py-3 sm:py-5">
+        {activeTab === 'chat' && (
+          <ChatView
+            currentProfile={currentProfile}
+            onOpenRuleDetail={handleOpenRuleDetail}
+            onDraftQueryReply={handleDraftQueryReply}
+            onLogAudit={addAuditLog}
+          />
+        )}
+
+        {activeTab === 'rulebook' && (
+          <RulebookView
+            onAskAIAboutRule={handleAskAIAboutRule}
+            selectedRuleForModal={selectedRuleForModal}
+            onCloseRuleModal={() => setSelectedRuleForModal(null)}
+            onLogAudit={addAuditLog}
+          />
+        )}
+
+        {activeTab === 'disciplinary' && (
+          <DisciplinaryHub
+            currentProfile={currentProfile}
+            initialQueryContext={queryDefenseContext}
+            onLogAudit={addAuditLog}
+          />
+        )}
+
+        {activeTab === 'calculators' && (
+          <CalculatorsView
+            currentProfile={currentProfile}
+            onLogAudit={addAuditLog}
+          />
+        )}
+
+        {activeTab === 'access' && (
+          <AccessControlView
+            currentProfile={currentProfile}
+            auditLogs={auditLogs}
+            onClearLogs={() => setAuditLogs([])}
+            onOpenProfileSwitcher={() => setIsProfileModalOpen(true)}
+          />
+        )}
+      </main>
+
+      {/* Mobile Bottom Tab Bar (App Experience) */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-1 px-2 flex items-center justify-around text-[10px] font-bold">
+        <button
+          onClick={() => setActiveTab('chat')}
+          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
+            activeTab === 'chat' ? 'text-emerald-800' : 'text-slate-500'
+          }`}
+        >
+          <MessageSquare className="w-5 h-5 mb-0.5" />
+          <span>PSR AI</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('rulebook')}
+          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
+            activeTab === 'rulebook' ? 'text-emerald-800' : 'text-slate-500'
+          }`}
+        >
+          <BookOpen className="w-5 h-5 mb-0.5" />
+          <span>Rules</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('disciplinary')}
+          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
+            activeTab === 'disciplinary' ? 'text-emerald-800' : 'text-slate-500'
+          }`}
+        >
+          <ShieldAlert className="w-5 h-5 mb-0.5" />
+          <span>Queries</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('calculators')}
+          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
+            activeTab === 'calculators' ? 'text-emerald-800' : 'text-slate-500'
+          }`}
+        >
+          <Calculator className="w-5 h-5 mb-0.5" />
+          <span>Benefits</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('access')}
+          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
+            activeTab === 'access' ? 'text-emerald-800' : 'text-slate-500'
+          }`}
+        >
+          <Lock className="w-5 h-5 mb-0.5" />
+          <span>RBAC</span>
+        </button>
+      </div>
+
+      {/* Role Switcher & Profile Modal */}
+      <RoleSwitcherModal
+        isOpen={isProfileModalOpen}
+        onClose={() => setIsProfileModalOpen(false)}
+        currentProfile={currentProfile}
+        onSelectProfile={handleProfileChange}
+      />
+    </div>
+  );
+}
