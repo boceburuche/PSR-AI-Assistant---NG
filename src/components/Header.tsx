@@ -1,3 +1,4 @@
+import { authClient } from '../services/auth';
 import React from 'react';
 import { OfficerProfile } from '../types/psr';
 import { usePWAInstall, useOnlineStatus } from '../hooks/usePWAInstall';
@@ -31,6 +32,13 @@ export const Header: React.FC<HeaderProps> = ({
   const isOnline = useOnlineStatus();
   const [showIOSModal, setShowIOSModal] = React.useState(false);
 
+  const [signedIn, setSignedIn] = React.useState(false);
+  React.useEffect(() => {
+    if (!authClient) return;
+    authClient.auth.getUser().then(({ data }) => setSignedIn(Boolean(data.user)));
+    const { data: { subscription } } = authClient.auth.onAuthStateChange((_event, session) => setSignedIn(Boolean(session?.user)));
+    return () => subscription.unsubscribe();
+  }, []);
   const [menuOpen, setMenuOpen] = React.useState(false);
   const navigate = (page: string) => { onNavigate(page); setMenuOpen(false); };
 
@@ -130,8 +138,8 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          <button onClick={() => navigate('login')} className="rounded-lg border border-emerald-700 px-3 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50">Login</button>
-          <button onClick={() => navigate('signup')} className="rounded-lg bg-emerald-800 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-900 whitespace-nowrap">Sign Up</button>
+          <button onClick={() => navigate('login')} className="rounded-lg border border-emerald-700 px-3 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50">{signedIn ? 'My Account' : 'Login'}</button>
+          {!signedIn && <button onClick={() => navigate('signup')} className="rounded-lg bg-emerald-800 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-900 whitespace-nowrap">Sign Up</button>}
 
         </div>
       </div>
