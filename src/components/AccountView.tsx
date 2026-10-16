@@ -24,13 +24,13 @@ export function AccountView({ initialMode }: { initialMode: 'login' | 'signup' }
     });
     return () => { mounted = false; subscription.unsubscribe(); };
   }, []);
-  const signIn = async () => {
+  const signIn = async (provider: 'github' | 'google') => {
     if (!authClient || busy) return;
     setBusy(true); setError('');
     try {
-      const { error } = await authClient.auth.signInWithOAuth({ provider: 'github', options: { redirectTo: authRedirect + '?account=github', scopes: 'user:email' } });
+      const { error } = await authClient.auth.signInWithOAuth({ provider, options: { redirectTo: authRedirect + '?account=' + provider, ...(provider === 'github' ? { scopes: 'user:email' } : { scopes: 'openid email profile', queryParams: { prompt: 'select_account' } }) } });
       if (error) throw error;
-    } catch { setError('GitHub sign-in could not start. Please try again.'); setBusy(false); }
+    } catch { setError('Sign-in could not start. Please try again.'); setBusy(false); }
   };
   const logout = async () => {
     if (!authClient || busy) return;
@@ -48,9 +48,10 @@ export function AccountView({ initialMode }: { initialMode: 'login' | 'signup' }
       <p className="mt-3 text-sm text-slate-500">Your account does not confer an officer grade or administrative privileges. Officer workspaces remain demonstrations.</p>
       <button disabled={busy} onClick={logout} className="mt-6 w-full bg-emerald-800 text-white rounded-xl py-3 font-semibold disabled:opacity-50">{busy ? 'Signing out…' : 'Logout'}</button>
     </div> : <div className="mt-6">
-      <p className="text-slate-600 leading-relaxed">Use your GitHub account to sign in securely. On your first visit, an account is created automatically.</p>
-      <button disabled={!authClient || busy} onClick={signIn} className="mt-6 flex items-center justify-center gap-3 w-full bg-slate-900 hover:bg-slate-800 text-white rounded-xl py-3 font-semibold disabled:opacity-50"><Github className="w-5 h-5" aria-hidden="true" />{busy ? 'Opening GitHub…' : 'Continue with GitHub'}</button>
-      <p className="mt-4 text-xs text-slate-500">You’ll continue on GitHub to approve sign-in, then return here. No separate password is needed.</p>
+      <p className="text-slate-600 leading-relaxed">Choose Google or GitHub to sign in securely. On your first visit, an account is created automatically.</p>
+      <button disabled={!authClient || busy} onClick={() => signIn('google')} className="mt-6 flex items-center justify-center gap-3 w-full border border-slate-300 bg-white hover:bg-slate-50 text-slate-900 rounded-xl py-3 font-semibold disabled:opacity-50"><span aria-hidden="true" className="font-bold text-blue-600 text-lg">G</span>{busy ? 'Opening sign-in…' : 'Continue with Google'}</button>
+      <button disabled={!authClient || busy} onClick={() => signIn('github')} className="mt-6 flex items-center justify-center gap-3 w-full bg-slate-900 hover:bg-slate-800 text-white rounded-xl py-3 font-semibold disabled:opacity-50"><Github className="w-5 h-5" aria-hidden="true" />{busy ? 'Opening GitHub…' : 'Continue with GitHub'}</button>
+      <p className="mt-4 text-xs text-slate-500">You’ll continue with your chosen provider to approve sign-in, then return here. No separate password is needed.</p>
     </div>}
   </section>;
 }
