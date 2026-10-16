@@ -1,4 +1,5 @@
 import { PSR_RULES_DATABASE } from '../data/psrCorpus';
+import { retrievePSR2021Batch01 } from '../data/psr2021Batch01';
 import { PSRRule, RAGRetrievalResult } from '../types/psr';
 
 // Common synonyms and term expansions for Nigerian Civil Service terminology
@@ -60,6 +61,28 @@ export class RAGEngine {
    * Retrieves relevant PSR rules using multi-tier hybrid matching
    */
   public static retrieveRules(query: string, limit: number = 4): RAGRetrievalResult[] {
+    // Prioritize the uploaded 2021 OCR source for rules present in Batch 1.
+    // The pre-existing corpus contains 2008-edition passages; do not mix them
+    // into answers about a rule covered by this 2021 batch.
+    const matches2021 = retrievePSR2021Batch01(query, limit);
+    if (matches2021.length > 0) {
+      return matches2021.map((item, index) => ({
+        rule: {
+          ruleNumber: item.ruleNumber,
+          chapter: Number(item.ruleNumber.slice(0, 2)),
+          chapterTitle: item.ruleNumber.startsWith('01') ? 'Introduction' : 'Appointments and Leaving the Service',
+          section: 'PDF page ' + item.pdfPage + ' — OCR_UNVERIFIED',
+          title: item.topic,
+          summary: 'Provisional OCR extract; check the original PSR 2021 PDF before relying on exact wording.',
+          fullText: item.excerpt + '\\n\\n[Source: Revised PSR 2021, PDF page ' + item.pdfPage + '; OCR_UNVERIFIED — not a verified quotation.]',
+          keyPoints: ['Verify against the source PDF before official use.'],
+          tags: [item.topic.toLowerCase(), 'psr 2021', 'ocr unverified']
+        },
+        score: 100 - index,
+        matchedTerms: [item.ruleNumber],
+        relevanceReason: 'Uploaded PSR 2021, PDF page ' + item.pdfPage + ' (OCR unverified)'
+      }));
+    }
     const normalizedQuery = query.toLowerCase();
     const explicitRules = this.extractRuleNumbers(normalizedQuery);
     const queryTokens = normalizedQuery.split(/\s+/).filter(t => t.length > 2);
