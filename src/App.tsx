@@ -23,7 +23,7 @@ import {
 
 export default function App() {
   const [currentProfile, setCurrentProfile] = useState<OfficerProfile>(DEMO_OFFICER_PROFILES[0]);
-  const [activeTab, setActiveTab] = useState<'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access' | 'home' | 'tools' | 'about' | 'login' | 'signup'>('home');
+  const [activeTab, setActiveTab] = useState<'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access' | 'home' | 'tools' | 'about' | 'login' | 'signup'>(new URLSearchParams(window.location.search).get('account') === 'recovery' ? 'login' : 'home');
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [selectedRuleForModal, setSelectedRuleForModal] = useState<PSRRule | null>(null);
   const [queryDefenseContext, setQueryDefenseContext] = useState<string>('');

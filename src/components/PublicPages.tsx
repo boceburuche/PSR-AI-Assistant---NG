@@ -1,19 +1,10 @@
+import { AccountView } from './AccountView';
 import React from 'react';
 import { ArrowRight, BookOpen, Briefcase, CalendarDays, ShieldCheck, Calculator, Scale } from 'lucide-react';
 
 type Page = 'home' | 'tools' | 'about' | 'login' | 'signup' | 'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access';
 export function PublicPages({ page, onNavigate }: { page: string; onNavigate: (page: Page) => void }) {
-  if (page === 'login' || page === 'signup') {
-    const signingUp = page === 'signup';
-    return <section className="max-w-lg mx-auto my-10 bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-sm">
-      <ShieldCheck className="text-emerald-700 w-10 h-10 mb-5" />
-      <h2 className="text-3xl font-bold">{signingUp ? 'Create your account' : 'Welcome back'}</h2>
-      <p className="mt-4 text-slate-600 leading-relaxed">{signingUp ? 'Personal accounts will bring your profile and saved guidance together.' : 'Personal account access is not available yet.'}</p>
-      <p role="status" className="mt-5 rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900">Account registration, login, and password recovery are awaiting a secure authentication service. No account details are collected on this page.</p>
-      <button onClick={() => onNavigate('rulebook')} className="mt-6 w-full rounded-xl bg-emerald-800 text-white font-semibold py-3">Browse the Rulebook without an account</button>
-      <button onClick={() => onNavigate(signingUp ? 'login' : 'signup')} className="mt-4 text-sm font-semibold text-emerald-800 underline">{signingUp ? 'Already have an account? Login' : 'New here? Sign Up'}</button>
-    </section>;
-  }
+  if (page === 'login' || page === 'signup') return <AccountView key={page} initialMode={page} />;
   if (page === 'about') return <section className="max-w-3xl mx-auto px-5 py-10"><p className="text-emerald-700 font-semibold">ABOUT THIS APPLICATION</p><h2 className="mt-3 text-3xl font-bold">A clearer route to public service guidance.</h2><p className="mt-5 leading-relaxed text-slate-600">Nigeria PSR AI Assistant helps visitors explore the Public Service Rules 2021, find topics, and access practical reference tools. The Rulebook is open to visitors without registration.</p><div className="mt-8 rounded-2xl border border-slate-200 bg-white p-6"><h3 className="font-bold">Sources and interpretation</h3><p className="mt-3 text-slate-600">Check the linked source document and applicable circulars before taking administrative action. AI explanations are guidance and should be checked against the original rule.</p><a className="inline-block mt-4 text-emerald-800 underline" href="https://oagf.gov.ng/wp-content/uploads/2023/08/The-Reviced-Public-Service-Ruled-PSR-2021.pdf" target="_blank" rel="noopener noreferrer">View the PSR source PDF</a></div></section>;
   if (page === 'tools') return <section className="max-w-5xl mx-auto px-5 py-10"><h2 className="text-3xl font-bold">Public service tools</h2><p className="mt-3 text-slate-600">Choose a workspace. Existing tools use sample officer profiles for demonstration.</p><div className="grid sm:grid-cols-2 gap-5 mt-8">{[['disciplinary','Query & Discipline Hub','Explore query procedures and drafting assistance.'],['calculators','Retirement & Allowances','Explore the existing benefits and retirement calculators.']].map(([key,title,description])=><button key={key} onClick={()=>onNavigate(key as Page)} className="text-left bg-white border border-slate-200 rounded-2xl p-6 hover:border-emerald-500"><h3 className="font-bold text-lg">{title}</h3><p className="mt-3 text-sm text-slate-600">{description}</p><ArrowRight className="mt-5 text-emerald-700 w-5" /></button>)}</div><details className="mt-8"><summary className="cursor-pointer text-sm text-slate-500">Administration demonstration</summary><button onClick={()=>onNavigate('access')} className="mt-3 text-sm underline text-emerald-800">Open sample access controls and audit</button></details></section>;
   return <section className="max-w-7xl mx-auto px-4 sm:px-6 py-5 sm:py-10">
