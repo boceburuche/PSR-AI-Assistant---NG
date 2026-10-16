@@ -18,16 +18,21 @@ interface HeaderProps {
   currentProfile: OfficerProfile;
   onOpenProfileSwitcher: () => void;
   activeTab: string;
+  onNavigate: (page: any) => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   currentProfile,
   onOpenProfileSwitcher,
   activeTab,
+  onNavigate,
 }) => {
   const { isInstallable, isInstalled, isIOS, install } = usePWAInstall();
   const isOnline = useOnlineStatus();
   const [showIOSModal, setShowIOSModal] = React.useState(false);
+
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const navigate = (page: string) => { onNavigate(page); setMenuOpen(false); };
 
   // Security badge colors
   const clearanceColors: Record<string, string> = {
@@ -60,9 +65,9 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
           <div className="flex items-center gap-1.5 pl-2 border-l border-emerald-800">
             {isOnline ? (
-              <span className="flex items-center gap-1 text-emerald-300" title="RAG Model Connected">
+              <span className="flex items-center gap-1 text-emerald-300" title="Internet connection available">
                 <Wifi className="w-3 h-3" />
-                <span className="hidden md:inline">Online RAG</span>
+                <span className="hidden md:inline">Online</span>
               </span>
             ) : (
               <span className="flex items-center gap-1 text-amber-300" title="Offline PWA Mode Active">
@@ -75,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
       </div>
 
       {/* Main Header Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-3">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3">
           <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-linear-to-br from-emerald-700 to-emerald-900 text-white shadow-sm border border-emerald-600/30 overflow-hidden shrink-0">
@@ -125,33 +130,20 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
           )}
 
-          {/* Active Officer Profile Chip */}
-          <button
-            onClick={onOpenProfileSwitcher}
-            className="flex items-center gap-2.5 p-1.5 sm:px-3 sm:py-1.5 bg-slate-50 hover:bg-emerald-50/70 border border-slate-200 hover:border-emerald-300 rounded-xl transition text-left group"
-            title="Click to Switch Role or Edit Access Controls"
-          >
-            <div className="w-8 h-8 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-2xs">
-              {currentProfile.name.split(' ').map(n => n[0]).slice(0, 2).join('')}
-            </div>
-            <div className="hidden md:block">
-              <div className="flex items-center gap-1.5">
-                <span className="text-xs font-semibold text-slate-800 group-hover:text-emerald-900 truncate max-w-[130px]">
-                  {currentProfile.name}
-                </span>
-                <span className="px-1.5 py-0.2 text-[10px] font-bold bg-emerald-800 text-white rounded">
-                  {currentProfile.gradeLevel}
-                </span>
-              </div>
-              <div className="flex items-center gap-1 text-[11px] text-slate-500">
-                <Building2 className="w-3 h-3 text-slate-400 shrink-0" />
-                <span className="truncate max-w-[150px]">{currentProfile.mda.split(',')[0]}</span>
-              </div>
-            </div>
-            <ChevronDown className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 transition shrink-0" />
-          </button>
+          <button onClick={() => navigate('login')} className="rounded-lg border border-emerald-700 px-3 py-2 text-sm font-semibold text-emerald-800 hover:bg-emerald-50">Login</button>
+          <button onClick={() => navigate('signup')} className="rounded-lg bg-emerald-800 px-3 py-2 text-sm font-semibold text-white hover:bg-emerald-900 whitespace-nowrap">Sign Up</button>
+
         </div>
       </div>
+
+      <nav aria-label="Main navigation" className="max-w-7xl mx-auto px-4 sm:px-6 pb-3">
+        <button aria-expanded={menuOpen} aria-controls="main-menu" onClick={() => setMenuOpen(!menuOpen)} className="md:hidden rounded-lg border border-slate-200 px-4 py-2 text-sm font-semibold">{menuOpen ? 'Close menu' : 'Menu ☰'}</button>
+        <div id="main-menu" className={`${menuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row gap-1 mt-2 md:mt-0`}>
+          {[['home', 'Home'], ['rulebook', 'PSR Rulebook'], ['chat', 'AI Assistant'], ['tools', 'Tools'], ['about', 'About']].map(([key, label]) => (
+            <button key={key} aria-current={activeTab === key ? 'page' : undefined} onClick={() => navigate(key)} className={`rounded-lg px-4 py-2.5 text-sm font-semibold text-left ${activeTab === key ? 'bg-emerald-50 text-emerald-900' : 'text-slate-600 hover:bg-slate-50'}`}>{label}</button>
+          ))}
+        </div>
+      </nav>
 
       {/* iOS Safari Guide Modal */}
       {showIOSModal && (

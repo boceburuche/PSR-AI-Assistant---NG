@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
+import { PublicPages } from './components/PublicPages';
 import { ChatView } from './components/ChatView';
 import { RulebookView } from './components/RulebookView';
 import { DisciplinaryHub } from './components/DisciplinaryHub';
@@ -22,7 +23,7 @@ import {
 
 export default function App() {
   const [currentProfile, setCurrentProfile] = useState<OfficerProfile>(DEMO_OFFICER_PROFILES[0]);
-  const [activeTab, setActiveTab] = useState<'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access'>('chat');
+  const [activeTab, setActiveTab] = useState<'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access' | 'home' | 'tools' | 'about' | 'login' | 'signup'>('home');
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [selectedRuleForModal, setSelectedRuleForModal] = useState<PSRRule | null>(null);
   const [queryDefenseContext, setQueryDefenseContext] = useState<string>('');
@@ -90,12 +91,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900 pb-16 sm:pb-0">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans text-slate-900 ">
       {/* Header with Profile & PWA */}
       <Header
         currentProfile={currentProfile}
         onOpenProfileSwitcher={() => setIsProfileModalOpen(true)}
         activeTab={activeTab}
+        onNavigate={setActiveTab}
       />
 
       {/* Offline Toast Notification */}
@@ -106,75 +108,14 @@ export default function App() {
         </div>
       )}
 
-      {/* Main Navigation Tabs (Desktop & Tablet) */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <nav className="flex space-x-1 sm:space-x-4 overflow-x-auto no-scrollbar py-2 text-xs font-semibold">
-            <button
-              onClick={() => setActiveTab('chat')}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
-                activeTab === 'chat'
-                  ? 'bg-emerald-800 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
-              }`}
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span>PSR AI Assistant</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('rulebook')}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
-                activeTab === 'rulebook'
-                  ? 'bg-emerald-800 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
-              }`}
-            >
-              <BookOpen className="w-4 h-4" />
-              <span>PSR 2021 Rulebook</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('disciplinary')}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
-                activeTab === 'disciplinary'
-                  ? 'bg-emerald-800 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
-              }`}
-            >
-              <ShieldAlert className="w-4 h-4" />
-              <span>Query & Discipline Hub</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('calculators')}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
-                activeTab === 'calculators'
-                  ? 'bg-emerald-800 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
-              }`}
-            >
-              <Calculator className="w-4 h-4" />
-              <span>Retirement & Allowances</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('access')}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-xl transition shrink-0 ${
-                activeTab === 'access'
-                  ? 'bg-emerald-800 text-white shadow-xs'
-                  : 'text-slate-600 hover:text-emerald-900 hover:bg-slate-100'
-              }`}
-            >
-              <Lock className="w-4 h-4" />
-              <span>Access Control & Audit</span>
-            </button>
-          </nav>
-        </div>
-      </div>
-
       {/* Main Content Area */}
-      <main className="flex-1 py-3 sm:py-5">
+      <main id="main-content" className="flex-1 py-3 sm:py-5">
+        {["home", "tools", "about", "login", "signup"].includes(activeTab) && (
+          <PublicPages page={activeTab} onNavigate={setActiveTab} />
+        )}
+        {["chat", "disciplinary", "calculators", "access"].includes(activeTab) && (
+          <p className="max-w-7xl mx-auto px-4 pb-3 text-xs text-slate-500">Demonstration workspace · Sample officer profile. <button className="underline" onClick={() => setIsProfileModalOpen(true)}>Change sample profile</button></p>
+        )}
         {activeTab === 'chat' && (
           <ChatView
             currentProfile={currentProfile}
@@ -218,58 +159,9 @@ export default function App() {
         )}
       </main>
 
-      {/* Mobile Bottom Tab Bar (App Experience) */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 py-1 px-2 flex items-center justify-around text-[10px] font-bold">
-        <button
-          onClick={() => setActiveTab('chat')}
-          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
-            activeTab === 'chat' ? 'text-emerald-800' : 'text-slate-500'
-          }`}
-        >
-          <MessageSquare className="w-5 h-5 mb-0.5" />
-          <span>PSR AI</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('rulebook')}
-          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
-            activeTab === 'rulebook' ? 'text-emerald-800' : 'text-slate-500'
-          }`}
-        >
-          <BookOpen className="w-5 h-5 mb-0.5" />
-          <span>Rules</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('disciplinary')}
-          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
-            activeTab === 'disciplinary' ? 'text-emerald-800' : 'text-slate-500'
-          }`}
-        >
-          <ShieldAlert className="w-5 h-5 mb-0.5" />
-          <span>Queries</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('calculators')}
-          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
-            activeTab === 'calculators' ? 'text-emerald-800' : 'text-slate-500'
-          }`}
-        >
-          <Calculator className="w-5 h-5 mb-0.5" />
-          <span>Benefits</span>
-        </button>
-
-        <button
-          onClick={() => setActiveTab('access')}
-          className={`flex flex-col items-center py-1 px-2 rounded-lg transition ${
-            activeTab === 'access' ? 'text-emerald-800' : 'text-slate-500'
-          }`}
-        >
-          <Lock className="w-5 h-5 mb-0.5" />
-          <span>RBAC</span>
-        </button>
-      </div>
+      <footer className="border-t border-slate-200 bg-white px-4 py-6 text-center text-xs text-slate-500">
+        PSR 2021 reference companion · Verify guidance against source rules and applicable circulars.
+      </footer>
 
       {/* Role Switcher & Profile Modal */}
       <RoleSwitcherModal
