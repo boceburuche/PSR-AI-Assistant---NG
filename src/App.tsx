@@ -24,6 +24,7 @@ import {
 export default function App() {
   const [currentProfile, setCurrentProfile] = useState<OfficerProfile>(DEMO_OFFICER_PROFILES[0]);
   const [activeTab, setActiveTab] = useState<'chat' | 'rulebook' | 'disciplinary' | 'calculators' | 'access' | 'home' | 'tools' | 'about' | 'login' | 'signup'>(new URLSearchParams(window.location.search).get('account') === 'recovery' ? 'login' : 'home');
+  const [navigationRevision, setNavigationRevision] = useState(0);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
   const [selectedRuleForModal, setSelectedRuleForModal] = useState<PSRRule | null>(null);
   const [queryDefenseContext, setQueryDefenseContext] = useState<string>('');
@@ -97,7 +98,7 @@ export default function App() {
         currentProfile={currentProfile}
         onOpenProfileSwitcher={() => setIsProfileModalOpen(true)}
         activeTab={activeTab}
-        onNavigate={setActiveTab}
+        onNavigate={(page) => { setActiveTab(page); setNavigationRevision(value => value + 1); }}
       />
 
       {/* Offline Toast Notification */}
@@ -111,7 +112,7 @@ export default function App() {
       {/* Main Content Area */}
       <main id="main-content" className="flex-1 py-3 sm:py-5">
         {["home", "tools", "about", "login", "signup"].includes(activeTab) && (
-          <PublicPages page={activeTab} onNavigate={setActiveTab} />
+          <PublicPages key={navigationRevision} page={activeTab} onNavigate={setActiveTab} />
         )}
         {["chat", "disciplinary", "calculators", "access"].includes(activeTab) && (
           <p className="max-w-7xl mx-auto px-4 pb-3 text-xs text-slate-500">Demonstration workspace · Sample officer profile. <button className="underline" onClick={() => setIsProfileModalOpen(true)}>Change sample profile</button></p>
