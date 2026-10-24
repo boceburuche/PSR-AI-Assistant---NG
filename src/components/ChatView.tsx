@@ -34,7 +34,14 @@ const locallyReviewedRules = [
     ...rule,
     text: rule.ruleNumber === '010105' ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt : rule.text
   }))),
-  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules),
+  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules)
+    .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
+    .map(rule => rule.ruleNumber === '020204' ? ({
+      ...rule,
+      topic: 'Trainee/Pupil',
+      complete: true,
+      text: rule.text + '\n\n' + (PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).find(r => r.ruleNumber === '020204' && r.text.startsWith('(a) [Continued'))?.text ?? '')
+    }) : rule),
   ...PSR2021_CH1_PAGES_3_4.slice(1).map(rule => ({
     ruleNumber: rule.ruleNumber, topic: rule.topic, text: rule.excerpt
   }))
@@ -45,6 +52,10 @@ function getLocalPSRAnswer(query: string): string | null {
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
+  if (selected.length === 0 && /trainee.*pupil|training grade|trainee period/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020204');
+  if (selected.length === 0 && /probation|first appointment.*pension/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020205');
+  if (selected.length === 0 && /eligib.*appoint|age.*appoint|minimum age|maximum age|medical.*fit|recruitment waiver/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020206');
+  if (selected.length === 0 && /prior approval|criminal offence.*appoint/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020207');
   if (selected.length === 0 && /unpaid staff|unpaid employment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020106');
   if (selected.length === 0 && /personnel record|personal record|gen 60|date of birth.*chang/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020107');
   if (selected.length === 0 && /recruitment.*mean|definition of recruitment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020201');
