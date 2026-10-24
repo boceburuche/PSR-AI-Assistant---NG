@@ -45,6 +45,11 @@ function getLocalPSRAnswer(query: string): string | null {
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
+  if (selected.length === 0 && /unpaid staff|unpaid employment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020106');
+  if (selected.length === 0 && /personnel record|personal record|gen 60|date of birth.*chang/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020107');
+  if (selected.length === 0 && /recruitment.*mean|definition of recruitment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020201');
+  if (selected.length === 0 && /types of appointment|categories of appointment|disabilit|presidential merit award/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020202');
+  if (selected.length === 0 && /difficult to fill|advertis.*post/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020203');
   if (selected.length === 0 && /circular|amend.*psr/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010106');
   if (selected.length === 0 && /gender|female|male.*officer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010107');
   if (selected.length === 0 && /inventory|copy of.*psr/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010108');
@@ -54,7 +59,7 @@ function getLocalPSRAnswer(query: string): string | null {
   if (selected.length === 0 && /constitution|constitutional|conformity/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010102');
   if (selected.length === 0 && /appl(y|ication|ies)|who.*psr|scope of.*rules/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010101');
   if (selected.length === 0) return null;
-  return selected.map(r => `PSR 2021 — Rule ${r.ruleNumber}: ${r.topic}\n\n${r.text}\n\nSource: Revised Public Service Rules 2021, Chapter 1, user-submitted Page 1 (transcription awaiting independent PDF verification).`).join('\n\n──────────\n\n');
+  return selected.map(r => `PSR 2021 — Rule ${r.ruleNumber}: ${r.topic}\n\n${r.text}\n\nSource: Revised Public Service Rules 2021, Chapter ${r.ruleNumber.startsWith('02') ? '2' : '1'}, user-submitted transcription (awaiting independent PDF verification).${'complete' in r && !r.complete ? ' This rule is incomplete; the next page is required.' : ''}`).join('\n\n──────────\n\n');
 }
 
 const PRESET_PROMPTS = [
