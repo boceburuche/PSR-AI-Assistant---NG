@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
 import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
+import { PSR2021_CHAPTER_2_PAGES } from '../data/psr2021Chapter2Pages';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -33,6 +34,7 @@ const locallyReviewedRules = [
     ...rule,
     text: rule.ruleNumber === '010105' ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt : rule.text
   }))),
+  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules),
   ...PSR2021_CH1_PAGES_3_4.slice(1).map(rule => ({
     ruleNumber: rule.ruleNumber, topic: rule.topic, text: rule.excerpt
   }))
@@ -41,7 +43,8 @@ function getLocalPSRAnswer(query: string): string | null {
   const q = query.toLowerCase();
   const explicit = q.match(/\b0[1-9]\d{4}\b/g) || [];
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
-  if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules;
+  if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
+  if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
   if (selected.length === 0 && /circular|amend.*psr/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010106');
   if (selected.length === 0 && /gender|female|male.*officer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010107');
   if (selected.length === 0 && /inventory|copy of.*psr/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010108');
