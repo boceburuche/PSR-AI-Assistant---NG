@@ -259,5 +259,50 @@ export const PSR2021_CHAPTER_2_PAGES = [
         text: `Newly recruited Officer who has spent six months and above shall be allowed to sit for compulsory examinations for confirmation in the Service. This provision is without prejudice to Rule 020301.`
       }
     ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 7,
+    source: 'User-supplied screenshot of Chapter 2 continuation',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 3 – APPOINTMENT ON PROBATION (continued)', 'SECTION 4 – SHORT TERM APPOINTMENTS'],
+    rules: [
+      {
+        ruleNumber: '020307',
+        topic: 'Transfer Within the Federal Public Service',
+        complete: true,
+        text: `Transfer from one senior post to another or from one class to another within the Federal Public Service requires the prior approval of the Federal Civil Service Commission or appropriate board of relevant agency. An Officer must have served for a minimum period of six (6) months in his original Post before seeking transfer to another Post. An application for such transfer must be submitted to the Permanent Secretary/Head of Extra-Ministerial Office or Agency of the applicant and must state the applicant's reasons for desiring a transfer and his qualifications for the work to be undertaken. Such application should be forwarded to the Federal Civil Service Commission by the Permanent Secretary/Head of Extra-Ministerial Office together with a statement as to:
+(i) how applicant has performed his duties;
+(ii) whether the applicant is considered to be well qualified for the post desired; and
+(iii) recommendations as to the grant or refusal of the application.`
+      },
+      {
+        ruleNumber: '020401',
+        topic: 'Definition — Short Term Appointments',
+        complete: true,
+        text: `There may be circumstances in which specialized skills or new/emerging skills which may or may not have been prescribed in the Schemes of Service are required in the Public Service. In order to fill the observed gaps and/or to shore up the capacities of existing Officers, appointments may be made for a prescribed period of time in the following categories: Contract Appointments, Sabbatical Appointment, Career Exchange Programme, Talent Sourcing Strategy, Internship and Volunteerism in the Federal Service.`
+      },
+      {
+        ruleNumber: '020402',
+        topic: 'Contract Appointment',
+        complete: true,
+        text: `A Contract Appointment is temporary appointment (which does not provide for the payment of pension) to a post of the level to which appointment is made by the Federal Civil Service Commission/Governing Board in case of Parastatals and Agencies for a specific period as opposed to appointment on pensionable terms. A contract appointment must be recorded in a formal document of agreement.`
+      },
+      {
+        ruleNumber: '020403',
+        topic: 'Types of Contract Appointments — continuation pending',
+        complete: false,
+        text: `Contract appointment may be offered:
+(i) if it is established that the Service no longer has Officers with specific skills, as provided in the approved Schemes of Service that can perform the related functions;
+(ii) based on the circumstances arising from emerging cadres, courses, skills and the creation of new ones as well as prevailing reality;
+(iii) be tied to funded projects/programmes with specified life span;
+(iv) to expatriates only when suitable Nigerians are not available;
+(v) to Nigerians, if:
+(a) they are pensioners;
+(b) they are 50 years of age or over at the time they are being appointed;
+(c) they specifically request to be employed on contract terms and it is deemed in the best interest of the Service; and`
+      }
+    ]
   }
 ] as const;
