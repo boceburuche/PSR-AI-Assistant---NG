@@ -29,7 +29,13 @@ export const PSR2021_CH2_PAGE10 = [
     text: 'Volunteerism denotes a practice of offering one’s time or talents for charitable, educational, or other worthwhile activities, especially in one’s community. Volunteers are driven by passion to leave a noble legacy of service to humanity. In a nutshell, it is the sacrifice of time, skills or resources with the aim of making a positive change either as an individual or group (formal or informal).'
   },
   {
-    ruleNumber: '020417', topic: 'Procedures for Engagement of Interns and Volunteers into the Public Service', complete: false,
-    text: '(i) Focal Office shall be established in the OHCSF to be responsible for identifying the fields/tasks available for volunteer programme and disseminate the information. MDAs in supportive role are required to establish Desks for the two programmes.'
+    ruleNumber: '020417', topic: 'Procedures for Engagement of Interns and Volunteers into the Public Service', complete: true,
+    text: '(i) Focal Office shall be established in the OHCSF to be responsible for identifying the fields/tasks available for volunteer programme and disseminate the information. MDAs in supportive role are required to establish Desks for the two programmes.
+(ii) The Focal Office shall upload skills highlighting benefits and conditions of engagements, with requisite qualifications into the website of OHCSF.
+(iii) Prospective volunteers with specialty in preferred specified fields/disciplines to apply for engagement in response to the advertisement in the OHCSF Website.
+(iv) Prospective Volunteers must be certified medically fit and suitable for the assignment by a recognised Healthcare Provider (HCP) and obtain security clearance from the Police before engagement.
+(v) Interns to be engaged directly by MDAs shall submit reference letter from their respective institutions.
+(vi) Stipends paid to interns shall be at the rates prescribed by relevant circulars issued from time to time.
+(vii) Successful candidates shall be given letters of commendation at the end of the programmes.'
   }
 ] as const;
