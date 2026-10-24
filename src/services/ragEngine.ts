@@ -71,16 +71,16 @@ export class RAGEngine {
           ruleNumber: item.ruleNumber,
           chapter: Number(item.ruleNumber.slice(0, 2)),
           chapterTitle: item.ruleNumber.startsWith('01') ? 'Introduction' : 'Appointments and Leaving the Service',
-          section: 'PDF page ' + item.pdfPage + ' — OCR_UNVERIFIED',
+          section: 'Submitted page ' + item.pdfPage + ' — ' + item.verification,
           title: item.topic,
-          summary: 'Provisional OCR extract; check the original PSR 2021 PDF before relying on exact wording.',
-          fullText: item.excerpt + '\\n\\n[Source: Revised PSR 2021, PDF page ' + item.pdfPage + '; OCR_UNVERIFIED — not a verified quotation.]',
-          keyPoints: ['Verify against the source PDF before official use.'],
-          tags: [item.topic.toLowerCase(), 'psr 2021', 'ocr unverified']
+          summary: item.verification === 'TRANSCRIPTION_REVIEWED' ? 'User-supplied 2021 transcription; independently verify against the source PDF for official use.' : 'Provisional OCR extract; check the original PSR 2021 PDF before relying on exact wording.',
+          fullText: item.excerpt + '\\n\\n[Source: Revised PSR 2021, submitted page ' + item.pdfPage + '; ' + item.verification + '.]',
+          keyPoints: ['Confirm transcription against the original PDF before official use.'],
+          tags: [item.topic.toLowerCase(), 'psr 2021', item.verification.toLowerCase()]
         },
         score: 100 - index,
         matchedTerms: [item.ruleNumber],
-        relevanceReason: 'Uploaded PSR 2021, PDF page ' + item.pdfPage + ' (OCR unverified)'
+        relevanceReason: 'PSR 2021, submitted page ' + item.pdfPage + ' (' + item.verification + ')'
       }));
     }
     const normalizedQuery = query.toLowerCase();
