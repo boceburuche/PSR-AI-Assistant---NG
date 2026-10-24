@@ -210,5 +210,54 @@ export const PSR2021_CHAPTER_2_PAGES = [
         text: 'Contravention of Rule 020211 shall be regarded as an act of serious misconduct and shall attract appropriate disciplinary action which may include dismissal from the service.'
       }
     ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 6,
+    source: 'User-supplied screenshot of Chapter 2, Section 3',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 3 – APPOINTMENT ON PROBATION'],
+    rules: [
+      {
+        ruleNumber: '020301',
+        topic: 'Period of Probation',
+        complete: true,
+        text: `Officers on probation will be required to serve for two years before being confirmed in the Service. This period may however be reduced to not less than six months by deduction of any previous period of Public Service rendered satisfactorily in posts of cognate status involving similar duties. The period of probation shall not exceed two years unless an extension is approved by the Federal Civil Service Commission; such extension may result in the incremental penalty referred to in Rule 040206, if the Commission so decides.`
+      },
+      {
+        ruleNumber: '020302',
+        topic: 'Compulsory Examination',
+        complete: true,
+        text: `Within his probationary period an Officer is required to pass the prescribed examination appropriate to his appointment.
+(a) For Officers holding senior posts, the prescribed examinations are those described in Chapter 7 and such other examinations as may be specified in individual offer of appointment.
+(b) For clerical grade Officers, the prescribed examination is the Promotion/Confirmation Examination.
+(c) The examinations for technical grades are those prescribed in the Schemes of Service applicable to the particular post.`
+      },
+      {
+        ruleNumber: '020303',
+        topic: 'Confirmation or Termination at the End of Probationary Period',
+        complete: true,
+        text: `To be eligible for confirmation in Permanent Establishment, an Officer appointed on probation is required to pass the prescribed examination, if any, during his probationary period and to complete his probationary period to the satisfaction of the authority empowered to appoint him. At the end of the period of probation the Officer will, unless his probationary appointment is terminated or extended, be confirmed in his appointment.`
+      },
+      {
+        ruleNumber: '020304',
+        topic: 'Confirmation of Officers Holding Senior Posts',
+        complete: true,
+        text: `Recommendations of Permanent Secretaries and of Extra Ministerial Offices regarding the confirmation of all Officers holding senior posts shall be made in the progress report prescribed in Chapter 5 of the Rules.`
+      },
+      {
+        ruleNumber: '020305',
+        topic: 'Membership of JSC and SSC',
+        complete: true,
+        text: `Membership of Junior Staff Committee (JSC) and Senior Staff Committee (SSC) in Parastatals shall include the representative of the Department of Human Resource Management of the supervising Ministry and an observer from Office of the Head of the Civil Service of the Federation (OHCSF).`
+      },
+      {
+        ruleNumber: '020306',
+        topic: 'Compulsory Examination',
+        complete: true,
+        text: `Newly recruited Officer who has spent six months and above shall be allowed to sit for compulsory examinations for confirmation in the Service. This provision is without prejudice to Rule 020301.`
+      }
+    ]
   }
 ] as const;
