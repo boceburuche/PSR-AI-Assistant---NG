@@ -6,6 +6,7 @@ import { PSR2021_CH2_PAGE10 } from '../data/psr2021Chapter2Page10';
 import { PSR2021_CH2_PAGE11 } from '../data/psr2021Chapter2Page11';
 import { PSR2021_CH2_PAGE12 } from '../data/psr2021Chapter2Page12';
 import { PSR2021_CH2_PAGE13 } from '../data/psr2021Chapter2Page13';
+import { PSR2021_CH2_PAGE14 } from '../data/psr2021Chapter2Page14';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -42,6 +43,7 @@ const locallyReviewedRules = [
   ...PSR2021_CH2_PAGE11,
   ...PSR2021_CH2_PAGE12,
   ...PSR2021_CH2_PAGE13,
+  ...PSR2021_CH2_PAGE14,
   ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).filter(rule => rule.ruleNumber !== '020410')
     .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
     .map(rule => rule.ruleNumber === '020204' ? ({
@@ -96,6 +98,11 @@ function getLocalPSRAnswer(query: string): string | null {
   if (selected.length === 0 && /stipend.*volunteer|remuneration.*volunteer|pay.*volunteer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020419');
   if (selected.length === 0 && /qualif.*intern|qualif.*volunteer|who can.*volunteer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020420');
   if (selected.length === 0 && /legal framework.*short.term|contract.*negotiation|short.term.*engagement/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020421');
+  if (selected.length === 0 && /quarterly return|quarterly.*secondment|quarterly.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020509');
+  if (selected.length === 0 && /what is posting|definition of posting|posting.*mean/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020601');
+  if (selected.length === 0 && /posting.*condition|conditions.*posting|posting.*four years|posting.*4 years|refus.*posting|professional cadre.*posting/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020602');
+  if (selected.length === 0 && /procedure.*posting|fairness.*posting|posting.*cronyism|posting.*punishment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020603');
+  if (selected.length === 0 && /guide.*posting|employee mobility policy/.test(q)) selected = locallyReviewedRules.filter(r => ['020602','020604'].includes(r.ruleNumber));
   if (selected.length === 0 && /unpaid staff|unpaid employment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020106');
   if (selected.length === 0 && /personnel record|personal record|gen 60|date of birth.*chang/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020107');
   if (selected.length === 0 && /recruitment.*mean|definition of recruitment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020201');
