@@ -33,6 +33,8 @@ function getLocalPSRAnswer(query: string): string | null {
   const explicit = q.match(/\b0[1-9]\d{4}\b/g) || [];
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules;
+  if (selected.length === 0 && /special definition/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010104');
+  if (selected.length === 0 && /general definition|interdiction|junior officer|cut.off mark|classified correspondence|expatriate officer|established post|gazette|accredited representative|civil service of the federation/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010105');
   if (selected.length === 0 && /responsibilit|duty of (an? )?officer|acquaint|familiaris|familiariz/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010103');
   if (selected.length === 0 && /constitution|constitutional|conformity/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010102');
   if (selected.length === 0 && /appl(y|ication|ies)|who.*psr|scope of.*rules/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010101');
