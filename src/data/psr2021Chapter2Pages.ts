@@ -120,5 +120,46 @@ export const PSR2021_CHAPTER_2_PAGES = [
         text: '(a) Where a candidate for employment requires additional professional experience before he can be regarded as fully qualified for appointment to a specific post, the candidate may'
       }
     ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 4,
+    source: 'User-supplied screenshot of Chapter 2 continuation',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 2 – RECRUITMENT (continued)'],
+    rules: [
+      {
+        ruleNumber: '020204',
+        topic: 'Trainee/Pupil — continuation of page 3',
+        complete: true,
+        text: `(a) [Continued from previous page] be appointed as a trainee or pupil for a normal service of two years in the post. This period may however, be reduced in special circumstances. On completion of the "trainee period" the pupil may be appointed to the full grade on probation and will not be eligible for confirmation in the service until he has fulfilled the conditions laid down in Rule 020302 where applicable.
+(b) A confirmed Officer who is advanced to the training grade for the purpose of acquiring the necessary experience to qualify him for substantive promotion to a senior post will be treated as if he had been seconded thereto and the period of such secondment will not normally exceed the period laid down for the training except with the special advice of the Office of the Head of the Civil Service of the Federation.`
+      },
+      {
+        ruleNumber: '020205',
+        topic: 'On Probation',
+        complete: true,
+        text: 'Except where the Federal Civil Service Commission decides otherwise, all first appointments to pensionable establishment in posts other than trainee posts (see Rule 020202) will be on probation. An Officer confirmed in a lower pensionable post will not however be regarded as on probation in a higher post to which he is converted to.'
+      },
+      {
+        ruleNumber: '020206',
+        topic: 'Eligibility for Appointment',
+        complete: true,
+        text: `To be eligible for appointment into the Federal Public Service, every applicant must:-
+(a) not be less than 18 years and not more than 50 years of age;
+(b) possess such minimum qualification as may be specified in the Schemes of Service including computer proficiency/literacy;
+(c) be certified by an authorized Healthcare Provider as medically fit for Public Service;
+(d) possess a testimonial of good conduct from last employer or if not previously employed, from last school or college attended;
+(e) possess requisite qualifications as provided for in the Schemes of Service; and
+(f) no Officer shall be appointed into the Federal Public Service without authorized establishment and recruitment waiver from the Office of the Head of the Civil Service of the Federation.`
+      },
+      {
+        ruleNumber: '020207',
+        topic: 'Prior Approval in Certain Cases — continues on next page',
+        complete: false,
+        text: '(a) No candidate shall be appointed to any post in the Federal Public Service without the prior specific approval of the Federal Civil Service Commission or Board/Council in the case of Parastatals if: (i) the candidate has been convicted of a criminal offence; or'
+      }
+    ]
   }
 ] as const;
