@@ -56,6 +56,10 @@ function getLocalPSRAnswer(query: string): string | null {
   if (selected.length === 0 && /probation|first appointment.*pension/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020205');
   if (selected.length === 0 && /eligib.*appoint|age.*appoint|minimum age|maximum age|medical.*fit|recruitment waiver/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020206');
   if (selected.length === 0 && /prior approval|criminal offence.*appoint/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020207');
+  if (selected.length === 0 && /fc\.2|gen\. 69c|procedure for appointment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020208');
+  if (selected.length === 0 && /personal particulars|staff records form/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020209');
+  if (selected.length === 0 && /oath of secrecy|freedom of information act/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020210');
+  if (selected.length === 0 && /secret societ|secret society/.test(q)) selected = locallyReviewedRules.filter(r => ['020211','020212'].includes(r.ruleNumber));
   if (selected.length === 0 && /unpaid staff|unpaid employment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020106');
   if (selected.length === 0 && /personnel record|personal record|gen 60|date of birth.*chang/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020107');
   if (selected.length === 0 && /recruitment.*mean|definition of recruitment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020201');
