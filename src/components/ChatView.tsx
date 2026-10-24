@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
 import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
 import { PSR2021_CHAPTER_2_PAGES } from '../data/psr2021Chapter2Pages';
+import { PSR2021_CH2_PAGE10 } from '../data/psr2021Chapter2Page10';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -34,7 +35,8 @@ const locallyReviewedRules = [
     ...rule,
     text: rule.ruleNumber === '010105' ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt : rule.text
   }))),
-  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules)
+  ...PSR2021_CH2_PAGE10,
+  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).filter(rule => rule.ruleNumber !== '020410')
     .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
     .map(rule => rule.ruleNumber === '020204' ? ({
       ...rule,
@@ -72,6 +74,10 @@ function getLocalPSRAnswer(query: string): string | null {
   if (selected.length === 0 && /personal particulars|staff records form/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020209');
   if (selected.length === 0 && /oath of secrecy|freedom of information act/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020210');
   if (selected.length === 0 && /secret societ|secret society/.test(q)) selected = locallyReviewedRules.filter(r => ['020211','020212'].includes(r.ruleNumber));
+  if (selected.length === 0 && /re.engage|reengage|non.re.engagement|continuity of contract/.test(q)) selected = locallyReviewedRules.filter(r => ['020408','020409','020410','020411'].includes(r.ruleNumber));
+  if (selected.length === 0 && /retired officer.*contract|remuneration.*contract/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020412');
+  if (selected.length === 0 && /sabbatical/.test(q)) selected = locallyReviewedRules.filter(r => ['020413','020414'].includes(r.ruleNumber));
+  if (selected.length === 0 && /internship|volunteerism|interns and volunteers/.test(q)) selected = locallyReviewedRules.filter(r => ['020415','020416','020417'].includes(r.ruleNumber));
   if (selected.length === 0 && /unpaid staff|unpaid employment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020106');
   if (selected.length === 0 && /personnel record|personal record|gen 60|date of birth.*chang/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020107');
   if (selected.length === 0 && /recruitment.*mean|definition of recruitment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020201');
