@@ -52,6 +52,11 @@ function getLocalPSRAnswer(query: string): string | null {
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
+  if (selected.length === 0 && /probation.*period|period of probation|two years.*confirm|extension.*probation/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020301');
+  if (selected.length === 0 && /compulsory exam|confirmation exam|probation.*exam|promotion\/confirmation examination/.test(q)) selected = locallyReviewedRules.filter(r => ['020302','020306'].includes(r.ruleNumber));
+  if (selected.length === 0 && /confirmation.*appointment|confirm.*probation|termination.*probation/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020303');
+  if (selected.length === 0 && /progress report.*confirm|confirmation.*senior post/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020304');
+  if (selected.length === 0 && /junior staff committee|senior staff committee|membership.*jsc|membership.*ssc/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020305');
   if (selected.length === 0 && /trainee.*pupil|training grade|trainee period/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020204');
   if (selected.length === 0 && /probation|first appointment.*pension/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020205');
   if (selected.length === 0 && /eligib.*appoint|age.*appoint|minimum age|maximum age|medical.*fit|recruitment waiver/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020206');
