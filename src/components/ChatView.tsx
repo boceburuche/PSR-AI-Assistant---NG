@@ -30,14 +30,14 @@ interface ChatViewProps {
 const locallyReviewedRules = PSR2021_VERIFIED_PAGES.flatMap(page => page.rules);
 function getLocalPSRAnswer(query: string): string | null {
   const q = query.toLowerCase();
-  const explicit = q.match(/\\b0[1-9]\\d{4}\\b/g) || [];
+  const explicit = q.match(/\b0[1-9]\d{4}\b/g) || [];
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
-  if (selected.length === 0 && /chapter\\s*(1|one)\\b|introduction/.test(q)) selected = locallyReviewedRules;
+  if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules;
   if (selected.length === 0 && /responsibilit|duty of (an? )?officer|acquaint|familiaris|familiariz/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010103');
   if (selected.length === 0 && /constitution|constitutional|conformity/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010102');
   if (selected.length === 0 && /appl(y|ication|ies)|who.*psr|scope of.*rules/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010101');
   if (selected.length === 0) return null;
-  return selected.map(r => `**PSR 2021 — Rule ${r.ruleNumber}: ${r.topic}**\\n\\n${r.text}\\n\\n*Source: Revised Public Service Rules 2021, Chapter 1, user-submitted Page 1 (transcription awaiting independent PDF verification).*`).join('\\n\\n---\\n\\n');
+  return selected.map(r => `PSR 2021 — Rule ${r.ruleNumber}: ${r.topic}\n\n${r.text}\n\nSource: Revised Public Service Rules 2021, Chapter 1, user-submitted Page 1 (transcription awaiting independent PDF verification).`).join('\n\n──────────\n\n');
 }
 
 const PRESET_PROMPTS = [
