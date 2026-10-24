@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
+import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -27,14 +28,25 @@ interface ChatViewProps {
 
 // Static GitHub Pages cannot execute the Express /api/psr/rag-chat endpoint.
 // Answer from submitted PSR 2021 passages locally before attempting that API.
-const locallyReviewedRules = PSR2021_VERIFIED_PAGES.flatMap(page => page.rules);
+const locallyReviewedRules = [
+  ...PSR2021_VERIFIED_PAGES.flatMap(page => page.rules.map(rule => ({
+    ...rule,
+    text: rule.ruleNumber === '010105' ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt : rule.text
+  }))),
+  ...PSR2021_CH1_PAGES_3_4.slice(1).map(rule => ({
+    ruleNumber: rule.ruleNumber, topic: rule.topic, text: rule.excerpt
+  }))
+];
 function getLocalPSRAnswer(query: string): string | null {
   const q = query.toLowerCase();
   const explicit = q.match(/\b0[1-9]\d{4}\b/g) || [];
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules;
+  if (selected.length === 0 && /circular|amend.*psr/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010106');
+  if (selected.length === 0 && /gender|female|male.*officer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010107');
+  if (selected.length === 0 && /inventory|copy of.*psr/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010108');
   if (selected.length === 0 && /special definition/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010104');
-  if (selected.length === 0 && /general definition|interdiction|junior officer|cut.off mark|classified correspondence|expatriate officer|established post|gazette|accredited representative|civil service of the federation/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010105');
+  if (selected.length === 0 && /general definition|interdiction|junior officer|cut.off mark|classified correspondence|expatriate officer|established post|gazette|accredited representative|civil service of the federation|suspension|trainee|junior posts|senior posts|pass mark|permanent secretary|spouse|nigerian officer|monthly.rated|home place|schemes of service/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010105');
   if (selected.length === 0 && /responsibilit|duty of (an? )?officer|acquaint|familiaris|familiariz/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010103');
   if (selected.length === 0 && /constitution|constitutional|conformity/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010102');
   if (selected.length === 0 && /appl(y|ication|ies)|who.*psr|scope of.*rules/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010101');
