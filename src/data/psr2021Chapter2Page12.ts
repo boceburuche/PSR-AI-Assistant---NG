@@ -17,14 +17,16 @@ export const PSR2021_CH2_PAGE12 = [
   },
   {
     ruleNumber: '020503',
-    topic: 'Procedure for Transfer/Secondment — continues on next page',
-    complete: false,
+    topic: 'Procedure for Transfer/Secondment',
+    complete: true,
     text: `The following procedures shall apply in processing transfer and secondment:
 (a) Confidential reports covering the last three years (or whole service if less than three years) of the officer's service shall be furnished.
 (b) Officer on transfer from States to Federal Service shall be placed on a grade level lower than his current grade level.
 (c) Transfer to the Federal Service shall be limited to posts graded level 07 to 14 or its equivalent.
 (d) Officer on transfer/secondment must have been confirmed and his qualifications, experience and career progression are in accordance with the Schemes of Service.
 (e) There must be evidence of concurrence to the transfer/secondment of Officers by the releasing and accepting agencies.
-(f) Secondment of an Officer(s) to the Service of another Government, or approved body or any recognized International Organization shall be for a maximum period of two years in the first instance after which the Officer may apply for extension, seek for transfer or return to his former post. All extensions must be approved by the appropriate Committees and the Federal Civil Service Commission/Board. The total period of such secondment must not exceed four (4) years.`
+(f) Secondment of an Officer(s) to the Service of another Government, or approved body or any recognized International Organization shall be for a maximum period of two years in the first instance after which the Officer may apply for extension, seek for transfer or return to his former post. All extensions must be approved by the appropriate Committees and the Federal Civil Service Commission/Board. The total period of such secondment must not exceed four (4) years.
+(g) If it is in the public interest to second an Officer to the Service of another Government, approved body or recognized international organization, the period of secondment shall not exceed six years.
+(h) During the period of secondment the Officer shall continue to hold his substantive post and be entitled to incremental and promotion and will be treated as having been posted on special duty.`
   }
 ] as const;
