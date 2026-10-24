@@ -5,6 +5,7 @@ import { PSR2021_CHAPTER_2_PAGES } from '../data/psr2021Chapter2Pages';
 import { PSR2021_CH2_PAGE10 } from '../data/psr2021Chapter2Page10';
 import { PSR2021_CH2_PAGE11 } from '../data/psr2021Chapter2Page11';
 import { PSR2021_CH2_PAGE12 } from '../data/psr2021Chapter2Page12';
+import { PSR2021_CH2_PAGE13 } from '../data/psr2021Chapter2Page13';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -40,6 +41,7 @@ const locallyReviewedRules = [
   ...PSR2021_CH2_PAGE10,
   ...PSR2021_CH2_PAGE11,
   ...PSR2021_CH2_PAGE12,
+  ...PSR2021_CH2_PAGE13,
   ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).filter(rule => rule.ruleNumber !== '020410')
     .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
     .map(rule => rule.ruleNumber === '020204' ? ({
@@ -61,6 +63,11 @@ function getLocalPSRAnswer(query: string): string | null {
   if (selected.length === 0 && /difference.*transfer.*secondment|define.*secondment|what is.*secondment|meaning.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020501');
   if (selected.length === 0 && /authority.*transfer|who.*approv.*transfer|process.*inter.service transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020502');
   if (selected.length === 0 && /procedure.*secondment|requirements.*secondment|duration.*secondment|maximum.*secondment|transfer.*state.*federal/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020503');
+  if (selected.length === 0 && /salary.*secondment|emoluments.*secondment|who pays.*secondment/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020504');
+  if (selected.length === 0 && /salary.*transfer|incremental date.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020505');
+  if (selected.length === 0 && /transfer.on.promotion|transfer.*advertised post/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020506');
+  if (selected.length === 0 && /conditions.*transfer|eligib.*transfer|seconded.*parastatal/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020507');
+  if (selected.length === 0 && /transfer.*junior|junior post.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020508');
   if (selected.length === 0 && /transfer.*senior|transfer.*post|minimum.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020307');
   if (selected.length === 0 && /short.term appointment|sabbatical|talent sourcing|career exchange|volunteerism/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020401');
   if (selected.length === 0 && /contract appointment.*mean|what is.*contract appointment|contract appointment.*pension/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020402');
