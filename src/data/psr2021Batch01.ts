@@ -1,3 +1,4 @@
+import { PSR2021_VERIFIED_PAGES } from './psr2021VerifiedPages';
 /**
  * Revised PSR 2021: first OCR batch (PDF pages 1–10).
  * This is a provisional retrieval layer, not a verified statutory transcript.
@@ -9,7 +10,7 @@ export type PSR2021Excerpt = {
   pdfPage: number;
   topic: string;
   excerpt: string;
-  verification: 'OCR_UNVERIFIED';
+  verification: 'OCR_UNVERIFIED' | 'TRANSCRIPTION_REVIEWED';
 };
 export const PSR2021_BATCH_01: PSR2021Excerpt[] = [
   { ruleNumber:'010101',pdfPage:1,topic:'Application of the Public Service Rules',excerpt:'The provisions of the Public Service Rules (PSR) shall be strictly enforced by all Ministries, Extra-Ministerial Offices and Agencies.',verification:'OCR_UNVERIFIED' },
@@ -23,8 +24,20 @@ export const PSR2021_BATCH_01: PSR2021Excerpt[] = [
   { ruleNumber:'020301',pdfPage:10,topic:'Probationary period',excerpt:'Officers on probation will be required to serve for two years before being confirmed in the Service.',verification:'OCR_UNVERIFIED' },
   { ruleNumber:'020306',pdfPage:10,topic:'Confirmation examination eligibility',excerpt:'Newly recruited Officer who has spent six months and above shall be allowed to sit for compulsory examinations for confirmation in the Service.',verification:'OCR_UNVERIFIED' }
 ];
+const reviewed = PSR2021_VERIFIED_PAGES.flatMap(page => page.rules.map(rule => ({
+  ruleNumber: rule.ruleNumber,
+  pdfPage: page.submittedPage,
+  topic: rule.topic,
+  excerpt: rule.text,
+  verification: 'TRANSCRIPTION_REVIEWED' as const
+})));
+const reviewedIds = new Set(reviewed.map(r => r.ruleNumber));
+const SEARCHABLE_2021: PSR2021Excerpt[] = [
+  ...reviewed,
+  ...PSR2021_BATCH_01.filter(r => !reviewedIds.has(r.ruleNumber))
+];
 export function retrievePSR2021Batch01(query:string,limit=4):PSR2021Excerpt[]{
  const q=query.toLowerCase();
  const tokens=[...new Set(q.match(/[a-z0-9]{3,}/g)||[])];
- return PSR2021_BATCH_01.map(item=>({item,score:(q.includes(item.ruleNumber)?100:0)+tokens.reduce((s,t)=>s+(item.topic.toLowerCase().includes(t)?8:0)+(item.excerpt.toLowerCase().includes(t)?2:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.item);
+ return SEARCHABLE_2021.map(item=>({item,score:(q.includes(item.ruleNumber)?100:0)+tokens.reduce((s,t)=>s+(item.topic.toLowerCase().includes(t)?8:0)+(item.excerpt.toLowerCase().includes(t)?2:0),0)})).filter(x=>x.score>0).sort((a,b)=>b.score-a.score).slice(0,limit).map(x=>x.item);
 }
