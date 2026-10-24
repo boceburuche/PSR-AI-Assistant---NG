@@ -4,6 +4,7 @@ import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
 import { PSR2021_CHAPTER_2_PAGES } from '../data/psr2021Chapter2Pages';
 import { PSR2021_CH2_PAGE10 } from '../data/psr2021Chapter2Page10';
 import { PSR2021_CH2_PAGE11 } from '../data/psr2021Chapter2Page11';
+import { PSR2021_CH2_PAGE12 } from '../data/psr2021Chapter2Page12';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -38,6 +39,7 @@ const locallyReviewedRules = [
   }))),
   ...PSR2021_CH2_PAGE10,
   ...PSR2021_CH2_PAGE11,
+  ...PSR2021_CH2_PAGE12,
   ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).filter(rule => rule.ruleNumber !== '020410')
     .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
     .map(rule => rule.ruleNumber === '020204' ? ({
@@ -56,6 +58,9 @@ function getLocalPSRAnswer(query: string): string | null {
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
+  if (selected.length === 0 && /difference.*transfer.*secondment|define.*secondment|what is.*secondment|meaning.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020501');
+  if (selected.length === 0 && /authority.*transfer|who.*approv.*transfer|process.*inter.service transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020502');
+  if (selected.length === 0 && /procedure.*secondment|requirements.*secondment|duration.*secondment|maximum.*secondment|transfer.*state.*federal/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020503');
   if (selected.length === 0 && /transfer.*senior|transfer.*post|minimum.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020307');
   if (selected.length === 0 && /short.term appointment|sabbatical|talent sourcing|career exchange|volunteerism/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020401');
   if (selected.length === 0 && /contract appointment.*mean|what is.*contract appointment|contract appointment.*pension/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020402');
