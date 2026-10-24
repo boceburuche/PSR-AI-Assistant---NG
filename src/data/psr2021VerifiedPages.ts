@@ -50,5 +50,42 @@ and any other similar organs that derive their appointment from the Constitution
         text: 'It shall be the duty of every officer to acquaint himself with the Public Service Rules and other extant regulations and circulars.'
       }
     ]
+  },
+  {
+    chapter: 1,
+    chapterTitle: 'Introduction',
+    submittedPage: 2,
+    source: 'User-supplied Revised PSR 2021 transcription',
+    verification: 'TRANSCRIPTION_REVIEWED',
+    rules: [
+      {
+        ruleNumber: '010104',
+        topic: 'Special Definitions',
+        text: 'The special meanings with which various words and terms are used for the purpose of particular chapters and sections in these Public Service Rules are quoted at the beginning of such chapters or sections.'
+      },
+      {
+        ruleNumber: '010105',
+        topic: 'General Definitions (partial — continues on next page)',
+        text: `Except where otherwise indicated by the context or in special definitions for particular Chapters, the following words and terms are used with the following meanings wherever they occur in these Public Service Rules;
+
+"Accredited Representative of the Federal Republic of Nigeria" means the Diplomatic or Consular Representative of the Federal Republic of Nigeria within the area.
+
+"Civil Service of the Federation" means Service of the Federation in the civil capacity as a staff of the Office of the President, Vice President, a Ministry and Extra Ministerial Offices of the Government of the Federation assigned with the responsibility for any business of the Government of the Federation. It is a body or organ which enjoys continuity of existence.
+
+"Classified Correspondence" means correspondence which has been graded Restricted, Confidential, Secret or Top Secret.
+
+"Cut-off Mark" means examination score set by the Federal Civil Service Commission to determine eligible candidates for promotion among those who pass the examination as determined by declared vacancies.
+
+"Established Post" means a post provided for under the Personnel Emoluments sub-head of the Estimates.
+
+"Expatriate Officer" means a staff who ranks as such for the purpose of pension in accordance with the Pension Reform Act 2004 as amended.
+
+"Gazette" means the Federal Republic of Nigeria Official Gazette.
+
+"Interdiction" means the temporary removal of an officer from performing his normal duties when disciplinary proceedings for his dismissal are being undertaken or is about to be undertaken and shall be placed on half salary pending the determination of the case.
+
+"Junior Officer" means a pensionable officer on GL.06 and below and their equivalent.`
+      }
+    ]
   }
 ] as const;
