@@ -1,3 +1,4 @@
+import { PSR2021_CH1_PAGES_3_4 } from './psr2021Chapter1Pages3to4';
 import { PSR2021_VERIFIED_PAGES } from './psr2021VerifiedPages';
 /**
  * Revised PSR 2021: first OCR batch (PDF pages 1–10).
@@ -28,12 +29,19 @@ const reviewed = PSR2021_VERIFIED_PAGES.flatMap(page => page.rules.map(rule => (
   ruleNumber: rule.ruleNumber,
   pdfPage: page.submittedPage,
   topic: rule.topic,
-  excerpt: rule.text,
+  excerpt: rule.ruleNumber === '010105'
+    ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt
+    : rule.text,
   verification: 'TRANSCRIPTION_REVIEWED' as const
 })));
-const reviewedIds = new Set(reviewed.map(r => r.ruleNumber));
+const addedRules = PSR2021_CH1_PAGES_3_4.slice(1).map(r => ({
+  ruleNumber: r.ruleNumber, pdfPage: r.pdfPage, topic: r.topic,
+  excerpt: r.excerpt, verification: 'TRANSCRIPTION_REVIEWED' as const
+}));
+const reviewedIds = new Set([...reviewed, ...addedRules].map(r => r.ruleNumber));
 const SEARCHABLE_2021: PSR2021Excerpt[] = [
   ...reviewed,
+  ...addedRules,
   ...PSR2021_BATCH_01.filter(r => !reviewedIds.has(r.ruleNumber))
 ];
 export function retrievePSR2021Batch01(query:string,limit=4):PSR2021Excerpt[]{
