@@ -156,9 +156,58 @@ export const PSR2021_CHAPTER_2_PAGES = [
       },
       {
         ruleNumber: '020207',
-        topic: 'Prior Approval in Certain Cases — continues on next page',
-        complete: false,
-        text: '(a) No candidate shall be appointed to any post in the Federal Public Service without the prior specific approval of the Federal Civil Service Commission or Board/Council in the case of Parastatals if: (i) the candidate has been convicted of a criminal offence; or'
+        topic: 'Prior Approval in Certain Cases',
+        complete: true,
+        text: `(a) No candidate shall be appointed to any post in the Federal Public Service without the prior specific approval of the Federal Civil Service Commission or Board/Council in the case of Parastatals if:
+(i) the candidate has been convicted of a criminal offence; or
+(ii) he has previously been employed in Public Service and dismissed or called upon to resign or retire therefrom. Such approval must always be obtained irrespective of any delegation of the Commission's powers.
+(b) In view of Rule (a) above, every applicant for appointment by Government must state:
+(i) whether he has been convicted of a criminal offence;
+(ii) all employment he has engaged in;
+(iii) if he has left any employment, why he did so; or
+(iv) if he is still in any employment and whether he is under any obligation to remain in it; and
+(v) whether he is free from financial embarrassment.`
+      }
+    ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 5,
+    source: 'User-supplied screenshot of Chapter 2 continuation',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 2 – RECRUITMENT (continued)'],
+    rules: [
+      {
+        ruleNumber: '020208',
+        topic: 'Procedure for Appointment',
+        complete: true,
+        text: `(a) All applicants for senior posts shall complete Federal Civil Service Commission Application Form (FC.2) to be submitted to the Federal Civil Service Commission. The Commission shall process these Forms and publish short listed names for the examination prescribed in Rule 020102.
+(b) For appointment to pensionable establishment, Form No. Gen. 60 shall accompany the copy of Form No. Gen. 69C sent to the Office of the Head of the Civil Service of the Federation, Office of the Accountant General of the Federation, Office of the Auditor-General for the Federation and National Pension Commission.`
+      },
+      {
+        ruleNumber: '020209',
+        topic: 'Personal Particulars',
+        complete: true,
+        text: 'Immediately a newly appointed Officer assumes duty, he shall be required to enter his Personal Particulars on Form Gen. 60 (Staff Records Form), a copy of which shall be attached to the appropriate documents forwarded to the Pension Fund Administrator/National Pension Commission and other relevant Offices/Departments.'
+      },
+      {
+        ruleNumber: '020210',
+        topic: 'Oath of Secrecy',
+        complete: true,
+        text: 'It is the duty of every Permanent Secretary/Head of Extra-Ministerial Office to ensure that all newly employed Officers/Staff in his Ministry/Extra-Ministerial Office sign an Oath of Secrecy on Security (Form 1) and that the Oath be signed are carefully preserved. This is without prejudice to the provisions of the Freedom of Information Act.'
+      },
+      {
+        ruleNumber: '020211',
+        topic: 'Prohibition of Membership of Secret Society',
+        complete: true,
+        text: 'No Public Officer shall be a member of any secret society. Any public Officer who before his appointment is a member of such society shall renounce his membership forthwith by making a statutory declaration to that effect.'
+      },
+      {
+        ruleNumber: '020212',
+        topic: 'Contravention',
+        complete: true,
+        text: 'Contravention of Rule 020211 shall be regarded as an act of serious misconduct and shall attract appropriate disciplinary action which may include dismissal from the service.'
       }
     ]
   }
