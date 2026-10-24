@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
 import { OfficerProfile, AIChatMessage, PSRRule } from '../types/psr';
 import { 
   Send, 
@@ -22,6 +23,21 @@ interface ChatViewProps {
   onOpenRuleDetail: (rule: PSRRule) => void;
   onDraftQueryReply: (contextText: string) => void;
   onLogAudit: (action: string, details: string) => void;
+}
+
+// Static GitHub Pages cannot execute the Express /api/psr/rag-chat endpoint.
+// Answer from submitted PSR 2021 passages locally before attempting that API.
+const locallyReviewedRules = PSR2021_VERIFIED_PAGES.flatMap(page => page.rules);
+function getLocalPSRAnswer(query: string): string | null {
+  const q = query.toLowerCase();
+  const explicit = q.match(/\\b0[1-9]\\d{4}\\b/g) || [];
+  let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
+  if (selected.length === 0 && /chapter\\s*(1|one)\\b|introduction/.test(q)) selected = locallyReviewedRules;
+  if (selected.length === 0 && /responsibilit|duty of (an? )?officer|acquaint|familiaris|familiariz/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010103');
+  if (selected.length === 0 && /constitution|constitutional|conformity/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010102');
+  if (selected.length === 0 && /appl(y|ication|ies)|who.*psr|scope of.*rules/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010101');
+  if (selected.length === 0) return null;
+  return selected.map(r => `**PSR 2021 — Rule ${r.ruleNumber}: ${r.topic}**\\n\\n${r.text}\\n\\n*Source: Revised Public Service Rules 2021, Chapter 1, user-submitted Page 1 (transcription awaiting independent PDF verification).*`).join('\\n\\n---\\n\\n');
 }
 
 const PRESET_PROMPTS = [
@@ -97,6 +113,17 @@ How may I assist your administrative duties today?`,
     onLogAudit('RAG Statutory Query', `Officer requested PSR guidance on: "${query.slice(0, 70)}..."`);
 
     try {
+      const localAnswer = getLocalPSRAnswer(query);
+      if (localAnswer) {
+        setMessages(prev => [...prev, {
+          id: 'asst-' + Date.now(),
+          sender: 'assistant',
+          text: localAnswer,
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          confidence: 'User-supplied PSR 2021 transcription'
+        }]);
+        return;
+      }
       const response = await fetch('/api/psr/rag-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -131,7 +158,7 @@ How may I assist your administrative duties today?`,
         {
           id: 'err-' + Date.now(),
           sender: 'assistant',
-          text: `In accordance with the Revised Public Service Rules (PSR 2021), all official matters must adhere strictly to statutory provisions. Please ensure compliance with Chapter 3 (Discipline) and Chapter 6 (Leave).`,
+          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Please ask about Rules 010101–010103 or continue adding verified pages.',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ]);
