@@ -52,6 +52,10 @@ function getLocalPSRAnswer(query: string): string | null {
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
+  if (selected.length === 0 && /transfer.*senior|transfer.*post|minimum.*transfer/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020307');
+  if (selected.length === 0 && /short.term appointment|sabbatical|talent sourcing|career exchange|volunteerism/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020401');
+  if (selected.length === 0 && /contract appointment.*mean|what is.*contract appointment|contract appointment.*pension/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020402');
+  if (selected.length === 0 && /types of contract|eligible.*contract|contract.*pensioner|contract.*expatriate/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020403');
   if (selected.length === 0 && /probation.*period|period of probation|two years.*confirm|extension.*probation/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020301');
   if (selected.length === 0 && /compulsory exam|confirmation exam|probation.*exam|promotion\/confirmation examination/.test(q)) selected = locallyReviewedRules.filter(r => ['020302','020306'].includes(r.ruleNumber));
   if (selected.length === 0 && /confirmation.*appointment|confirm.*probation|termination.*probation/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '020303');
