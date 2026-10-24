@@ -65,5 +65,60 @@ export const PSR2021_CHAPTER_2_PAGES = [
         text: 'Seniority in any Department shall be determined by the entry date/the date of assumption of duty certified by an authorized Officer and or date of present appointment as reflected in the appropriate register and career progression of the Officers.'
       }
     ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 3,
+    source: 'User-supplied screenshot of Chapter 2 continuation',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 1 – GENERAL (continued)', 'SECTION 2 – RECRUITMENT'],
+    rules: [
+      {
+        ruleNumber: '020106',
+        topic: 'Unpaid Staff Prohibited',
+        complete: true,
+        text: 'The employment of unpaid Staff is prohibited.'
+      },
+      {
+        ruleNumber: '020107',
+        topic: 'Personal Records',
+        complete: true,
+        text: `Permanent Secretaries/Head of Extra-Ministerial Offices shall keep an up-to-date record of every Officer under their control:-
+(i) Staff Record Form (Gen 60) shall be used and one copy must be sent to the National Record Centre in the Office of the Head of the Civil Service of the Federation, Office of the Accountant General of the Federation, Office of Auditor General for the Federation and National Pension Commission within one month of the appointment. Form Gen 60 shall be completed in ink; and
+(ii) Date of birth recorded on appointment by an officer shall not be changed throughout the career of the Officer. Any contravention shall be regarded as an act of serious misconduct.`
+      },
+      {
+        ruleNumber: '020201',
+        topic: 'Recruitment — Definition',
+        complete: true,
+        text: '"Recruitment" means the filling of vacancies by direct appointment of persons not already in any of the Public Service of the Federal Republic of Nigeria. It however excludes the transfer of officers from other Public Service in the Federation to the Federal Public Service.'
+      },
+      {
+        ruleNumber: '020202',
+        topic: 'Types of Appointment',
+        complete: true,
+        text: `Appointment to the Federal Public Service may be in any of the following categories:
+(a) as trainees or pupils;
+(b) on probation in a pensionable post;
+(c) on non-pensionable contract;
+(d) Acting appointment; and
+(e) Special appointment.
+(i) Ministry/Extra-Ministerial Offices shall accept appointments made by Federal Civil Service Commission to the National Youth Service Corps Presidential Merit Award winners whose employment is automatic regardless of vacancy constraints.
+(ii) Five percent (5%) of all recruitments in the Service shall be reserved for persons with disability.`
+      },
+      {
+        ruleNumber: '020203',
+        topic: 'Filling of Posts Within the Service',
+        complete: true,
+        text: 'Where posts prove difficult to fill from within the Service, they shall normally be advertised.'
+      },
+      {
+        ruleNumber: '020204',
+        topic: 'Trainee/Pupil — continuation pending',
+        complete: false,
+        text: '(a) Where a candidate for employment requires additional professional experience before he can be regarded as fully qualified for appointment to a specific post, the candidate may'
+      }
+    ]
   }
 ] as const;
