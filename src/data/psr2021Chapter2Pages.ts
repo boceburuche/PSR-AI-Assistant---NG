@@ -336,11 +336,49 @@ export const PSR2021_CHAPTER_2_PAGES = [
       },
       {
         ruleNumber: '020406',
-        topic: 'Rules Guiding the Conduct of an Officer on Contract Appointment — continues',
-        complete: false,
+        topic: 'Rules Guiding the Conduct of an Officer on Contract Appointment',
+        complete: true,
         text: `i. The contract Officer must, as part of his duties, be responsible for mentoring serving Officers as a condition for the offer of the contract appointment;
 ii. Contract Officer shall sign an undertaking to accept posting or transfer to any part of the country;
-iii. Officers appointed on contract shall be subject to performance appraisal through confidential report as applicable in the Service and;`
+iii. Officers appointed on contract shall be subject to performance appraisal through confidential report as applicable in the Service and;
+iv. Contract staff must sign the oath of secrecy in line with PSR 020210.`
+      }
+    ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 9,
+    source: 'User-supplied screenshot of Chapter 2, Section 4 continuation',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 4 – SHORT TERM APPOINTMENTS (continued)'],
+    rules: [
+      {
+        ruleNumber: '020407',
+        topic: 'Termination of Contract Appointment',
+        complete: true,
+        text: `(a) An appointment on contract may be terminated by the Government at any time in accordance with the terms specified in the contract itself. A recommendation to the Federal Civil Service Commission for the termination of the appointment of a contract Officer shall be accompanied by a full statement of the consideration which has prompted it. On receipt of the recommendation, the Federal Civil Service Commission shall decide whether the appointment should be terminated forthwith in accordance with the terms of the contract or whether the Officer should be offered an opportunity to submit any formal representation if he so wishes before a final decision is taken.
+(b) The termination of a contract appointment by the holder is subject to the terms of the contract and any question concerning the waiving of any of the penalty under a contract agreement shall be referred to the Office of the Head of the Civil Service of the Federation.`
+      },
+      {
+        ruleNumber: '020408',
+        topic: 'Re-engagement (Responsibility of Contract Staff)',
+        complete: true,
+        text: `An Officer serving on contract who desires re-engagement, shall so inform the government in writing through the Permanent Secretary/Head of Extra-Ministerial Office not less than four months before his leave is due. In the absence of such notification, it may be assumed that an Officer serving on contract does not desire re-engagement.`
+      },
+      {
+        ruleNumber: '020409',
+        topic: 'Re-engagement (Responsibility of Permanent Secretary/Head of Extra-Ministerial Office)',
+        complete: true,
+        text: `On receipt of such notification expressing an Officer's wish to be re-engaged, the Permanent Secretary/Head of Extra-Ministerial Office shall obtain the consent of the Office of the Head of the Civil Service of the Federation to the re-engagement before forwarding recommendation to the Federal Civil Service Commission enclosing an up-to-date confidential report on the Officer (unless such report has been forwarded within the previous two months). In reply the Permanent Secretary/Head of Extra-Ministerial Office will receive any of the following:-
+(a) authority to inform the Officer that arrangements will be made to offer him re-engagement during the course of his leave and the details of the terms proposed. The Permanent Secretary/Head of Extra-Ministerial Office shall inform the Officer accordingly without delay;
+(b) the original and duplicate of the re-engagement contract duly signed on behalf of government. In this case, the Permanent Secretary/Head of Extra-Ministerial Office shall obtain the Officer's witnessed signature to both copies, deliver the duplicate to the Officer, and return the original to the Office of the Head of the Civil Service of the Federation.`
+      },
+      {
+        ruleNumber: '020410',
+        topic: 'Earlier Notification of Re-engagement — continuation pending',
+        complete: false,
+        text: `As soon as it is clear to the Permanent Secretary/Head of Extra-Ministerial Office that he will be unable, for whatever reasons, to recommend the re-engagement of an Officer serving on contract, he will seek the approval`
       }
     ]
   }
