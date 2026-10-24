@@ -291,8 +291,8 @@ export const PSR2021_CHAPTER_2_PAGES = [
       },
       {
         ruleNumber: '020403',
-        topic: 'Types of Contract Appointments — continuation pending',
-        complete: false,
+        topic: 'Types of Contract Appointments',
+        complete: true,
         text: `Contract appointment may be offered:
 (i) if it is established that the Service no longer has Officers with specific skills, as provided in the approved Schemes of Service that can perform the related functions;
 (ii) based on the circumstances arising from emerging cadres, courses, skills and the creation of new ones as well as prevailing reality;
@@ -301,7 +301,46 @@ export const PSR2021_CHAPTER_2_PAGES = [
 (v) to Nigerians, if:
 (a) they are pensioners;
 (b) they are 50 years of age or over at the time they are being appointed;
-(c) they specifically request to be employed on contract terms and it is deemed in the best interest of the Service; and`
+(c) they specifically request to be employed on contract terms and it is deemed in the best interest of the Service; and
+(d) the candidate possesses specialized competencies or skills and provided such posts are duly advertised in at least three national newspapers.`
+      }
+    ]
+  },
+  {
+    chapter: 2,
+    chapterTitle: 'Appointments and Leaving the Service',
+    submittedPage: 8,
+    source: 'User-supplied screenshot of Chapter 2, Section 4 continuation',
+    verification: 'IMAGE_TRANSCRIPTION_REVIEW_PENDING',
+    sections: ['SECTION 4 – SHORT TERM APPOINTMENTS (continued)'],
+    rules: [
+      {
+        ruleNumber: '020404',
+        topic: 'Circumstances That May Warrant Offer of Contract Appointment',
+        complete: true,
+        text: `(i) The conditions of service of an Officer on a short-term appointment are those provided for in his contract. The privileges, emoluments or allowances described in these Rules do not apply to him unless they are so stated in the contract itself. Any question of the interpretation of a contract affecting his conditions of service should be referred to the Office of the Head of Civil Service of the Federation.
+(ii) For non-Nigerians, the provisions of the Public Service Rules regarding contract appointments shall apply in all cases, except for those persons married to Nigerians (see appendix G).
+(iii) Spouses married to Nigerians should remain on contract until granted Nigerian citizenship before being considered for permanent appointment (see appendix G).`
+      },
+      {
+        ruleNumber: '020405',
+        topic: 'Procedure for Processing Contract Appointment',
+        complete: true,
+        text: `(i) MDAs through their SSC are to undertake identification of required skills and defend the skills at the OHCSF whose responsibility shall be to work out and approve waiver for the desired skills;
+(ii) The prospective applicant must apply for such position through the submission of a duly filled FCSC Form 2 as required, being a post of the level which appointment is made by the Commission;
+(iii) FCSC shall ensure that contract appointment is based on approved waiver and skills identified. The Post to which contract appointment shall be made must not be below SGL. 12;
+(iv) Contract appointment shall be based on merit through a fair, open and competitive selection process and shall not jeopardize the career prospects of serving Officers;
+(v) In case of contract appointment for non-Nigerians, Government shall undertake all immigration responsibilities (relevant working/residence permit);
+(vi) All questions of interpretations of a contract appointment affecting the proposed employee's conditions of service should be referred to the OHCSF; and
+(vii) The duration of contract appointment should be one (1) or two (2) years and renewable but not more than four (4) years in all.`
+      },
+      {
+        ruleNumber: '020406',
+        topic: 'Rules Guiding the Conduct of an Officer on Contract Appointment — continues',
+        complete: false,
+        text: `i. The contract Officer must, as part of his duties, be responsible for mentoring serving Officers as a condition for the offer of the contract appointment;
+ii. Contract Officer shall sign an undertaking to accept posting or transfer to any part of the country;
+iii. Officers appointed on contract shall be subject to performance appraisal through confidential report as applicable in the Service and;`
       }
     ]
   }
