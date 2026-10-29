@@ -30,12 +30,12 @@ export const PSR2021_CH2_PAGE10 = [
   },
   {
     ruleNumber: '020417', topic: 'Procedures for Engagement of Interns and Volunteers into the Public Service', complete: true,
-    text: '(i) Focal Office shall be established in the OHCSF to be responsible for identifying the fields/tasks available for volunteer programme and disseminate the information. MDAs in supportive role are required to establish Desks for the two programmes.
+    text: `(i) Focal Office shall be established in the OHCSF to be responsible for identifying the fields/tasks available for volunteer programme and disseminate the information. MDAs in supportive role are required to establish Desks for the two programmes.
 (ii) The Focal Office shall upload skills highlighting benefits and conditions of engagements, with requisite qualifications into the website of OHCSF.
 (iii) Prospective volunteers with specialty in preferred specified fields/disciplines to apply for engagement in response to the advertisement in the OHCSF Website.
 (iv) Prospective Volunteers must be certified medically fit and suitable for the assignment by a recognised Healthcare Provider (HCP) and obtain security clearance from the Police before engagement.
 (v) Interns to be engaged directly by MDAs shall submit reference letter from their respective institutions.
 (vi) Stipends paid to interns shall be at the rates prescribed by relevant circulars issued from time to time.
-(vii) Successful candidates shall be given letters of commendation at the end of the programmes.'
+(vii) Successful candidates shall be given letters of commendation at the end of the programmes.`
   }
 ] as const;
