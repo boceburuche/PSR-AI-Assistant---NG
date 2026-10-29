@@ -59,7 +59,7 @@ const locallyReviewedRules = [
   }))
 ];
 function getLocalPSRAnswer(query: string): string | null {
-  const chapter3 = retrievePSR2021Chapter3(query, 5);
+  const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*0?3\b/i.test(query) ? 17 : 2);
   if (chapter3.length > 0 || /\b03\d{4}\b|\bchapter\s*0?3\b/i.test(query)) {
     return RAGEngine.generateOfflineResponse(query, chapter3);
   }
@@ -156,7 +156,7 @@ export const ChatView: React.FC<ChatViewProps> = ({
 I am your **Central Public Service Rules (PSR) AI Assistant**, equipped with a Retrieval-Augmented Generation (RAG) engine grounded exclusively in the **Revised Public Service Rules (PSR 2021 Edition)**.
 
 You may ask any questions regarding:
-- **Disciplinary Queries, Interdiction & Grievance Procedures** (Chapter 3)
+- **Confirmation Examinations, COMPRO, Eligibility & Exemptions** (Chapter 3)
 - **Leave Entitlements: Annual, Maternity & Paternity (14 Days)** (Chapter 6)
 - **Promotion Maturity & PMS Scoring Matrices** (Chapter 2)
 - **Duty Tour Allowance (DTA) & Salary Circulars** (Chapter 4)
