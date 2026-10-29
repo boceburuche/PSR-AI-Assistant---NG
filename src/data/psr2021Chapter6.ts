@@ -86,8 +86,8 @@ const TOPIC_RULES: [RegExp, string[]][] = [
 
 export function retrievePSR2021Chapter6(query: string, limit = 5): RAGRetrievalResult[] {
   const q = query.toLowerCase();
-  const explicit = [...q.matchAll(/\\b0601\\d{2}\\b/g)].map(m => m[0]);
-  const chapter = /\\bchapter\\s*(?:6|six|06)\\b|reward(?:s)?\\s+and\\s+recognition|meritorious service|public service awards?/i.test(q);
+  const explicit = [...q.matchAll(/\b0601\d{2}\b/g)].map(m => m[0]);
+  const chapter = /\bchapter\s*(?:6|six|06)\b|reward(?:s)?\s+and\s+recognition|meritorious service|public service awards?/i.test(q);
   const matchedTopics = TOPIC_RULES.filter(([pattern]) => pattern.test(q)).flatMap(([,numbers]) => numbers);
   if (!chapter && explicit.length === 0 && !(matchedTopics.length && /reward|recognition|award|meritorious|ohcsf/i.test(q))) return [];
   const scored = PSR2021_CHAPTER6.map(rule => {
