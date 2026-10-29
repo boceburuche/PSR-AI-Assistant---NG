@@ -65,7 +65,7 @@ const SOURCE_RULES: {ruleNumber: string; title: string; fullText: string}[] = [
 export const PSR2021_CHAPTER6: PSRRule[] = SOURCE_RULES.map(({ruleNumber,title,fullText}) => ({
   ruleNumber, chapter: 6,
   chapterTitle: 'Reward and Recognition for Outstanding Work and Meritorious Service',
-  section: 'Chapter 6 — user-supplied page 1 transcription (PDF comparison pending)',
+  section: ['060109','060110','060111'].includes(ruleNumber) ? 'Chapter 6 — page 2 transcription (PDF comparison pending)' : 'Chapter 6 — page 1 transcription (PDF comparison pending)',
   title, summary: title + '. See full transcription for the complete provision.',
   fullText, keyPoints: ['Read the complete source transcription; verify against the original PSR 2021 PDF before official reliance.'],
   tags: ['psr 2021', 'reward', 'recognition', 'meritorious service', title.toLowerCase()]
@@ -88,8 +88,9 @@ export function retrievePSR2021Chapter6(query: string, limit = 5): RAGRetrievalR
   const q = query.toLowerCase();
   const explicit = [...q.matchAll(/\b0601\d{2}\b/g)].map(m => m[0]);
   const chapter = /\bchapter\s*(?:6|six|06)\b|reward(?:s)?\s+and\s+recognition|meritorious service|public service awards?/i.test(q);
+  const awardContext = /reward|recognition|award|meritorious|ohcsf|selection committee|selection guidelines|weightings|service welfare newsletter/i.test(q);
   const matchedTopics = TOPIC_RULES.filter(([pattern]) => pattern.test(q)).flatMap(([,numbers]) => numbers);
-  if (!chapter && explicit.length === 0 && !(matchedTopics.length && /reward|recognition|award|meritorious|ohcsf/i.test(q))) return [];
+  if (!chapter && explicit.length === 0 && !(matchedTopics.length && awardContext)) return [];
   const scored = PSR2021_CHAPTER6.map(rule => {
     let score = explicit.includes(rule.ruleNumber) ? 1000 : 0;
     if (matchedTopics.includes(rule.ruleNumber)) score += 200;
