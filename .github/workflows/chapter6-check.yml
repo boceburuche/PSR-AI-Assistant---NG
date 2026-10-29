@@ -1,0 +1,27 @@
+name: Chapter 6 verification
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/data/psr2021Chapter6.ts'
+      - 'src/data/psrCorpus.ts'
+      - 'src/services/ragEngine.ts'
+      - 'tests/psr2021Chapter6.test.ts'
+      - '.github/workflows/chapter6-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chapter6:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install
+      - name: Chapter 6 retrieval regression tests
+        run: bun x tsx tests/psr2021Chapter6.test.ts
+      - name: Typecheck
+        run: bun run lint
+      - name: Build
+        run: bun run build
