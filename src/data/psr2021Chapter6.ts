@@ -78,7 +78,7 @@ const TOPIC_RULES: [RegExp, string[]][] = [
   [/selection|committee|weighting|transparen|fairness|guideline/, ['060110']],
   [/annual|ceremony|newsletter|publish|publication|awardees/, ['060111']],
   [/criteria|circular|qualify/, ['060108']],
-  [/time.frame|frequency|when.*award/, ['060107']],
+  [/time.frame|frequency|timeframes|deadline/, ['060107']],
   [/recommendation|recommend.*ohcsf/, ['060105']],
   [/motivat|work ethic|performance/, ['060102','060103']],
   [/eligib|exemplary conduct|best officer/, ['060104']]
