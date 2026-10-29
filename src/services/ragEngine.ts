@@ -1,4 +1,5 @@
 import { PSR_RULES_DATABASE } from '../data/psrCorpus';
+import { retrievePSR2021Chapter6 } from '../data/psr2021Chapter6';
 import { retrievePSR2021Chapter3, formatPSR2021Chapter3Pages } from '../data/psr2021Chapter3';
 import { retrievePSR2021Batch01 } from '../data/psr2021Batch01';
 import { PSRRule, RAGRetrievalResult } from '../types/psr';
@@ -62,6 +63,10 @@ export class RAGEngine {
    * Retrieves relevant PSR rules using multi-tier hybrid matching
    */
   public static retrieveRules(query: string, limit: number = 4): RAGRetrievalResult[] {
+    // Isolate the user-supplied 2021 Chapter 6 from older PSR numbering.
+    const chapter6 = retrievePSR2021Chapter6(query, limit);
+    if (chapter6.length > 0) return chapter6;
+    if (/\\b0601\\d{2}\\b/.test(query) || /\\bchapter\\s*(?:6|six|06)\\b/i.test(query)) return [];
     // Verified 2021 Chapter 3 takes precedence over conflicting legacy numbering.
     const chapter3 = retrievePSR2021Chapter3(query, limit);
     if (chapter3.length > 0) return chapter3;
@@ -207,6 +212,9 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
    * Client-side fallback generation when offline or disconnected
    */
   public static generateOfflineResponse(query: string, results: RAGRetrievalResult[], officerCadre?: string): string {
+    if (results.some(r => r.rule.chapter === 6 && r.rule.chapterTitle === 'Reward and Recognition for Outstanding Work and Meritorious Service')) {
+      return results.map(({rule}) => '**Rule ' + rule.ruleNumber + ': ' + rule.title + '**\\n\\n' + rule.fullText).join('\\n\\n');
+    }
     const chapter3Query = /\bchapter\s*(?:0?3|three)\b/i.test(query);
     const requestedPage = query.match(/\b(?:pdf\s+)?page\s+(3[2-7])\b/i);
     if (chapter3Query && !/\b03\d{4}\b/.test(query)) {
