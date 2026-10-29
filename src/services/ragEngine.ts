@@ -66,7 +66,7 @@ export class RAGEngine {
     // Isolate the user-supplied 2021 Chapter 6 from older PSR numbering.
     const chapter6 = retrievePSR2021Chapter6(query, limit);
     if (chapter6.length > 0) return chapter6;
-    if (/\\b0601\\d{2}\\b/.test(query) || /\\bchapter\\s*(?:6|six|06)\\b/i.test(query)) return [];
+    if (/\b0601\d{2}\b/.test(query) || /\bchapter\s*(?:6|six|06)\b/i.test(query)) return [];
     // Verified 2021 Chapter 3 takes precedence over conflicting legacy numbering.
     const chapter3 = retrievePSR2021Chapter3(query, limit);
     if (chapter3.length > 0) return chapter3;
