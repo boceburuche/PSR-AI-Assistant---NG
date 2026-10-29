@@ -1,3 +1,4 @@
+import { PSR2021_CHAPTER6 } from './psr2021Chapter6';
 import { PSR2021_CHAPTER3 } from './psr2021Chapter3';
 import { PSRChapter, PSRRule, OfficerProfile, QueryRecord, PSRForeword, PSRPreamble } from '../types/psr';
 export { PSR_TABLE_OF_CONTENTS, PSR_MASTER_INDEX } from './psrMasterIndex';
@@ -186,6 +187,7 @@ export const PSR_CHAPTERS: PSRChapter[] = [
 ];
 
 export const PSR_RULES_DATABASE: PSRRule[] = [
+  ...PSR2021_CHAPTER6,
   // PRESIDENTIAL FOREWORD & PREAMBLE
   {
     ruleNumber: '000001',
