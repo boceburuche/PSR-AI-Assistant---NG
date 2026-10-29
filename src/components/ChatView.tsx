@@ -122,19 +122,6 @@ function getLocalPSRAnswer(query: string): string | null {
   if (selected.length === 0 && /responsibilit|duty of (an? )?officer|acquaint|familiaris|familiariz/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010103');
   if (selected.length === 0 && /constitution|constitutional|conformity/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010102');
   if (selected.length === 0 && /appl(y|ication|ies)|who.*psr|scope of.*rules/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber === '010101');
-  // Broad appointment questions need the complete introductory/recruitment provisions.
-  // Keep this after specific routes so contract, probation and transfer queries stay focused.
-  if (selected.length === 0 && /\bappoint(?:ment|ments|ing|ed)?\b|\brecruit(?:ment|ing)?\b/.test(q)) {
-    const appointmentRules = new Set([
-      '020101','020102','020103','020104','020105','020106','020107',
-      '020201','020202','020203','020204','020205','020206','020207',
-      '020208','020209','020210','020211','020212'
-    ]);
-    selected = locallyReviewedRules.filter(r => appointmentRules.has(r.ruleNumber));
-    const seen = new Set<string>();
-    selected = selected.filter(r => !seen.has(r.ruleNumber) && !!seen.add(r.ruleNumber))
-      .sort((a, b) => a.ruleNumber.localeCompare(b.ruleNumber));
-  }
   if (selected.length === 0) return null;
   return selected.map(r => `PSR 2021 — Rule ${r.ruleNumber}: ${r.topic}\n\n${r.text}\n\nSource: Revised Public Service Rules 2021, Chapter ${r.ruleNumber.startsWith('02') ? '2' : '1'}, user-submitted transcription (awaiting independent PDF verification).${'complete' in r && !r.complete ? ' This rule is incomplete; the next page is required.' : ''}`).join('\n\n──────────\n\n');
 }
@@ -257,7 +244,7 @@ How may I assist your administrative duties today?`,
         {
           id: 'err-' + Date.now(),
           sender: 'assistant',
-          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Please rephrase the question or specify a rule number. Local source coverage includes Chapters 1 and 3 and the submitted portions of Chapter 2; unmatched questions require further source indexing.',
+          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Please ask about Rules 010101–010103 or continue adding verified pages.',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ]);
@@ -494,5 +481,4 @@ How may I assist your administrative duties today?`,
     </div>
   );
 };
-
 
