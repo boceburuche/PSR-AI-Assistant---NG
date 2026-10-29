@@ -28,7 +28,7 @@ const SOURCE_RULES: {ruleNumber: string; title: string; fullText: string}[] = [
   {
     "ruleNumber": "060105",
     "title": "Categories of Awards",
-    "fullText": "Each MDA shall make recommendation to OHCSF for award to deserving Officers in the following categories:"
+    "fullText": "Each MDA shall make recommendation to OHCSF for award to deserving Officers in the following categories:\n(i) Presidential Distinguished Public Service Career Award;\n(ii) Presidential Public Service Merit Award;\n(iii) Head of the Service of the Federation Commendation Award;\n(iv) The Public Service Excellence Award;\n(v) Sports Achievement Award; and\n(vi) Recognition of Retired Permanent Secretaries."
   },
   {
     "ruleNumber": "060106",
