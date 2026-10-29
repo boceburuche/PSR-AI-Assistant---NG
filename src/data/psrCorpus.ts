@@ -1,3 +1,4 @@
+import { PSR2021_CHAPTER3 } from './psr2021Chapter3';
 import { PSRChapter, PSRRule, OfficerProfile, QueryRecord, PSRForeword, PSRPreamble } from '../types/psr';
 export { PSR_TABLE_OF_CONTENTS, PSR_MASTER_INDEX } from './psrMasterIndex';
 
@@ -88,11 +89,11 @@ export const PSR_CHAPTERS: PSRChapter[] = [
   },
   {
     number: 3,
-    title: 'Discipline, Queries & Grievance Procedures',
-    description: 'General inefficiency, misconduct, serious misconduct, formal queries (Form Gen 16), 48/72-hour reply rule, Senior Staff Committee, interdiction (50% pay), suspension, and dismissal.',
-    sectionsCount: 4,
-    rulesCount: 22,
-    keyTopics: ['Misconduct vs Serious Misconduct', '48-Hour Query Reply', 'Interdiction at 50% Pay', 'Suspension', 'SSC / JSC Committees', 'Private Business Prohibition', 'Dismissal Penalties']
+    title: 'Prescribed Examination for Confirmation',
+    description: 'Source-checked PSR 2021 confirmation examination requirements, syllabus, eligibility and fees.',
+    sectionsCount: 6,
+    rulesCount: 17,
+    keyTopics: ['Induction', 'COMPRO I, II & III', 'Confirmation deadlines', 'Exemptions', 'Accelerated advancement', 'Examination fees']
   },
   {
     number: 4,
@@ -279,7 +280,7 @@ Abuja`,
 Chapter Subject
 1. Introduction
 2. Appointments and Leaving the Service
-3. Discipline
+3. Prescribed Examination for Confirmation
 4. Emoluments and Increments
 5. Annual Performance Evaluation Reports (APER) and Certificate of Service
 6. Examinations in Law and Official Publications
@@ -297,7 +298,7 @@ Chapter Subject
 INDEX TOPICS AND RULE CROSS-REFERENCES:
 • APPOINTMENTS AND LEAVING THE SERVICE (020101-020810): Authority for Appointment (020101), Appointment by FCSC (020102), Senior Posts (020106), Seniority (020107), Unpaid Staff Prohibited (020108), Personal Records (020201), Recruitment (020202), Types of Appointment (020203), Trainee/Pupils (020204), Probation (020205), Eligibility (020206), Prior Approval (020207), Procedure (020208), Oath of Secrecy (020210), Secret Society Prohibition (020211), Probation Period & CCE (020301-020304), Contract Appointments (020401-020412), Transfers & Secondments (020501-020506), Acting Appointments (020601-020607), Promotions (020701-020708), Leaving the Service / Resignation / Retirement (020801-020810).
 • ALLOWANCES (130101-130139): General (130101), Resettlement/Disturbance (130102), Kilometer (130103), Disengagement (130104), Hotel Accommodation (130105), Duty Tour Allowance (130106), Local Running (130107), Estacode Allowance (130108), Entertainment Overseas (130109), Estacode Supplementation (130110), Travelling Days (130111), Warm Clothing (130112), Local Course (130113), Books (130114), Responsibility (130115), Overtime Allowance & Rules (130116-130126), Uniform (130127), Meal (130128), Utility (130129), Rent/Accommodation (130130), Acting Allowance (130131-130134), Personal & Executive Allowances (130135-130139).
-• DISCIPLINE (030101-030501): Delegated Powers (030102), General Inefficiency (030201-030208), Misconduct & Queries (030301-030314), Serious Misconduct (030401-030402), Interdiction at 50% pay (030404), Suspension (030406), Dismissal (030407), Absence Without Leave (030412), Unauthorized Disclosure (030415), Political Activities (030421), Prohibition of Private Practice (030424), Bribery & Corruption (030444).
+• PRESCRIBED EXAMINATION FOR CONFIRMATION (030101–030601): General requirements (030101–030109), Senior officers COMPRO I & III (030201–030202), Junior officers COMPRO II (030301–030302), Police and Para-Military (030401), Required officers and COMPRO result (030501–030502), Examiners and invigilators fees (030601).
 • EMOLUMENTS & INCREMENTS (040101-040207): Salaries (040101), Incremental Date 1st Jan (040203), Withheld/Deferred Increments (040204-040207).
 • APER & CERTIFICATES OF SERVICE (050101-050402): Reporting Officers (050101), Candid Reports (050102), Unconfirmed Staff (050401).
 • EXAMINATIONS (060101-060501): Compulsory Confirmation Exam (060101), Examination Board (060202), Reference Books (060206).
@@ -582,198 +583,8 @@ are concerned, these Rules apply only to the extent that they are not inconsiste
     tags: ['tenure policy', 'directors', 'permanent secretary', 'retirement', 'stagnation']
   },
 
-  // CHAPTER 3 - DISCIPLINE, QUERIES & GRIEVANCES
-  {
-    ruleNumber: '030102',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 1 - Classification of Infractions',
-    title: 'Classification of Disciplinary Infractions: Inefficiency, Misconduct, and Serious Misconduct',
-    summary: 'Infractions in the Federal Civil Service are categorized into three distinct tiers: General Inefficiency, Misconduct, and Serious Misconduct.',
-    fullText: 'Disciplinary infractions shall be categorized into: (a) General Inefficiency - consistent failure to perform duties up to required standards; (b) Misconduct - a specific act of wrongdoing or improper behavior; (c) Serious Misconduct - a specific act of very serious wrongdoing and gross dereliction of duty which can lead to dismissal.',
-    keyPoints: [
-      'Tier 1: General Inefficiency (addressed by written warnings, withheld increment, or withholding confirmation).',
-      'Tier 2: Misconduct (addressed by query, reprimand, reduction in step, deferment of increment).',
-      'Tier 3: Serious Misconduct (subject to interdiction, suspension, demotion, termination, or dismissal).'
-    ],
-    tags: ['inefficiency', 'misconduct', 'serious misconduct', 'disciplinary tiers']
-  },
-  {
-    ruleNumber: '030301',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 3 - Misconduct',
-    title: 'Definition and Acts of Misconduct',
-    summary: 'Misconduct includes habitual lateness, unauthorized absence from duty, refusal to obey lawful orders, insubordination, negligence, and improper attire.',
-    fullText: 'Misconduct is defined as a specific act of wrongdoing or an improper behavior which is inimical to the image of the service and which can be investigated and proved. It includes: (a) Habitual lateness to work; (b) Deliberate delay in treating official files; (c) Failure to keep records; (d) Unauthorized absence from duty; (e) Sleeping on duty; (f) Improper dressing to the office; (g) Insubordination; (h) Discourteous behavior to the public.',
-    keyPoints: [
-      'Habitual lateness or unauthorized absence from station.',
-      'Insubordination to superior officers.',
-      'Negligence of duty resulting in operational delays.',
-      'Improper dressing contrary to civil service decorum.'
-    ],
-    penaltyOrConsequence: 'Query, loss of pay for days absent, deferment or withholding of increment, or reduction in rank.',
-    applicableGrades: ['GL 01-17'],
-    tags: ['misconduct', 'lateness', 'absenteeism', 'insubordination', 'dress code']
-  },
-  {
-    ruleNumber: '030302',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 3 - Disciplinary Procedure & Queries',
-    title: 'Issuance of Formal Query and Due Process Requirement',
-    summary: 'Before any disciplinary action can be taken against an officer, a formal written query (Form Gen 16) stating the specific rule violated and allegations must be served.',
-    fullText: 'No disciplinary measure shall be taken against an officer unless he/she has been informed in writing of the grounds on which it is proposed to discipline him/her, and he/she has been given a full opportunity of exculpating himself/herself. The query must specify the particular Rule alleged to have been breached and state the date, time, and particulars of the incident.',
-    keyPoints: [
-      'Mandatory written query before any disciplinary sanction.',
-      'Query must state the exact rule violated and detailed particulars of the act.',
-      'Must give the officer fair hearing in compliance with Section 36 of the 1999 Constitution.',
-      'Disciplinary actions taken without a valid query are ultra vires and voidable at the National Industrial Court.'
-    ],
-    tags: ['formal query', 'due process', 'fair hearing', 'query procedure', 'defense']
-  },
-  {
-    ruleNumber: '030304',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 3 - Query Timelines',
-    title: 'Statutory 48-Hour Deadline for Query Response and Default Consequences',
-    summary: 'An officer served with a query must submit a written reply within forty-eight (48) hours. Failure to respond within the stipulated time is taken as an admission of guilt.',
-    fullText: 'An officer to whom a query has been issued shall be required to submit his/her written exculpation within forty-eight (48) hours of receipt, or within seventy-two (72) hours where weekends or public holidays intervene. Failure to reply within the specified period shall be construed as an admission of the allegations, and disciplinary proceedings shall proceed ex-parte.',
-    keyPoints: [
-      'Statutory deadline: 48 hours from actual receipt of query.',
-      'Grace period: 72 hours where public holidays or weekends intervene.',
-      'Officer must formally sign and acknowledge receipt of query.',
-      'Failure to respond within 48 hours is deemed an admission of the offense.',
-      'Exculpation should be addressed through proper official channels to the issuing officer.'
-    ],
-    timelineDays: 2,
-    penaltyOrConsequence: 'Admission of guilt and immediate disciplinary sanction or referral to Senior Staff Committee (SSC).',
-    applicableGrades: ['GL 01-17'],
-    tags: ['48 hours', 'query deadline', 'exculpation', 'admission of guilt', 'procedure']
-  },
-  {
-    ruleNumber: '030401',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Serious Misconduct',
-    title: 'Definition of Serious Misconduct',
-    summary: 'Serious Misconduct is a specific act of very serious wrongdoing and gross dereliction of duty which can lead to dismissal.',
-    fullText: 'Serious Misconduct is defined as a specific act of very serious wrongdoing and gross dereliction of duty which is inimical to the image and integrity of the service and which can lead to dismissal. It must be investigated by the Senior Staff Committee or Junior Staff Committee.',
-    keyPoints: [
-      'Highest tier of civil service infraction.',
-      'Leads to interdiction, suspension, demotion, termination, or dismissal.',
-      'Requires full investigation by the Senior Staff Committee (SSC) or Junior Staff Committee (JSC).'
-    ],
-    applicableGrades: ['GL 01-17'],
-    tags: ['serious misconduct', 'gross dereliction', 'dismissal']
-  },
-  {
-    ruleNumber: '030402',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Serious Misconduct Offences',
-    title: 'Acts Constituting Serious Misconduct',
-    summary: 'List of specific offenses that constitute serious misconduct under PSR 2021, including bribery, embezzlement, unauthorized leakage of secrets, private business, and sexual harassment.',
-    fullText: 'Acts of Serious Misconduct include: (a) Falsification of records or certificate forgery; (b) Suppression of official records; (c) Bribery, corruption, and financial impropriety; (d) Embezzlement and misappropriation of public funds; (e) Unauthorized disclosure of official secrets and leaking classified memos on social media; (f) Financial embarrassment (unmanageable debt); (g) Conviction on a criminal charge; (h) Engaging in private business or trade other than farming; (i) Sexual harassment; (j) Willful damage to government property; (k) Refusal of transfer or posting; (l) Membership of secret cults or unauthorized societies; (m) Participation in partisan political activities.',
-    keyPoints: [
-      'Falsification of age, certificates, or official records.',
-      'Bribery, corruption, and misuse of public funds.',
-      'Unauthorized disclosure or social media leakage of official documents.',
-      'Operating private commercial businesses while in service (except farming).',
-      'Sexual harassment in the workplace (newly reinforced in PSR 2021).',
-      'Partisan political campaigning or contestation without resignation.'
-    ],
-    penaltyOrConsequence: 'Dismissal with forfeiture of pension and gratuity, or compulsory retirement.',
-    applicableGrades: ['GL 01-17'],
-    tags: ['bribery', 'embezzlement', 'forgery', 'social media leak', 'farming exception', 'sexual harassment', 'serious misconduct']
-  },
-  {
-    ruleNumber: '030403',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Interdiction & Suspension',
-    title: 'Interdiction Procedure and Justification',
-    summary: 'When an officer is reported for serious misconduct or criminal prosecution, he/she may be placed on interdiction pending determination of the case.',
-    fullText: 'When a serious allegation of misconduct which may lead to dismissal is made against an officer, or when criminal proceedings are instituted against him/her, the Permanent Secretary or Head of Extra-Ministerial Department may place the officer on interdiction, having regard to the public interest and the need to protect government records.',
-    keyPoints: [
-      'Applied when allegations could warrant dismissal or when criminal charges are pending.',
-      'Prevents interference with witnesses, files, or departmental operations.',
-      'Must be approved by the Permanent Secretary or FCSC.'
-    ],
-    tags: ['interdiction', 'suspension', 'criminal charges', 'protective custody']
-  },
-  {
-    ruleNumber: '030404',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Interdiction Pay & Conditions',
-    title: 'Interdiction Pay: 50% Salary and Conditions of Service',
-    summary: 'An officer on interdiction receives fifty percent (50%) of his/her consolidated salary, surrenders official property, and cannot travel without written permission.',
-    fullText: 'An officer who is under interdiction shall receive fifty percent (50%) of his/her consolidated salary and allowances during the period of interdiction. The officer shall immediately surrender all government property, keys, official identity cards, and equipment in his/her possession. The officer shall not leave his/her station without the prior written permission of the Permanent Secretary. If the officer is completely exonerated, he/she shall be restored to office and receive all withheld half-salaries.',
-    keyPoints: [
-      'Officer receives exactly 50% of basic salary during interdiction.',
-      'Immediate surrender of official ID card, files, keys, and government vehicle.',
-      'Prohibited from entering official premises without express permission.',
-      'Cannot travel outside station without written clearance.',
-      'If fully exonerated by the Senior Staff Committee / FCSC, the 50% arrears withheld are fully refunded.'
-    ],
-    applicableGrades: ['GL 01-17'],
-    tags: ['interdiction salary', 'half pay', '50% pay', 'refund of arrears', 'exoneration']
-  },
-  {
-    ruleNumber: '030406',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Suspension',
-    title: 'Suspension from Duty and Zero Pay Conditions',
-    summary: 'Suspension is applied where a prima facie case of serious misconduct has been established or officer arrested, resulting in complete cessation of pay.',
-    fullText: 'Suspension is the complete withdrawal of an officer from official duties. It is applied where a prima facie case of serious misconduct or a grave financial crime is established against an officer. During suspension, the officer shall not receive any salary whatsoever pending the determination of the charges against him/her.',
-    keyPoints: [
-      'More severe than interdiction; salary is zero during suspension.',
-      'Used when officer is remanded in prison custody or prima facie fraud established.',
-      'Must be promptly determined within 3 to 6 months.'
-    ],
-    penaltyOrConsequence: 'Total forfeiture of salary for the period of suspension unless exonerated.',
-    applicableGrades: ['GL 01-17'],
-    tags: ['suspension', 'zero pay', 'remand', 'prima facie']
-  },
-  {
-    ruleNumber: '030409',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Dismissal & Penalties',
-    title: 'Dismissal and Forfeiture of Terminal Benefits',
-    summary: 'Dismissal is the ultimate disciplinary penalty. It forfeits all rights to pension, gratuity, and terminal benefits, and disqualifies the person from future public office.',
-    fullText: 'An officer who is dismissed shall forfeit all claims to a pension, gratuity, or terminal grant, and shall not be eligible for re-engagement or appointment in any other branch of the public service of the Federation or States.',
-    keyPoints: [
-      'Ultimate disciplinary penalty for serious misconduct.',
-      'Complete loss of pension, gratuity, and terminal claims under civil service rules.',
-      'Disqualified from future appointment in Federal, State, or Local Government service.',
-      'Can only be authorized by the Federal Civil Service Commission (FCSC).'
-    ],
-    penaltyOrConsequence: 'Total forfeiture of pension, terminal benefits, and permanent bar from public office.',
-    applicableGrades: ['GL 01-17'],
-    tags: ['dismissal', 'forfeiture of pension', 'FCSC', 'ultimate penalty']
-  },
-  {
-    ruleNumber: '030424',
-    chapter: 3,
-    chapterTitle: 'Discipline, Queries & Grievance Procedures',
-    section: 'Section 4 - Private Business Restrictions',
-    title: 'Prohibition of Engaging in Private Business (Farming Exemption Only)',
-    summary: 'Officers are strictly prohibited from operating or running private commercial enterprises. The only constitutionally allowed commercial activity is agricultural farming.',
-    fullText: 'In accordance with the Code of Conduct for Public Officers, an officer is strictly prohibited from engaging in the management or running of any private business, company, commercial firm, or private trade while in the service of the Federal Government. The only exception recognized is engagement in agriculture / farming, provided it does not conflict with official working hours.',
-    keyPoints: [
-      'Strict ban on private business, contracts, or company directorship.',
-      'Sole permitted exception: Farming / Agricultural enterprises.',
-      'Officers cannot use official hours or government assets for farming.',
-      'Violations constitute serious misconduct under Rule 030402.'
-    ],
-    penaltyOrConsequence: 'Query, interdiction, and possible dismissal for conflict of interest.',
-    applicableGrades: ['GL 01-17'],
-    tags: ['private business', 'farming', 'agriculture', 'code of conduct', 'conflict of interest']
-  },
+  // Uploaded PSR 2021 Chapter 3 replaces conflicting legacy disciplinary entries.
+  ...PSR2021_CHAPTER3,
 
   // CHAPTER 4 - SALARIES, INCREMENTS & ALLOWANCES
   {

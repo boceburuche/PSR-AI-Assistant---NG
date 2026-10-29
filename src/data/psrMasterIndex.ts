@@ -39,16 +39,9 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   },
   {
     chapter: 3,
-    subject: 'Discipline',
-    subSections: [
-      'Section 01: Introduction & Delegated Powers',
-      'Section 02: General Inefficiency',
-      'Section 03: Misconduct',
-      'Section 04: Serious Misconduct',
-      'Section 05: Conduct Prejudicial to Security of State',
-      'Section 06: Retirement in Public Interest'
-    ],
-    keyTopics: ['Query 48-Hour Deadline', 'Interdiction (50% Pay)', 'Suspension', 'Dismissal', 'Private Practice Prohibition', 'Gifts & Bribery']
+    subject: 'Prescribed Examination for Confirmation',
+    subSections: ['Section 1: General', 'Section 2: Senior officers (COMPRO I & III)', 'Section 3: Junior officers (COMPRO II)', 'Section 4: Police and Para-Military', 'Section 5: Officers required to pass', 'Section 6: Examiners and invigilators fees'],
+    keyTopics: ['Confirmation examinations', 'Induction', 'Deadlines', 'Syllabus', 'Exemptions', 'Accelerated advancement']
   },
   {
     chapter: 4,
@@ -178,6 +171,23 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
 ];
 
 export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
+  {"letter":"I","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Induction and compulsory confirmation examinations","ruleNumber":"030101"},
+  {"letter":"R","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Responsibility for conducting and supervising examinations","ruleNumber":"030102"},
+  {"letter":"E","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Examination Board membership","ruleNumber":"030103"},
+  {"letter":"F","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Failure after three consecutive attempts","ruleNumber":"030104"},
+  {"letter":"D","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Deadline to take confirmation examination","ruleNumber":"030105"},
+  {"letter":"F","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Frequency of confirmation examinations","ruleNumber":"030106"},
+  {"letter":"R","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Reference books and closed-book exceptions","ruleNumber":"030107"},
+  {"letter":"P","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Prescribed reference books by grade level","ruleNumber":"030108"},
+  {"letter":"G","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Group A exemption for law-qualified officers","ruleNumber":"030109"},
+  {"letter":"S","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 2","topic":"Senior officers: COMPRO I and III","ruleNumber":"030201"},
+  {"letter":"S","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 2","topic":"Senior examination syllabus: Groups A, B and C","ruleNumber":"030202"},
+  {"letter":"J","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 3","topic":"Junior officers: COMPRO II subjects","ruleNumber":"030301"},
+  {"letter":"A","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 3","topic":"Accelerated advancement for exceptional GL.04 clerical officers","ruleNumber":"030302"},
+  {"letter":"P","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 4","topic":"Police and para-military officers required to pass","ruleNumber":"030401"},
+  {"letter":"R","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 5","topic":"Required officers, eligibility and advancement beyond GL.10","ruleNumber":"030501"},
+  {"letter":"U","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 5","topic":"Use of COMPRO result when appointment gazettes are unavailable","ruleNumber":"030502"},
+  {"letter":"F","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 6","topic":"Fees for examiners and invigilators","ruleNumber":"030601"},
   // A - APPOINTMENTS AND LEAVING THE SERVICE
   { letter: 'A', mainCategory: 'APPOINTMENTS AND LEAVING THE SERVICE', subCategory: 'General Appointments', topic: 'Authority for Appointment/Recruitment', ruleNumber: '020101' },
   { letter: 'A', mainCategory: 'APPOINTMENTS AND LEAVING THE SERVICE', subCategory: 'General Appointments', topic: 'Appointment by Federal Civil Service Commission', ruleNumber: '020102' },
@@ -253,7 +263,6 @@ export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
   { letter: 'A', mainCategory: 'APPOINTMENTS AND LEAVING THE SERVICE', subCategory: 'Leaving the Service', topic: 'Payment of Retirement Benefits', ruleNumber: '020808' },
   { letter: 'A', mainCategory: 'APPOINTMENTS AND LEAVING THE SERVICE', subCategory: 'Leaving the Service', topic: 'Processing of Retirement Benefits', ruleNumber: '020809' },
   { letter: 'A', mainCategory: 'APPOINTMENTS AND LEAVING THE SERVICE', subCategory: 'Leaving the Service', topic: 'Retirement (Statutory Compulsory)', ruleNumber: '020810' },
-  { letter: 'A', mainCategory: 'APPOINTMENTS AND LEAVING THE SERVICE', subCategory: 'Leaving the Service', topic: 'Retirement in Public Interest', ruleNumber: '030601' },
 
   // ALLOWANCES
   { letter: 'A', mainCategory: 'ALLOWANCES', subCategory: 'General Allowances', topic: 'Allowances Definition & Subject to Periodic Review', ruleNumber: '130101' },
@@ -345,65 +354,6 @@ export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
   { letter: 'C', mainCategory: 'COURSES OF INSTRUCTION WITHIN AND OUTSIDE NIGERIA', subCategory: 'Special Courses', topic: 'Post Graduate Courses', ruleNumber: '120311' },
 
   // D - DISCIPLINE
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Introduction', topic: 'Knowledge of Disciplinary Rules', ruleNumber: '030101' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Introduction', topic: 'Authority and Delegation of Powers', ruleNumber: '030102' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'General Inefficiency Definition', ruleNumber: '030201' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Drawing Attention To Shortcoming', ruleNumber: '030202' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Removal for General Inefficiency', ruleNumber: '030203' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Performance of Duties', ruleNumber: '030204' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Removal of Temporary Staff for Inefficiency', ruleNumber: '030205' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Withholding of Increment (Delegated & Non-Delegated Powers)', ruleNumber: '030206' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Notification of Defects', ruleNumber: '030207' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'General Inefficiency', topic: 'Effective Date of Termination for Inefficiency', ruleNumber: '030208' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Misconduct Definition', ruleNumber: '030301' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Issuing Query', ruleNumber: '030302' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Recommendations of Tribunals of Enquiry', ruleNumber: '030303' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Reporting Misconduct', ruleNumber: '030304' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Disciplinary Procedure for Misconduct and Serious Misconduct', ruleNumber: '030305' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Postponement of Disciplinary Proceedings', ruleNumber: '030306' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Notification in Writing', ruleNumber: '030307' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Working for Institutions or Government Agencies During Office Hours', ruleNumber: '030308' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Fines', ruleNumber: '030309' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Powers to Surcharge', ruleNumber: '030310' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Money Lending Prohibited', ruleNumber: '030311' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Hawking Merchandise on Duty', ruleNumber: '030312' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Dress Code', ruleNumber: '030313' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Misconduct', topic: 'Unofficial Testimonials', ruleNumber: '030314' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Serious Misconduct Definition', ruleNumber: '030401' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Examples of Serious Misconduct', ruleNumber: '030402' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Procedure for Serious Misconduct', ruleNumber: '030403' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Interdiction (50% Salary Conditions)', ruleNumber: '030404' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Responsibility of Interdicted Officer', ruleNumber: '030405' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Suspension (Zero Pay)', ruleNumber: '030406' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Dismissal and its Effects (Forfeiture of Benefits)', ruleNumber: '030407' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Effective Date of Dismissal', ruleNumber: '030408' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Officer to Report Criminal Charge and its Outcome', ruleNumber: '030409' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Effect of Criminal Proceedings', ruleNumber: '030410' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Suspension of Convicted Officers', ruleNumber: '030411' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Absence Without Leave', ruleNumber: '030412' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Serious Financial Embarrassment', ruleNumber: '030413' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Oath of Secrecy', ruleNumber: '030414' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Unauthorized Disclosure of Official Information', ruleNumber: '030415' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Abstraction or Copying of Official Documents', ruleNumber: '030416' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Secret Personal Records', ruleNumber: '030417' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Removal of Public Records', ruleNumber: '030418' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Removal of Historical Documents', ruleNumber: '030419' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Publication and Public Utterances', ruleNumber: '030420' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Political Activities', ruleNumber: '030421' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Resignation Before Seeking Elective Office', ruleNumber: '030422' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Investments', ruleNumber: '030423' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Prohibition of Private Practice (Commercial Trade)', ruleNumber: '030424' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Mineral Discoveries', ruleNumber: '030425' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Seeking Influence of Prominent Persons', ruleNumber: '030426' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Posting and Residence', ruleNumber: '030427' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Paid Appointment During Leave', ruleNumber: '030428' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Private Agency', ruleNumber: '030429' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Statement on Appointment', ruleNumber: '030430' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Borrowing Money', ruleNumber: '030431' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Presents in Recognition of Service', ruleNumber: '030433' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Gifts from Traditional Rulers', ruleNumber: '030434' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'Serious Misconduct', topic: 'Prohibition of Bribery and Corruption', ruleNumber: '030444' },
-  { letter: 'D', mainCategory: 'DISCIPLINE', subCategory: 'State Security', topic: 'Conduct Prejudicial to State Security', ruleNumber: '030501' },
 
   // E - EMOLUMENTS AND INCREMENT
   { letter: 'E', mainCategory: 'EMOLUMENTS AND INCREMENTS', subCategory: 'Salaries', topic: 'Payment of Salaries', ruleNumber: '040101' },
@@ -573,3 +523,4 @@ export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
   { letter: 'P', mainCategory: 'APPLICATION OF THE PUBLIC SERVICE RULES TO FEDERAL GOVERNMENT PARASTATALS', subCategory: 'Discipline', topic: 'General Application of Disciplinary Rules in Parastatals', ruleNumber: '160502' },
   { letter: 'P', mainCategory: 'APPLICATION OF THE PUBLIC SERVICE RULES TO FEDERAL GOVERNMENT PARASTATALS', subCategory: 'Petitions and Appeals', topic: 'Petition to Head of Government in Parastatals', ruleNumber: '160601' }
 ];
+

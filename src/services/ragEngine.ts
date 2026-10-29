@@ -1,4 +1,5 @@
 import { PSR_RULES_DATABASE } from '../data/psrCorpus';
+import { retrievePSR2021Chapter3 } from '../data/psr2021Chapter3';
 import { retrievePSR2021Batch01 } from '../data/psr2021Batch01';
 import { PSRRule, RAGRetrievalResult } from '../types/psr';
 
@@ -61,6 +62,10 @@ export class RAGEngine {
    * Retrieves relevant PSR rules using multi-tier hybrid matching
    */
   public static retrieveRules(query: string, limit: number = 4): RAGRetrievalResult[] {
+    // Verified 2021 Chapter 3 takes precedence over conflicting legacy numbering.
+    const chapter3 = retrievePSR2021Chapter3(query, limit);
+    if (chapter3.length > 0) return chapter3;
+    if (/\b03\d{4}\b/.test(query) || /\bchapter\s*0?3\b/i.test(query)) return [];
     // Prioritize the uploaded 2021 OCR source for rules present in Batch 1.
     // The pre-existing corpus contains 2008-edition passages; do not mix them
     // into answers about a rule covered by this 2021 batch.
@@ -202,6 +207,14 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
    * Client-side fallback generation when offline or disconnected
    */
   public static generateOfflineResponse(query: string, results: RAGRetrievalResult[], officerCadre?: string): string {
+    if (results.some(r => r.rule.chapter === 3 && r.rule.chapterTitle === 'Prescribed Examination for Confirmation')) {
+      return '### PSR 2021 — Chapter 3: Prescribed Examination for Confirmation\n\n'
+        + 'The following are source-checked paraphrases of the uploaded PDF, not verbatim quotations.\n\n'
+        + results.map(({rule}) => `**Rule ${rule.ruleNumber}: ${rule.title}**\n\n${rule.summary}\n\n*Source: ${rule.section}.*`).join('\n\n');
+    }
+    if (results.length === 0 && (/\b03\d{4}\b/.test(query) || /\bchapter\s*0?3\b/i.test(query))) {
+      return 'In the uploaded PSR 2021, Chapter 3 covers Prescribed Examination for Confirmation. The requested rule was not found in its verified set (030101–030109, 030201–030202, 030301–030302, 030401, 030501–030502, 030601). Check the rule number and edition; older disciplinary numbering must not be treated as Chapter 3 of this source.';
+    }
     if (results.length === 0) {
       return `According to the Revised Public Service Rules (PSR 2021), official actions in the Federal Civil Service must strictly adhere to statutory procedures. Please specify the rule number, grade level, or administrative scenario (e.g. Promotion maturity, Paternity leave, Query response within 48 hours).`;
     }
@@ -249,3 +262,4 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
     return response;
   }
 }
+
