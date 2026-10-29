@@ -1,5 +1,5 @@
 import { PSR_RULES_DATABASE } from '../data/psrCorpus';
-import { retrievePSR2021Chapter3 } from '../data/psr2021Chapter3';
+import { retrievePSR2021Chapter3, formatPSR2021Chapter3Pages } from '../data/psr2021Chapter3';
 import { retrievePSR2021Batch01 } from '../data/psr2021Batch01';
 import { PSRRule, RAGRetrievalResult } from '../types/psr';
 
@@ -207,10 +207,14 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
    * Client-side fallback generation when offline or disconnected
    */
   public static generateOfflineResponse(query: string, results: RAGRetrievalResult[], officerCadre?: string): string {
+    const chapter3Query = /\bchapter\s*(?:0?3|three)\b/i.test(query);
+    const requestedPage = query.match(/\b(?:pdf\s+)?page\s+(3[2-7])\b/i);
+    if (chapter3Query && !/\b03\d{4}\b/.test(query)) {
+      return formatPSR2021Chapter3Pages(requestedPage ? [Number(requestedPage[1])] : undefined);
+    }
     if (results.some(r => r.rule.chapter === 3 && r.rule.chapterTitle === 'Prescribed Examination for Confirmation')) {
-      return '### PSR 2021 — Chapter 3: Prescribed Examination for Confirmation\n\n'
-        + 'The following are source-checked paraphrases of the uploaded PDF, not verbatim quotations.\n\n'
-        + results.map(({rule}) => `**Rule ${rule.ruleNumber}: ${rule.title}**\n\n${rule.summary}\n\n*Source: ${rule.section}.*`).join('\n\n');
+      return '### PSR 2021 — Chapter 3: Full source provisions\n\n'
+        + results.map(({rule}) => `**Rule ${rule.ruleNumber}: ${rule.title}**\n\nSOURCE TRANSCRIPTION:\n${rule.fullText}\n\nEXPLANATION (separate from source):\n${rule.summary}`).join('\n\n');
     }
     if (results.length === 0 && (/\b03\d{4}\b/.test(query) || /\bchapter\s*0?3\b/i.test(query))) {
       return 'In the uploaded PSR 2021, Chapter 3 covers Prescribed Examination for Confirmation. The requested rule was not found in its verified set (030101–030109, 030201–030202, 030301–030302, 030401, 030501–030502, 030601). Check the rule number and edition; older disciplinary numbering must not be treated as Chapter 3 of this source.';
@@ -262,4 +266,5 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
     return response;
   }
 }
+
 

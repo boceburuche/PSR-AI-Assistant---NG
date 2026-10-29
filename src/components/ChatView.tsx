@@ -59,8 +59,8 @@ const locallyReviewedRules = [
   }))
 ];
 function getLocalPSRAnswer(query: string): string | null {
-  const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*0?3\b/i.test(query) ? 17 : 2);
-  if (chapter3.length > 0 || /\b03\d{4}\b|\bchapter\s*0?3\b/i.test(query)) {
+  const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*(?:0?3|three)\b/i.test(query) ? 17 : 2);
+  if (chapter3.length > 0 || /\b03\d{4}\b|\bchapter\s*(?:0?3|three)\b/i.test(query)) {
     return RAGEngine.generateOfflineResponse(query, chapter3);
   }
   const q = query.toLowerCase();
@@ -481,3 +481,4 @@ How may I assist your administrative duties today?`,
     </div>
   );
 };
+
