@@ -1,5 +1,6 @@
 import { RAGEngine } from '../services/ragEngine';
 import { retrievePSR2021Chapter3 } from '../data/psr2021Chapter3';
+import { retrievePSR2021Chapter5 } from '../data/psr2021Chapter5';
 import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
 import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
@@ -36,7 +37,7 @@ interface ChatViewProps {
 
 // Static GitHub Pages cannot execute the Express /api/psr/rag-chat endpoint.
 // Answer from submitted PSR 2021 passages locally before attempting that API.
-const locallyReviewedRules = [
+const locallyReviewedRules: Array<{ruleNumber:string;topic:string;text:string;complete?:boolean}> = [
   ...PSR2021_VERIFIED_PAGES.flatMap(page => page.rules.map(rule => ({
     ...rule,
     text: rule.ruleNumber === '010105' ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt : rule.text
@@ -46,25 +47,27 @@ const locallyReviewedRules = [
   ...PSR2021_CH2_PAGE12,
   ...PSR2021_CH2_PAGE13,
   ...PSR2021_CH2_PAGE14,
-  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).filter(rule => rule.ruleNumber !== '020410')
+  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => Array.from(page.rules as readonly {ruleNumber:string;topic:string;text:string;complete?:boolean}[])).filter(rule => rule.ruleNumber !== '020410')
     .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
     .map(rule => rule.ruleNumber === '020204' ? ({
       ...rule,
       topic: 'Trainee/Pupil',
       complete: true,
-      text: rule.text + '\n\n' + (PSR2021_CHAPTER_2_PAGES.flatMap(page => page.rules).find(r => r.ruleNumber === '020204' && r.text.startsWith('(a) [Continued'))?.text ?? '')
+      text: rule.text + '\n\n' + (PSR2021_CHAPTER_2_PAGES.flatMap(page => Array.from(page.rules as readonly {ruleNumber:string;topic:string;text:string;complete?:boolean}[])).find(r => r.ruleNumber === '020204' && r.text.startsWith('(a) [Continued'))?.text ?? '')
     }) : rule),
   ...PSR2021_CH1_PAGES_3_4.slice(1).map(rule => ({
     ruleNumber: rule.ruleNumber, topic: rule.topic, text: rule.excerpt
   }))
 ];
 function getLocalPSRAnswer(query: string): string | null {
+  const chapter5 = retrievePSR2021Chapter5(query);
+  if (chapter5) return chapter5;
   const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*(?:0?3|three)\b/i.test(query) ? 17 : 2);
   if (chapter3.length > 0 || /\b03\d{4}\b|\bchapter\s*(?:0?3|three)\b/i.test(query)) {
     return RAGEngine.generateOfflineResponse(query, chapter3);
   }
   const q = query.toLowerCase();
-  const explicit = q.match(/\b0[1-9]\d{4}\b/g) || [];
+  const explicit: string[] = q.match(/\b0[1-9]\d{4}\b/g) ?? [];
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));

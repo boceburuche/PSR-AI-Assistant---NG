@@ -38,7 +38,7 @@ const addedRules = PSR2021_CH1_PAGES_3_4.slice(1).map(r => ({
   ruleNumber: r.ruleNumber, pdfPage: r.pdfPage, topic: r.topic,
   excerpt: r.excerpt, verification: 'TRANSCRIPTION_REVIEWED' as const
 }));
-const reviewedIds = new Set([...reviewed, ...addedRules].map(r => r.ruleNumber));
+const reviewedIds = new Set<string>([...reviewed, ...addedRules].map(r => r.ruleNumber));
 const SEARCHABLE_2021: PSR2021Excerpt[] = [
   ...reviewed,
   ...addedRules,
