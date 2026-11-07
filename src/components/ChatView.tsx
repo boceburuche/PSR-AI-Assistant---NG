@@ -67,7 +67,7 @@ function getLocalPSRAnswer(query: string): string | null {
     return RAGEngine.generateOfflineResponse(query, chapter3);
   }
   const q = query.toLowerCase();
-  const explicit = q.match(/\b0[1-9]\d{4}\b/g) || [];
+  const explicit: string[] = q.match(/\b0[1-9]\d{4}\b/g) ?? [];
   let selected = locallyReviewedRules.filter(r => explicit.includes(r.ruleNumber));
   if (selected.length === 0 && /chapter\s*(1|one)\b|introduction/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('01'));
   if (selected.length === 0 && /chapter\s*(2|two)\b|appointments and leaving/.test(q)) selected = locallyReviewedRules.filter(r => r.ruleNumber.startsWith('02'));
