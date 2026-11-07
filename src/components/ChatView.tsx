@@ -147,6 +147,34 @@ const PRESET_PROMPTS = [
   'What does PSR 2021 say about posting government memos on WhatsApp or social media?'
 ];
 
+/**
+ * Display source hyperlinks embedded in local PSR answers as real links.
+ * Keep the surrounding answer as plain, pre-wrapped text, and accept only
+ * same-site and HTTPS URLs. This avoids injecting arbitrary HTML.
+ */
+function renderPSRSourceLinks(answer: string): React.ReactNode[] {
+  const parts: React.ReactNode[] = [];
+  const linkPattern = /\[([^\]\n]{1,120})\]\((https:\/\/[^\s)]+|\/[^\s)]+)\)/g;
+  let cursor = 0;
+  for (const match of answer.matchAll(linkPattern)) {
+    const index = match.index ?? 0;
+    if (index > cursor) parts.push(answer.slice(cursor, index));
+    const url = match[2];
+    parts.push(
+      <a
+        key={index}
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-emerald-800 underline underline-offset-2 hover:text-emerald-950"
+      >{match[1]}</a>
+    );
+    cursor = index + match[0].length;
+  }
+  if (cursor < answer.length) parts.push(answer.slice(cursor));
+  return parts;
+}
+
 export const ChatView: React.FC<ChatViewProps> = ({
   currentProfile,
   onOpenRuleDetail,
@@ -250,7 +278,7 @@ How may I assist your administrative duties today?`,
         {
           id: 'err-' + Date.now(),
           sender: 'assistant',
-          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Please ask about Rules 010101–010103 or continue adding verified pages.',
+          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Chapters 3, 5 and 10 are available for local rule lookup; try an explicit rule number, such as 030104, 050701 or 100402.',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ]);
@@ -339,7 +367,7 @@ How may I assist your administrative duties today?`,
 
                 {/* Message Body Content */}
                 <div className="text-xs sm:text-sm leading-relaxed space-y-2 whitespace-pre-wrap font-sans">
-                  {msg.text}
+                  {renderPSRSourceLinks(msg.text)}
                 </div>
 
                 {/* Statutory Citations Panel */}
