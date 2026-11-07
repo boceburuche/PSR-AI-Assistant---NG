@@ -22,7 +22,7 @@ Procedure.
 SECTION 5.— CONDUCT PREJUDICIAL TO THE SECURITY
 OF THE STATE
 
-100501,— Where a Committee comprising members from the Federal
+100501.— Where a Committee comprising members from the Federal
 Ministry of Justice, Office of the Head of the Civil Service of the Federation
 is Satisfied that an Officer has committed a misconduct involving the security
 of the State or prejudicial to it, the Officer shall be subject to the normal
@@ -31,7 +31,7 @@ shall be aggravated.
 
 SECTION 6.— RETIREMENT IN PUBLIC INTEREST
 
-10060 1— Notwithstanding the provisions of this chapter, if the Federal
+100601.— Notwithstanding the provisions of this chapter, if the Federal
 Civil Service Commission considers that it is desirable in the Public Interest
 that an Officer should be required to retire from Service on ground which
 cannot suitably be dealt with by the procedures laid down in rule 100305, it
@@ -47,7 +47,7 @@ Cases of retirement in public interest in the Federal Civil Service shall be
 routed through the Office of the Head of the Civil Service of the Federation
 to the Federal Civil Service Commission.
 
-SECTION 7.— DISCIPLINARY PROCEDURE FORA
+SECTION 7.— DISCIPLINARY PROCEDURE FOR A
 PERMANENT SECRETARY
 
 100701.— When a Permanent Secretary is alleged to have committed a
