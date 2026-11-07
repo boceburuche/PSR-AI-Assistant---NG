@@ -11,19 +11,19 @@ Chapter 10
 CHAPTER 10
 DISCIPLINE
 
-SECTION | : INTRODUCTION
+SECTION 1 : INTRODUCTION
 
-Section 2 : GENERAL INEFFICIENCY
+SECTION 2 : GENERAL INEFFICIENCY
 
-SECTION 3 : MisconpuCT
+SECTION 3 : MISCONDUCT
 
-Section 4 : Serious Misconpuct
+SECTION 4 : SERIOUS MISCONDUCT
 
-SECTION 5 : ConpuUCT PREJUDICIAL TO SECURITY OF THE STATE
-SecTION 6 ; RETIREMENT IN PuBLic INTEREST
+SECTION 5 : CONDUCT PREJUDICIAL TO SECURITY OF THE STATE
+SECTION 6 : RETIREMENT IN PUBLIC INTEREST
 
-SECTION 7 : DiscIpLINARY PROCEDURE FOR A PERMANENT SECRETARY
-Section 8 : Disciptinary MEASURES
+SECTION 7 : DISCIPLINARY PROCEDURE FOR A PERMANENT SECRETARY
+SECTION 8 : DISCIPLINARY MEASURES
 
 SECTION 1— INTRODUCTION
 
@@ -43,25 +43,25 @@ Offices in respect of Officers on Salary G.L. 13 and below with the exception
 of the power of dismissal which has been delegated only from G.L. 06 and
 below.
 
-100104,— No Officer shall be removed from Service by a Director-
+100104.— No Officer shall be removed from Service by a Director-
 General or Chief Executive Officer without the approval of the Board except
-Officers on GL 06 and below, based on the recommendation of JSC,
+Officers on GL 06 and below, based on the recommendation of JSC.
 
 SECTION 2.— GENERAL INEFFICIENCY
 
 100201.— General inefficiency consists of a series of omissions or
-Incompetence, the cumulative effect of which shows that the Officer is not
+incompetence, the cumulative effect of which shows that the Officer is not
 capable of discharging efficiently the duties of the office he holds.
 
 100202.— It shall be the duty of every superior Officer, as soon as he
 observes any fault or shortcoming in the work of an Officer subordinate to him,
-to bring it lo the Officer’s notice and to record that such has been done. In order
+to bring it to the Officer’s notice and to record that such has been done. In order
 to improve the Officer's usefulness and efficiency, he may be redeployed to
 where his capacities are best suited or trained to enhance his capacity.
 
 100203.— Before the proceedings for the removal of an Officer for
-general Inefficiency may be commenced, he must have been warned on three
-occasions In writing.
+general inefficiency may be commenced, he must have been warned on three
+occasions in writing.
 
 Knowledge
 of
@@ -76,7 +76,7 @@ Discipline,
 Delegated
 Powers.
 
-Remoyal of
+Removal of
 Officer
 from
 
@@ -86,7 +86,7 @@ Definition.
 
 Drawing
 Attention to
-Shoricoming,
+Shortcoming.
 
 Removal for
 General
