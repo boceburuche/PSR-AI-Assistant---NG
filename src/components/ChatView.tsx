@@ -1,6 +1,7 @@
 import { RAGEngine } from '../services/ragEngine';
 import { retrievePSR2021Chapter3 } from '../data/psr2021Chapter3';
 import { retrievePSR2021Chapter5 } from '../data/psr2021Chapter5';
+import { retrievePSR2021Chapter10 } from '../data/psr2021Chapter10';
 import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
 import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
@@ -60,6 +61,8 @@ const locallyReviewedRules: Array<{ruleNumber:string;topic:string;text:string;co
   }))
 ];
 function getLocalPSRAnswer(query: string): string | null {
+  const chapter10 = retrievePSR2021Chapter10(query);
+  if (chapter10) return chapter10;
   const chapter5 = retrievePSR2021Chapter5(query);
   if (chapter5) return chapter5;
   const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*(?:0?3|three)\b/i.test(query) ? 17 : 2);
