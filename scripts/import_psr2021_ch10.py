@@ -15,6 +15,8 @@ import fitz
 SOURCE_URL = "https://nimr.gov.ng/nimr/wp-content/uploads/2023/11/PSR_2021_EDITION.pdf"
 OUT = Path("docs/psr2021-chapter10-ocr-review")
 OUT.mkdir(parents=True, exist_ok=True)
+PAGE_IMAGES = Path("public/psr2021/chapter10")
+PAGE_IMAGES.mkdir(parents=True, exist_ok=True)
 req = urllib.request.Request(SOURCE_URL, headers={"User-Agent":"PSR-2021-education-verification/1.0"})
 with urllib.request.urlopen(req, timeout=120) as response:
     raw = response.read()
@@ -46,7 +48,11 @@ for pageno in range(78,95):
     if len(text.strip()) < 180:
         raise RuntimeError(f"PDF page {pageno} extraction too short ({len(text)})")
     texts[pageno] = text
-    (OUT/f"page-{pageno}.md").write_text(
+    img = page.get_pixmap(matrix=fitz.Matrix(1.8, 1.8), alpha=False)
+    img.save(str(PAGE_IMAGES/f"page-{pageno}.png"))
+    target = OUT/f"page-{pageno}.md"
+    if not target.exists():
+        target.write_text(
         f"# PSR 2021 Chapter 10 — Library PDF page {pageno}\n\n"
         f"Source: 2021 Edition (157-page Library master), compared with NIMR-hosted edition.\n"
         f"Transcription status: {origin}; pending word-for-word review.\n\n"
