@@ -97,7 +97,7 @@ export interface AIChatMessage {
   text: string;
   timestamp: string;
   sources?: PSRRule[];
-  confidence?: 'High' | 'Medium' | 'Statutory Authority';
+  confidence?: 'High' | 'Medium' | 'Statutory Authority' | 'User-supplied PSR 2021 transcription';
   recommendedActions?: string[];
   warnings?: string[];
   generatedDraft?: {
