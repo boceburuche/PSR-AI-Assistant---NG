@@ -44,13 +44,13 @@ such as may be exchanged between colleagues and friends. If an Officer is in
 doubts as to the propriety of receiving and retaining a gift, he may consult
 his Permanent Secretary/Head of Extra-Ministerial Office.
 
-100434.— (hb) Gifts from traditional rulers, chiefs and other persons
+100434.— (b) Gifts from traditional rulers, chiefs and other persons
 which cannot be refused without giving offence shall be handed over to the
 Government. When presents are received on behalf of the Government in
 ceremonial intercourse they shall be handed over to the Government and any
 returned presents shall be given at Government expense.
 
-100435,— Serving Officers are prohibited from accepting chieftaincy titles
+100435.— Serving Officers are prohibited from accepting chieftaincy titles
 until after retirement from Service, However, where a public servant must hold
 a traditional title bestowed on him by inheritance or receive any award, due
 clearance must be obtained from the Secretary to the Government of the
