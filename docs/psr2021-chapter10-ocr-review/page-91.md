@@ -44,7 +44,7 @@ Borrowing
 Money.
 
 100425.— In accordance with the provisions of the Regulated and other
-Professions Private Practice Prohibition Act, (Cap. 390) Part Il, no Officer
+Professions Private Practice Prohibition Act, (Cap. 390) Part II, no Officer
 shall engage in private practice. However, exemptions shall be granted to
 private Medical Practitioners and Law Lecturers in the Universities and other
 public servants who are interested in practicing in the field of ICT and
@@ -53,12 +53,12 @@ their official duties.
 
 100426.— It is the duty of every Officer to report to Government any
 discovery of what he considers to be valuable minerals. Officers are prohibited,
-under pain of \dismissal, from giving any information on such valuable
+under pain of dismissal, from giving any information on such valuable
 discoveries to any syndicate, company or individual and deriving any benefit
 therefrom. Upon the report of such discovery, it shall be within the discretion
 of Government to make the report public or to withhold it.
 
-100427,— No Officer shall seek the influence of prominent persons or
+100427.— No Officer shall seek the influence of prominent persons or
 any other person for ensuring the due consideration of his claims in matters
 connected with discipline or with a view to obtaining consideration for
 appointment, transfer, promotion or postings,
@@ -71,7 +71,7 @@ considered to be most useful.
 employment without previously obtaining the express approval of the Office
 of the Head of the Civil Service of the Federation (OHCSF),
 
-100430,— No Officer shall undertake any private agency in any matter
+100430.— No Officer shall undertake any private agency in any matter
 connected with the exercise of his public duties.
 
 100431.— Concealment of any of the facts which an applicant for
@@ -88,10 +88,10 @@ a person ;
 
 (a) who is directly or indirectly subject to his official authority :
 
-(>) who resides, possesses land or catries on business within the local
+(b) who resides, possesses land or carries on business within the local
 limits of his official authority ;
 
 (c) with whom the Officer has or is likely to have official dealings : or
 
-(¢) who is a registered money-lender. For the purpose of this rule, the
+(d) who is a registered money-lender. For the purpose of this rule, the
 word “person” shall include a body or person corporate or non-corporate.
