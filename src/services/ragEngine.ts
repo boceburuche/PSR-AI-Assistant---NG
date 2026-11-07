@@ -218,7 +218,7 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
     }
     if (chapter3Query && !/\b03\d{4}\b/.test(query) &&
         /\b(overview|summary|outline|contents|sections)\b/i.test(query) ||
-        chapter3Query && /\bwhat\s+(?:is|does)\s+chapter\s*(?:0?3|three)\s+(?:about|contain|cover)\b/i.test(query)) {
+        chapter3Query && (/\b(?:what|which)\b/i.test(query) && /\b(?:cover|contain|about)\b/i.test(query))) {
       return 'Chapter 3 of PSR 2021 is Prescribed Examination for Confirmation. Its six sections cover general provisions, confirmation/promotion examinations, junior-officer examinations, police and paramilitary examinations, officers required to pass, and examiners’ fees. The 157-page Library master contains the original chapter on PDF pages 51–55. Ask for a rule number to obtain a cited provision.';
     }
     if (results.some(r => r.rule.chapter === 3 && r.rule.chapterTitle === 'Prescribed Examination for Confirmation')) {
