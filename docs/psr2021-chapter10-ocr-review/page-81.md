@@ -8,7 +8,7 @@ Transcription status: unverified OCR; pending word-for-word review.
 Federal Government Public Service Rules
 Chapter 10
 
-Recommentda-
+Recommenda-
 tions
 
 of Tribunals
@@ -24,7 +24,7 @@ Procedure
 for
 Misconduct
 and Serious
-Misconduet.
+Misconduct.
 
 Postpone-
 ment of
@@ -54,9 +54,9 @@ against the Officer as it shall deem appropriate.
 
 100304.— (a) It shall be the duty of every Officer to report any case of
 misconduct that comes to his notice to an Officer superior to the Officer
-involved, When an Officer's misconduct is brought to the notice of his superior
+involved. When an Officer's misconduct is brought to the notice of his superior
 Officer, it shall be the duty of that superior Officer to report it through his
-HOD to the Director, Human Resource without delay. [f the Director Human
+HOD to the Director, Human Resource without delay. If the Director Human
 Resource considers it necessary that the Officer should be interdicted, such
 recommendations shall be made in the report.
 
@@ -65,15 +65,15 @@ Ministerial Office shall take action in accordance with Rule 100302-100306
 as appropriate and, if necessary, shall interdict the Officer.
 
 At the appropriate point in the investigation, the Officer may be
-suspended in accordance with Rule 100406,
+suspended in accordance with Rule 100406.
 
 100305.— If it is presented to the Federal Civil Service Commission
 that an Officer has been found guilty of misconduct and the Commission
 does not consider the alleged misconduct serious enough to warrant
 proceedings under Rule 100307 with a view to dismissal, it may cause an
 investigation to be made into the matter in such a manner as it considers
-proper, The Officer shall be entitled to know the whole case made against
-him, and shall have adequate opportunity of making his defence. [fas a result
+proper. The Officer shall be entitled to know the whole case made against
+him, and shall have adequate opportunity of making his defence. If as a result
 the Commission decides that the allegation is proved, it may impose any other
 punishment upon the Officer such as reduction in rank, withholding or deferment
 of increment or otherwise.
