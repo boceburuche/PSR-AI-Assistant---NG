@@ -37,7 +37,7 @@ interface ChatViewProps {
 
 // Static GitHub Pages cannot execute the Express /api/psr/rag-chat endpoint.
 // Answer from submitted PSR 2021 passages locally before attempting that API.
-const locallyReviewedRules = [
+const locallyReviewedRules: Array<{ruleNumber:string;topic:string;text:string;complete?:boolean}> = [
   ...PSR2021_VERIFIED_PAGES.flatMap(page => page.rules.map(rule => ({
     ...rule,
     text: rule.ruleNumber === '010105' ? rule.text + '\\n\\n' + PSR2021_CH1_PAGES_3_4[0].excerpt : rule.text
@@ -47,13 +47,13 @@ const locallyReviewedRules = [
   ...PSR2021_CH2_PAGE12,
   ...PSR2021_CH2_PAGE13,
   ...PSR2021_CH2_PAGE14,
-  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => Array.from(page.rules) as Array<{ruleNumber:string;topic:string;text:string;complete?:boolean}>).filter(rule => rule.ruleNumber !== '020410')
+  ...PSR2021_CHAPTER_2_PAGES.flatMap(page => Array.from(page.rules as readonly {ruleNumber:string;topic:string;text:string;complete?:boolean}[])).filter(rule => rule.ruleNumber !== '020410')
     .filter(rule => !(rule.ruleNumber === '020204' && rule.text.startsWith('(a) [Continued')))
     .map(rule => rule.ruleNumber === '020204' ? ({
       ...rule,
       topic: 'Trainee/Pupil',
       complete: true,
-      text: rule.text + '\n\n' + (PSR2021_CHAPTER_2_PAGES.flatMap(page => Array.from(page.rules) as Array<{ruleNumber:string;topic:string;text:string;complete?:boolean}>).find(r => r.ruleNumber === '020204' && r.text.startsWith('(a) [Continued'))?.text ?? '')
+      text: rule.text + '\n\n' + (PSR2021_CHAPTER_2_PAGES.flatMap(page => Array.from(page.rules as readonly {ruleNumber:string;topic:string;text:string;complete?:boolean}[])).find(r => r.ruleNumber === '020204' && r.text.startsWith('(a) [Continued'))?.text ?? '')
     }) : rule),
   ...PSR2021_CH1_PAGES_3_4.slice(1).map(rule => ({
     ruleNumber: rule.ruleNumber, topic: rule.topic, text: rule.excerpt
