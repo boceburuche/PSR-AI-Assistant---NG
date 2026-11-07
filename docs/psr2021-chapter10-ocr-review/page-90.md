@@ -11,7 +11,7 @@ Ministerial is satisfied that the proposed publication is not against the intere
 of the government or the public.
 
 (iii) Nothing in this Rule shall be deemed to prevent an Officer from
-publishing in his own name, by writing, speech or broadeast, matters relating to
+publishing in his own name, by writing, speech or broadcast, matters relating to
 a subject of general interest which does not contain a criticism of any Officer,
 Minister, Official and Ministerial statements or actions, or which can be regarded
 as of a political or administrative nature ; provided that in so publishing any
@@ -44,7 +44,7 @@ Officer is seeking or has sought an elective post without complying with
 Rule 100423 (i), he shall by that act deemed to have resigned his appointment
 three months from the date of the election.
 
-100424,— (a) Public Officers are not prohibited from holding shares
+100424.— (a) Public Officers are not prohibited from holding shares
 in both public and private companies operating in Nigeria or abroad except
 that they must not be Directors in private companies, and may only be Directors
 in public companies if nominated by Government.
