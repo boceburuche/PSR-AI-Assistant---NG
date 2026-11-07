@@ -208,9 +208,18 @@ ${r.applicableGrades ? `Applicable Cadres: ${r.applicableGrades.join(', ')}` : '
    */
   public static generateOfflineResponse(query: string, results: RAGRetrievalResult[], officerCadre?: string): string {
     const chapter3Query = /\bchapter\s*(?:0?3|three)\b/i.test(query);
-    const requestedPage = query.match(/\b(?:pdf\s+)?page\s+(3[2-7])\b/i);
-    if (chapter3Query && !/\b03\d{4}\b/.test(query)) {
-      return formatPSR2021Chapter3Pages(requestedPage ? [Number(requestedPage[1])] : undefined);
+    const requestedPage = query.match(/\b(?:pdf\s+)?page\s+(5[1-5])\b/i);
+    if (chapter3Query && requestedPage) {
+      return formatPSR2021Chapter3Pages([Number(requestedPage[1])]);
+    }
+    if (chapter3Query && !/\b03\d{4}\b/.test(query) &&
+        /\b(full|entire|verbatim|all rules|page by page|copy (?:the|of)|transcript)\b/i.test(query)) {
+      return formatPSR2021Chapter3Pages();
+    }
+    if (chapter3Query && !/\b03\d{4}\b/.test(query) &&
+        /\b(overview|summary|outline|contents|sections)\b/i.test(query) ||
+        chapter3Query && /\bwhat\s+(?:is|does)\s+chapter\s*(?:0?3|three)\s+(?:about|contain|cover)\b/i.test(query)) {
+      return 'Chapter 3 of PSR 2021 is Prescribed Examination for Confirmation. Its six sections cover general provisions, confirmation/promotion examinations, junior-officer examinations, police and paramilitary examinations, officers required to pass, and examiners’ fees. The 157-page Library master contains the original chapter on PDF pages 51–55. Ask for a rule number to obtain a cited provision.';
     }
     if (results.some(r => r.rule.chapter === 3 && r.rule.chapterTitle === 'Prescribed Examination for Confirmation')) {
       return '### PSR 2021 — Chapter 3: Full source provisions\n\n'
