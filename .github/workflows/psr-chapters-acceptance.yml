@@ -6,9 +6,14 @@ on:
       - src/data/psr2021Chapter5.ts
       - src/data/psr2021Chapter10.ts
       - src/data/psr2021CanonicalSourcePages.ts
+      - src/data/psr2021RulebookChapters.ts
+      - src/data/psrCorpus.ts
+      - src/data/psrMasterIndex.ts
+      - src/components/RulebookView.tsx
       - src/components/ChatView.tsx
       - src/services/ragEngine.ts
       - scripts/acceptance_psr_ui.mjs
+      - scripts/acceptance_psr_rulebook_ui.mjs
       - .github/workflows/psr-chapters-acceptance.yml
   workflow_dispatch:
 permissions:
@@ -31,7 +36,7 @@ jobs:
         run: bun run build
       - name: Install headless browser
         run: |
-          npm install --no-save --package-lock=false playwright@1.57.0
+          npm install --no-save --legacy-peer-deps --package-lock=false playwright@1.57.0
           npx playwright install --with-deps chromium
       - name: Run Chrome browser UI acceptance checks
         run: |
@@ -40,4 +45,5 @@ jobs:
             if curl -fsS http://127.0.0.1:4173/PSR-AI-Assistant---NG/ >/dev/null; then break; fi
             sleep 1
           done
+          node scripts/acceptance_psr_rulebook_ui.mjs
           node scripts/acceptance_psr_ui.mjs
