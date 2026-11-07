@@ -1,4 +1,5 @@
 import type { PSRRule, RAGRetrievalResult } from "../types/psr";
+import { PSR2021_CH3_SOURCE_PAGES, psr2021PageLinks } from "./psr2021CanonicalSourcePages";
 
 /** Complete Chapter 3 source transcription, visually checked against the uploaded scan.
  * PDF page numbers are file positions, not inferred printed folios.
@@ -67,10 +68,28 @@ export const PSR2021_CHAPTER3_PAGES = [
   }
 ] as const;
 
+/**
+ * Return original 2021 master page references and the best available
+ * rule-level transcript, without mislabelling earlier 32–37 transcription
+ * leaves as pages of the Library's 157-page master edition.
+ */
 export function formatPSR2021Chapter3Pages(pdfPages?: number[]): string {
-  const pages = PSR2021_CHAPTER3_PAGES.filter(p => !pdfPages || pdfPages.includes(p.pdfPage));
-  return 'CHAPTER 3 — FULL SOURCE TRANSCRIPTION\n\nLine wrapping and table layout are normalised; wording and source numbering are retained. Margin notes are labelled separately.\n\n'
-    + pages.map(p => `=== PDF PAGE ${p.pdfPage} ===\n${p.runningHeader}\n\n${p.text}\n\nMARGIN NOTES (source side column):\n${Object.entries(p.marginNotes).map(([rule,note]) => `${rule}: ${note}`).join('\n') || '(None on this page)'}`).join('\n\n');
+  const pages = pdfPages?.length ? pdfPages : [51,52,53,54,55];
+  const sourceLinks = pages.map(n=>psr2021PageLinks(3,[n])).join(' | ');
+  const matched = PSR2021_CHAPTER3.filter(r=>
+    (PSR2021_CH3_SOURCE_PAGES[r.ruleNumber] ?? []).some(n=>pages.includes(n))
+  );
+  const unique = [...new Map(matched.map(r=>[r.ruleNumber,r])).values()];
+  return 'CHAPTER 3 — PRESCRIBED EXAMINATION FOR CONFIRMATION\n\n'
+    + '2021 Library master original PDF page(s): ' + sourceLinks
+    + '\n\nThe linked scans are authoritative. This is a rule-level transcription '
+    + '(line wrapping and tables normalised), not a pixel-exact recreation of PDF page boundaries. '
+    + 'In the supplied master, pages 54 and 55 are not in the expected rule order.\n\n'
+    + unique.map(r=>{
+      const cited = PSR2021_CH3_SOURCE_PAGES[r.ruleNumber] ?? [];
+      return 'Rule '+r.ruleNumber+' — '+psr2021PageLinks(3,cited)+'\n\n'+
+        r.fullText.replace(/\n*\[Source: Section[^\]]*\]/g,'').replace(/\[PDF PAGE 3[2-7]\]/g,'');
+    }).join('\n\n---\n\n');
 }
 
 export const PSR2021_CHAPTER3: PSRRule[] = [
@@ -411,6 +430,16 @@ export function retrievePSR2021Chapter3(query: string, limit = 4): RAGRetrievalR
   if (explicit.some(n => n.startsWith('03')) && direct.length === 0) return [];
   const pool = direct.length ? PSR2021_CHAPTER3.filter(r => direct.includes(r.ruleNumber)) : PSR2021_CHAPTER3;
   const results = pool.map(rule => {
+    const canonicalPages = PSR2021_CH3_SOURCE_PAGES[rule.ruleNumber] ?? [];
+    const groundedRule = {
+      ...rule,
+      section: rule.section.replace(/uploaded PSR 2021 PDF pages?\s*[\d–-]+/g,
+        'Library master PSR 2021 pages '+canonicalPages.join(', ')),
+      fullText: rule.fullText
+        .replace(/\n*\[Source: Section[^\]]*\]/g,'')
+        .replace(/\[PDF PAGE 3[2-7]\]/g,'')
+        + '\n\nSource: '+psr2021PageLinks(3,canonicalPages)
+    };
     const title = (rule.title + ' ' + rule.tags.join(' ')).toLowerCase();
     let score = direct.includes(rule.ruleNumber) ? 1000 : 0;
     for (const token of tokens) score += title.includes(token) ? 8 : rule.summary.toLowerCase().includes(token) ? 1 : 0;
@@ -428,8 +457,8 @@ export function retrievePSR2021Chapter3(query: string, limit = 4): RAGRetrievalR
     if (/two papers|group [abc]|syllabus/.test(q) && !/exempt|lawyer|bar/.test(q) && rule.ruleNumber === '030202') score += 40;
     if (/police|para.?military/.test(q) && rule.ruleNumber === '030401') score += 40;
     if (chapterQuery && /discipline/.test(q) && rule.ruleNumber === '030101') score += 50;
-    return {rule, score, matchedTerms: [rule.ruleNumber], relevanceReason: 'Full PSR 2021 Chapter 3 source transcription; ' + rule.section};
+    return {rule: groundedRule, score, matchedTerms: [rule.ruleNumber], relevanceReason: 'PSR 2021 Chapter 3 source transcription; master page(s): '+canonicalPages.join(', ')};
   }).sort((a,b) => b.score - a.score);
-  return results.slice(0, Math.max(0, limit));
+  return results.filter(item=>direct.length>0 || item.score>0).slice(0, Math.max(0, limit));
 }
 
