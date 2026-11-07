@@ -1,4 +1,5 @@
 import { PSR2021_CHAPTER3 } from './psr2021Chapter3';
+import { PSR2021_RULEBOOK_CH5, PSR2021_RULEBOOK_CH10 } from './psr2021RulebookChapters';
 import { PSRChapter, PSRRule, OfficerProfile, QueryRecord, PSRForeword, PSRPreamble } from '../types/psr';
 export { PSR_TABLE_OF_CONTENTS, PSR_MASTER_INDEX } from './psrMasterIndex';
 
@@ -105,11 +106,11 @@ export const PSR_CHAPTERS: PSRChapter[] = [
   },
   {
     number: 5,
-    title: 'Medical Care, Health & Medical Boards',
-    description: 'Entry medical fitness, National Health Insurance Authority (NHIA), sick leave thresholds, Federal Medical Board invalidation, and medical treatment abroad guidelines.',
-    sectionsCount: 3,
-    rulesCount: 8,
-    keyTopics: ['NHIA Coverage', 'Sick Leave Limits', 'Federal Medical Board', 'Medical Invalidation', 'Overseas Treatment Clearance']
+    title: 'Performance Management System',
+    description: 'Revised PSR 2021 Chapter 5: probation reports, serving officers’ PMS, annual performance timeline, performance cycle, appraisals during approved absence, appraisal committees, monitoring and evaluation.',
+    sectionsCount: 7,
+    rulesCount: 23,
+    keyTopics: ['Progress Reports on Probation', 'Performance Management System (PMS)', 'Annual Performance Management Timeline', 'Performance Management Cycle', 'Approved Absence Appraisals', 'JSC and SSC Appraisal Committees', 'Monitoring and Evaluation']
   },
   {
     number: 6,
@@ -145,11 +146,11 @@ export const PSR_CHAPTERS: PSRChapter[] = [
   },
   {
     number: 10,
-    title: 'Official Secrets, Media & Public Communications',
-    description: 'Official Secrets Act compliance, Oath of Secrecy, ban on unauthorized media interviews, press statements, and strict social media leakage / classification guidelines.',
-    sectionsCount: 2,
-    rulesCount: 7,
-    keyTopics: ['Official Secrets Act', 'Social Media & Classified Leaks', 'Press Interview Clearances', 'Document Classification']
+    title: 'Discipline',
+    description: 'Revised PSR 2021 Chapter 10: disciplinary powers, general inefficiency, misconduct, serious misconduct, state security, retirement in public interest, disciplinary procedure for a Permanent Secretary, and disciplinary measures.',
+    sectionsCount: 8,
+    rulesCount: 66,
+    keyTopics: ['Introduction', 'General Inefficiency', 'Misconduct', 'Serious Misconduct', 'Conduct Prejudicial to Security of the State', 'Retirement in Public Interest', 'Disciplinary Procedure for a Permanent Secretary', 'Disciplinary Measures']
   },
   {
     number: 11,
@@ -185,7 +186,7 @@ export const PSR_CHAPTERS: PSRChapter[] = [
   }
 ];
 
-export const PSR_RULES_DATABASE: PSRRule[] = [
+const LEGACY_PSR_RULES_DATABASE: PSRRule[] = [
   // PRESIDENTIAL FOREWORD & PREAMBLE
   {
     ruleNumber: '000001',
@@ -967,6 +968,14 @@ are concerned, these Rules apply only to the extent that they are not inconsiste
     ],
     tags: ['gov.ng email', 'official email', 'cybersecurity', 'data protection']
   }
+];
+/** The 2021-trained chapters override older conflicting source records.
+ * Preserve all remaining legacy chapters unchanged until individually verified.
+ */
+export const PSR_RULES_DATABASE: PSRRule[] = [
+  ...LEGACY_PSR_RULES_DATABASE.filter(rule=>rule.chapter !== 5 && rule.chapter !== 10),
+  ...PSR2021_RULEBOOK_CH5,
+  ...PSR2021_RULEBOOK_CH10
 ];
 
 export const DEMO_OFFICER_PROFILES: OfficerProfile[] = [
