@@ -15,7 +15,7 @@ the Head of the Civil Service of the Federation.
 Ministry/Extra-Ministerial Office informed of the address at which instructions
 to him can be delivered.
 
-(ec) Tf he fails to comply with the instructions delivered to him at such
+(c) If he fails to comply with the instructions delivered to him at such
 address within seven days of such delivery, he will be regarded as absent
 from duty without leave,
 
@@ -47,7 +47,7 @@ this official notification, the effective date shall be :
 may refuse to acknowledge receipt ; or
 
 (b) the date on which the notification is delivered by the messenger to
-his recorded address, eyen though the Officer concerned does not himself
+his recorded address, even though the Officer concerned does not himself
 acknowledge receipt of such delivery ; or
 
 the date on which the notification is sent by post to his last known or
