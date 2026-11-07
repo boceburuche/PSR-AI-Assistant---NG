@@ -38,7 +38,7 @@ Effective
 Date of
 Termination
 for
-tnefficiency.
+Inefficiency.
 
 100204.— No female public servant shall be required to resign her
 appointment or retire by reason of pregnancy alone, but if her condition
@@ -74,10 +74,10 @@ of Extra-Ministerial Office will take action in accordance with Rule 100307.
 
 (c) In all cases of withholding or deferment of increment, the Permanent
 Secretary/Head of Extra-Ministerial Office shall inform the Accountant
-General of the Federation and the Auditor General for the Federation,
+General of the Federation and the Auditor General for the Federation.
 
 100207.— Immediately on deciding to restore an increment, which had earlier
-been withdrawn or deferred the Permanent Secretary/Mead of Extra- Ministerial
+been withdrawn or deferred the Permanent Secretary/Head of Extra- Ministerial
 Office should bring the decision for restoration to the notice of the Officer.
 
 100208.— In all cases of termination for inefficiency, notice of
