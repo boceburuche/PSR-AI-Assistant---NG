@@ -59,7 +59,7 @@ interest or prejudicial to the investigation of the charge against him,
 consideration shall be given to putting him on alternative duties. Interdiction
 shall only be resorted to where this is not possible.
 
-(iii) When an Officer is interdicted, he shall cease to report for duty, In
+(iii) When an Officer is interdicted, he shall cease to report for duty. In
 the letter informing the Officer of his interdiction it shall be indicated that the
 proportion of emoluments he is to receive while on interdiction shall be 50
 per cent of his emoluments.
@@ -69,9 +69,9 @@ the charge made against him, the Officer shall immediately be reinstated and
 shall receive the full amount of his emoluments denied him while he was
 interdicted,
 
-(v) Ifthe Officer is found guilty but is not dismissed, he may be refunded
+(v) If the Officer is found guilty but is not dismissed, he may be refunded
 such portion of the emoluments denied him as the Commission may determine.
 
 100405.— (a) An Officer Who is under interdiction or suspension shall
 notify his Permanent Secretary/Head of Extra-Ministerial Office of his intention
-lo leave his station.
+to leave his station.
