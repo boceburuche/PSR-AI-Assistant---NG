@@ -74,7 +74,7 @@ export function retrievePSR2021Chapter10(query:string):string|null{
   const words=q.match(/[a-z]{4,}/g)?.filter(w=>!STOP.has(w)) ?? [];
   // A broad chapter question must return a grounded overview, not the first
   // three rules selected by a zero-token similarity score.
-  if (hasChapter && (/\\b(what|overview|summary|outline|contents|contain|about|sections|describe)\\b/i.test(query) || words.length === 0)) {
+  if (hasChapter && (/\b(what|overview|summary|outline|contents|contain|about|sections|describe)\b/i.test(query) || words.length === 0)) {
     return 'Chapter 10 — Discipline (Revised PSR 2021), PDF pages 78–94: eight sections — (1) Introduction, (2) General Inefficiency, (3) Misconduct, (4) Serious Misconduct, (5) Conduct Prejudicial to Security of the State, (6) Retirement in Public Interest, (7) Disciplinary Procedure for a Permanent Secretary, and (8) Disciplinary Measures. There are 66 rules (100101–100801). Ask for a rule number or the full chapter. Text transcriptions remain subject to OCR review; source scans are authoritative.';
   }
   if (!words.length) return null;
