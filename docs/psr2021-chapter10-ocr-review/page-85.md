@@ -25,14 +25,14 @@ Officer.
 
 (x) Rape ;
 
-(v) Cyber Fraud/Crime ;
+(y) Cyber Fraud/Crime ;
 
 (z) Membership of cults ;
 
-(aa) Obtaining employment ino the Public Service by fraud or
+(aa) Obtaining employment into the Public Service by fraud or
 misrepresentation ;
 
-(ah) Aiding and abetting employment into the Public Service by fraud,
+(ab) Aiding and abetting employment into the Public Service by fraud,
 misrepresentation or in breach of the provisions of the Public Service Rules ;
 
 (ac) Enrolment into extant government’s payment platform(s) by fraud
@@ -46,7 +46,7 @@ platform(s) by fraud or misrepresentation ; and
 100403.— Disciplinary procedure for serious misconduct shall be strictly
 adhered to in accordance with Rules 100302 to 100306,
 
-100404,— (i) Where a serious case that may lead to dismissal has been
+100404.— (i) Where a serious case that may lead to dismissal has been
 instituted against an Officer, the Permanent Secretary/Head of Extra-
 Ministerial Office may interdict him on not more than half pay pending the
 determination of the case.
@@ -59,19 +59,19 @@ interest or prejudicial to the investigation of the charge against him,
 consideration shall be given to putting him on alternative duties. Interdiction
 shall only be resorted to where this is not possible.
 
-(ii?) When an Officer is interdicted, he shall cease to report for duty, In
+(iii) When an Officer is interdicted, he shall cease to report for duty, In
 the letter informing the Officer of his interdiction it shall be indicated that the
 proportion of emoluments he is to receive while on interdiction shall be 50
 per cent of his emoluments.
 
-(iv) If proceedings under Rule 100404 (7) reveal that he is not guilty of
+(iv) If proceedings under Rule 100404 (i) reveal that he is not guilty of
 the charge made against him, the Officer shall immediately be reinstated and
 shall receive the full amount of his emoluments denied him while he was
 interdicted,
 
-(v) Ifthe Officer is found guilty but is not dismissed, he may be refiinded
+(v) Ifthe Officer is found guilty but is not dismissed, he may be refunded
 such portion of the emoluments denied him as the Commission may determine.
 
-100405.— (a) An Officer Who is under interdiction or stispension shall
-notify his Permanent Seeretary/Head of Extra-Ministerial Office of his intention
+100405.— (a) An Officer Who is under interdiction or suspension shall
+notify his Permanent Secretary/Head of Extra-Ministerial Office of his intention
 lo leave his station.
