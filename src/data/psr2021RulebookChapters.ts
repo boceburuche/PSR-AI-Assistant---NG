@@ -1,7 +1,6 @@
 import type { PSRRule } from '../types/psr';
 import { PSR2021_CHAPTER5_RULES } from './psr2021Chapter5';
 import { PSR2021_CHAPTER10_RULES } from './psr2021Chapter10';
-import { psr2021PageImageUrl } from './psr2021CanonicalSourcePages';
 
 /** The eight official section headings are copied from the authoritative
  * Revised PSR 2021 Chapter 10 heading page (master PDF p.78).
