@@ -6,7 +6,7 @@ Transcription status: unverified OCR; pending word-for-word review.
 Federal Government Public Service Rules 100301
 Chapter 10
 
-SECTION 3,— MISCONDUCT
+SECTION 3.— MISCONDUCT
 
 100301.— Misconduct is defined as a specific act of wrong-doing or an Definition.
 improper behaviour which is inimical to the image of the service and which
@@ -17,7 +17,7 @@ It includes :
 (a) Scandalous conduct such as :
 (i) Immoral behaviour ;
 (ii) Unruly behaviour ;
-(ii?) Drunkenness ;
+(iii) Drunkenness ;
 (iv) Foul language ;
 (v) Assault ;
 (vi) Battery ;
@@ -29,20 +29,19 @@ It includes :
 (g) Dishonesty ;
 (h) Negligence ;
 (i) Sleeping on duty ;
-(/) Improper/ Inappropriate/ Immodest dressing while on duty ;
+(j) Improper/ Inappropriate/ Immodest dressing while on duty ;
 (k) Hawking merchandise within office premises ;
-(J) Refusal to take/carry out lawful instruction from superior Officers ;
+(l) Refusal to take/carry out lawful instruction from superior Officers ;
 (m) Malingering ;
 (n) Insubordination ; and
-(e) Discourteous behaviour to the public.
+(o) Discourteous behaviour to the public.
 
 100302.— As soon as a superior Officer becomes dissatisfied with the Issuing
 behavior of his subordinate, it shall be his duty to inform the Officer in writing Query:
 giving details of unsatisfactory behavior and to call upon him to submit within
 a specific time such written representation as he may wish to make to exculpate
-himself from disciplinary action, After considering such written
+himself from disciplinary action. After considering such written
 representations as the Officer may make within the specified time the superior
-
 Officer shall decide whether :
 
 (a) the Officer has exculpated himself in which case, he shall be so
