@@ -1,5 +1,6 @@
 import { RAGEngine } from '../services/ragEngine';
 import { retrievePSR2021Chapter3 } from '../data/psr2021Chapter3';
+import { retrievePSR2021Chapter5 } from '../data/psr2021Chapter5';
 import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
 import { PSR2021_CH1_PAGES_3_4 } from '../data/psr2021Chapter1Pages3to4';
@@ -59,6 +60,8 @@ const locallyReviewedRules = [
   }))
 ];
 function getLocalPSRAnswer(query: string): string | null {
+  const chapter5 = retrievePSR2021Chapter5(query);
+  if (chapter5) return chapter5;
   const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*(?:0?3|three)\b/i.test(query) ? 17 : 2);
   if (chapter3.length > 0 || /\b03\d{4}\b|\bchapter\s*(?:0?3|three)\b/i.test(query)) {
     return RAGEngine.generateOfflineResponse(query, chapter3);
