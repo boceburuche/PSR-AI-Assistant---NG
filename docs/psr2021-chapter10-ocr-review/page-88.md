@@ -12,7 +12,7 @@ Chapter 10
 regarded as necessarily impairing the efficiency of an Officer and rendering
 him liable to disciplinary action.
 
-(3) Ifsuch embarrassment is caused by imprudence or other reprehensible
+(3) If such embarrassment is caused by imprudence or other reprehensible
 cause, the Officer concerned shall be liable to immediate dismissal and the
 onus shall rest on him to show that the circumstances do not justify the
 imposition of the full penalty.
@@ -44,11 +44,11 @@ before they are granted such access and that the declarations so signed are
 safely preserved. To facilitate this action in respect of Officers holding junior
 posts, the Oath of Secrecy is incorporated in the revised Form No. Gen. 75.
 
-100416.— Every Officer is subject to the Official Secrets Act, (Cap, 335)
+100416.— Every Officer is subject to the Official Secrets Act, (Cap. 335)
 (reproduced - as Appendix E at the end of this Rule) and is prohibited from
 disclosing to any person, except in accordance with official routine or with the
 special permission of Government, any article, note, document or information
-entrusted to him in contidence by any person holding office under any Government
+entrusted to him in confidence by any person holding office under any Government
 in the Federal Republic of Nigeria, or which he has obtained in the course of his
 official duties. Similarly, every Officer shall exercise due care and diligence to
 prevent the knowledge of any such article, note, document or information being
@@ -56,7 +56,7 @@ communicated to any person against the interest of the Government.
 
 100417.— Every Officer is prohibited from abstracting or copying
 official minutes, records or other documents except in accordance with official
-routine or with special permission of his Permanent Secretary/llead of Rxtra-
+routine or with special permission of his Permanent Secretary/Head of Extra-
 Ministerial Office,
 
 Oath of
