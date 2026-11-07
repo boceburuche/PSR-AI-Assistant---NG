@@ -4,7 +4,7 @@ const pages = Array.from({length:9},(_,i)=>({page:i+42,text:fs.readFileSync('doc
 const expected=['050101','050102','050103','050104','050201','050202','050203','050204','050205','050206','050207','050301','050401','050402','050403','050404','050405','050406','050501','050601','050701','050702','050703'];
 assert.deepEqual(pages.map(p=>p.page),[42,43,44,45,46,47,48,49,50]);
 const joined=pages.map(p=>p.text).join('\n\n');
-const found=Array.from(joined.matchAll(/^\s*(050\d{3})\s*[-.:]/gm),m=>m[1]);
+const found=Array.from(joined.matchAll(/^\s*(050\d{3})\s*(?:[-.:]|\()/gm),m=>m[1]);
 assert.deepEqual(found,expected,'Chapter 5 rule numbering and ordering');
 assert.equal(new Set(found).size,23);
 for(const p of pages)assert.ok(p.text.length>300,'Missing page '+p.page);
