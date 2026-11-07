@@ -1,0 +1,43 @@
+name: PSR Chapters 3 5 10 UI acceptance
+on:
+  push:
+    paths:
+      - src/data/psr2021Chapter3.ts
+      - src/data/psr2021Chapter5.ts
+      - src/data/psr2021Chapter10.ts
+      - src/data/psr2021CanonicalSourcePages.ts
+      - src/components/ChatView.tsx
+      - src/services/ragEngine.ts
+      - scripts/acceptance_psr_ui.mjs
+      - .github/workflows/psr-chapters-acceptance.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ui-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.4.3'
+      - name: Install application dependencies
+        run: bun install --frozen-lockfile
+      - name: TypeScript and source checks
+        run: |
+          bun run lint
+          node scripts/check-chapter5.mjs
+      - name: Build actual GitHub Pages app
+        run: bun run build
+      - name: Install headless browser
+        run: |
+          npm install --no-save --package-lock=false playwright@1.57.0
+          npx playwright install --with-deps chromium
+      - name: Run Chrome browser UI acceptance checks
+        run: |
+          (bunx vite preview --host 127.0.0.1 --port 4173 > /tmp/psr-preview.log 2>&1 &)
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/PSR-AI-Assistant---NG/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/acceptance_psr_ui.mjs
