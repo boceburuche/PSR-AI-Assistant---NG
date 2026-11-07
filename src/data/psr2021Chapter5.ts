@@ -53,7 +53,7 @@ export function retrievePSR2021Chapter5(query:string):string|null {
     return PSR2021_CHAPTER5_PAGES.map(p=>`### PDF page ${p.pdfPage}\n\n${p.text}`).join('\n\n---\n\n');
   }
   const words=q.match(/[a-z]{4,}/g)?.filter(w=>!STOP.has(w)) ?? [];
-  if (!words.length) return hasChapter ? `Chapter 5 of the Revised PSR 2021 is Performance Management System. It contains 26 rules (050101–050703) across PDF pages 42–50. Ask for a rule number or the full chapter.` : null;
+  if (!words.length) return hasChapter ? `Chapter 5 of the Revised PSR 2021 is Performance Management System. It contains 23 rules (050101–050703) across PDF pages 42–50. Ask for a rule number or the full chapter.` : null;
   const scored=PSR2021_CHAPTER5_RULES.map(rule=>{
     const body=rule.fullText.toLowerCase();
     const score=words.reduce((n,w)=>n+(body.includes(w)?1:0),0);
