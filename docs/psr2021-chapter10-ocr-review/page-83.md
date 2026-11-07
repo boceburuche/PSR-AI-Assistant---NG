@@ -57,7 +57,7 @@ and be completed within a reasonable time but not exceeding :
 
 case,
 
-100308,.-— No Officer may render professional assistance to institutions
+100308.— No Officer may render professional assistance to institutions
 or Government Agencies during working hours or accept remuneration for it,
 except with the written permission of the Permanent Secretary/Head of Extra-
 Ministerial Office which could be granted if it is in the public interest to do so.
@@ -68,13 +68,13 @@ by the Officer is known.
 100309.— No fine shall be imposed on any Officer as a punishment for
 an offence committed in the course of his duties,
 
-1003 10.— (a) Ifat any time the public revenue sustains a loss by reason
+100310.— (a) If at any time the public revenue sustains a loss by reason
 of the neglect or fault of an Officer, he will be liable to be surcharged with the
 
 amount and any sums due to him from Government may be withheld in
 satisfaction of such surcharge,
 
-(b) Officers detined as workers in Section 2 of the Labour Act (Cap.198)
+(b) Officers defined as workers in Section 2 of the Labour Act (Cap.198)
 may be surcharged if the circumstances warrant such action, but all papers
 relevant to the case must be submitted in accordance with the Act, to the
 
