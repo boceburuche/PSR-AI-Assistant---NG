@@ -30,7 +30,7 @@ Without
 leave,
 
 Serious
-Finanelal
+Financial
 embarrass-
 ment,
 
@@ -44,15 +44,15 @@ prescribed in Rule 100307 being followed.
 100411.— (a) Nothing shall prevent disciplinary action being taken or
 continued against an Officer whether or not :
 
-(/) criminal proceedings have been instituted with respect to such person
+(i) criminal proceedings have been instituted with respect to such person
 in any court of law in Nigeria or elsewhere or are about to be instituted or
 are contemplated ; or
 
-(if) the grounds upon which any criminal charge are based or are to be
+(ii) the grounds upon which any criminal charge are based or are to be
 based are substantially the same as those upon which the disciplinary
 proceedings were or are to be instituted,
 
-(6) An Officer acquitted of a criminal offence shall not be penalized for
+(b) An Officer acquitted of a criminal offence shall not be penalized for
 any charge of which he has been acquitted, but nothing in this rule shall prevent
 the officer from being dismissed or otherwise punished on any other charges
 arising out of his conduct in the matter, provided that such charges do not raise
@@ -76,11 +76,11 @@ of the said expression, an Officer shall be deemed to be in serious financial
 embarrassment :
 
 (a) if the aggregate of his unsecured debts and liabilities at any given
-lime exceed the sum of three times his monthly emoluments ;
+time exceed the sum of three times his monthly emoluments ;
 
 (b) where he is a judgment debtor, for as long as the judgment debt
 remains unsettled ; or
 
 (c) where he is adjudged bankrupt or insolvent wage earner, for as long as
-he remains an undercharged bankrupt or as the case may be for as long as any
+he remains an undischarged bankrupt or as the case may be for as long as any
 judgment against him in favour of the official assignee remains unsatisfied.
