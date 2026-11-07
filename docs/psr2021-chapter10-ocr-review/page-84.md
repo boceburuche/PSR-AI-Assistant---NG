@@ -26,12 +26,12 @@ stationery or otherwise.
 
 SECTION 4,— SERIOUS MISCONDUCT
 
-100401,— Derinrrion : Serious misconduct is a specific act of very
+100401.— DEFINITION : Serious misconduct is a specific act of very
 serious wrong doing and improper behaviour which is inimical to the image
-of the service and which can be investigated and if proven, may Jead to
+of the service and which can be investigated and if proven, may lead to
 dismissal.
 
-100402.— Acts or Serious Misconpuct INCLUDE ;
+100402.— ACTS OF SERIOUS MISCONDUCT INCLUDE :
 
 (a) Falsification of records ;
 
@@ -44,7 +44,7 @@ offence or the like) ;
 
 (e) Absence from duty without leave ;
 
-(/) False claims against Government officials ;
+(f) False claims against Government officials ;
 
 (¢) Engaging in partisan political activities ;
 
@@ -52,17 +52,17 @@ offence or the like) ;
 
 (i) Serious financial embarrassment ;
 
-(/) Unauthorized disclosure of official information ;
+(j) Unauthorized disclosure of official information ;
 
 (k) Bribery ;
 
-(/) Corruption ;
+(l) Corruption ;
 
 (m) Embezzlement ;
 
 (n) Misappropriation ;
 
-(0) Violation of Oath of Secrecy ;
+(o) Violation of Oath of Secrecy ;
 
 (p) Action prejudicial to the security of the State ;
 
@@ -72,7 +72,7 @@ offence or the like) ;
 
 (s) Nepotism or any other form of preferential treatment :
 
-(1) Divided loyalty ;
+(t) Divided loyalty ;
 
 100312
 
