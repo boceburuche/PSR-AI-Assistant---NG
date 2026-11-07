@@ -51,14 +51,17 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   },
   {
     chapter: 5,
-    subject: 'Annual Performance Evaluation Reports (APER) and Certificate of Service',
+    subject: 'Performance Management System',
     subSections: [
-      'Section 01: General APER Reporting',
-      'Section 02: Progress Reports on Officers',
-      'Section 03: APER on Senior Officers',
-      'Section 04: APER on Junior Officers'
+      'Section 01: Progress Reports on Officers on Probation',
+      'Section 02: Performance Management System for Serving Officers',
+      'Section 03: Annual Performance Management Timeline',
+      'Section 04: Performance Management Cycle',
+      'Section 05: Appraisals for Employees on Approved Absence',
+      'Section 06: Performance Appraisal by Junior Staff Committee (JSC) and Senior Staff Committee (SSC)',
+      'Section 07: Monitoring and Evaluation'
     ],
-    keyTopics: ['Reporting Officer Responsibilities', 'Candid Reporting', 'Seconded Officers Appraisals', 'Certificates of Service']
+    keyTopics: ['Probation Reports', 'Performance Management System (PMS)', 'Annual Performance Timeline', 'Performance Management Cycle', 'Approved Absence', 'JSC and SSC Appraisals', 'Monitoring and Evaluation']
   },
   {
     chapter: 6,
@@ -97,12 +100,18 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   },
   {
     chapter: 10,
-    subject: 'Leave',
+    subject: 'Discipline',
     subSections: [
-      'Section 01: General Leave Definitions & Earning Service',
-      'Section 02: Types of Leave (Annual, Casual, Maternity, Study, Sabbatical, Pre-Retirement)'
+      'Section 01: Introduction',
+      'Section 02: General Inefficiency',
+      'Section 03: Misconduct',
+      'Section 04: Serious Misconduct',
+      'Section 05: Conduct Prejudicial to Security of the State',
+      'Section 06: Retirement in Public Interest',
+      'Section 07: Disciplinary Procedure for a Permanent Secretary',
+      'Section 08: Disciplinary Measures'
     ],
-    keyTopics: ['Annual Leave Days', '16 Weeks Maternity Leave', 'Paternity Leave (14 Days)', 'Study Leave with/without Pay', 'Pre-Retirement Leave (3 Mos)']
+    keyTopics: ['Disciplinary Powers', 'General Inefficiency', 'Misconduct', 'Serious Misconduct (Rule 100402, (a)–(ae))', 'State Security', 'Retirement in Public Interest', 'Permanent Secretary Discipline', 'Disciplinary Measures (Rule 100801)']
   },
   {
     chapter: 11,
