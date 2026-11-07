@@ -6,17 +6,17 @@ Transcription status: unverified OCR; pending word-for-word review.
 Federal Government Public Service Rules 100307
 Chapter 10
 
-100307,— Unless the method of dismissal is otherwise provided for in Notification
-these Rules, an Officer in the Federal Public Service may be dismissed by the 1" Writing.
+100307.— Unless the method of dismissal is otherwise provided for in Notification
+these Rules, an Officer in the Federal Public Service may be dismissed by the in Writing.
 Federal Civil Service Commission / Board only in accordance with this Rule.
 
 (i) The Officer shall be notified in writing of the grounds on which it is
-proposed to discipline him, The query should be precise and to the point.
+proposed to discipline him. The query should be precise and to the point.
 It must relate the circumstances of the offence, the rule and regulation
-which the Officer has broken and the likely penalty, In serious cases which
+which the Officer has broken and the likely penalty. In serious cases which
 are likely to result in dismissal, the Officer should be given access to any
-documeni(s) or report(s) used against him and he should be asked to state
-in his defence that he has been given access to relevant documents, The
+document(s) or report(s) used against him and he should be asked to state
+in his defence that he has been given access to relevant documents. The
 Officer shall be called upon to state in writing, within the period specified in
 the query any grounds upon which he relies to exculpate himself ;
 
@@ -52,7 +52,7 @@ it, the Officer shall be entitled to put questions to the witnesses and no
 documentary evidence shall be used against the Officer unless he has
 previously been supplied with a copy thereof or given access thereto ;
 
-(vii?) If during the course of the inquiry, further grounds for dismissal
+(viii) If during the course of the inquiry, further grounds for dismissal
 are disclosed, and the Federal Civil Service Commission thinks it fit to
 proceed against the Officer upon such grounds, the Officer shall by the
 direction of the Commission, be furnished with a written statement thereof
