@@ -20,7 +20,7 @@ export const PSR2021_CHAPTER5_PAGES = originalPages.map((markdown,index) => ({
 }));
 
 const sourceText = PSR2021_CHAPTER5_PAGES.map(p => p.text).join('\n\n');
-const ruleMatches = Array.from(sourceText.matchAll(/^\s*(050\d{3})\s*[-.:]/gm));
+const ruleMatches = Array.from(sourceText.matchAll(/^\s*(050\d{3})\s*(?:[-.:]|\()/gm));
 export const PSR2021_CHAPTER5_RULES = ruleMatches.map((match,index) => {
   const start = match.index ?? 0;
   const end = ruleMatches[index+1]?.index ?? sourceText.length;
