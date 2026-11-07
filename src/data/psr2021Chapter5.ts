@@ -3,6 +3,7 @@
  * Source PDF pages 42–50. Do not edit source wording to improve policy.
  * Printed numbering irregularities (050301: i, ii, iv; 050601: iv repeated) are preserved.
  */
+import { PSR2021_CH5_SOURCE_PAGES, psr2021PageLinks } from './psr2021CanonicalSourcePages';
 import p42 from '../../docs/psr2021-chapter5/page-42.md?raw';
 import p43 from '../../docs/psr2021-chapter5/page-43.md?raw';
 import p44 from '../../docs/psr2021-chapter5/page-44.md?raw';
@@ -31,7 +32,7 @@ export const PSR2021_CHAPTER5_RULES = ruleMatches.map((match,index) => {
     const markerEnd = markerStart + p.text.length;
     return markerStart < end && markerEnd > start;
   }).map(p => p.pdfPage);
-  return {ruleNumber:match[1], fullText, pdfPages};
+  return {ruleNumber:match[1], fullText, pdfPages:PSR2021_CH5_SOURCE_PAGES[match[1]] ?? pdfPages};
 });
 
 const STOP = new Set(['what','does','about','under','the','and','for','are','with','that','this','from','which','explain','rule','psr','2021','chapter','please','tell','show','give','officer','officers']);
@@ -40,17 +41,18 @@ export function retrievePSR2021Chapter5(query:string):string|null {
   const explicit=Array.from(q.matchAll(/\b050\d{3}\b/g),m=>m[0]);
   if (explicit.length) {
     const found=PSR2021_CHAPTER5_RULES.filter(r=>explicit.includes(r.ruleNumber));
-    return found.length ? found.map(r=>`**PSR 2021 Rule ${r.ruleNumber}** (source PDF pages ${r.pdfPages.join(', ')})\n\n${r.fullText}`).join('\n\n---\n\n') :
+    return found.length ? found.map(r=>`**PSR 2021 Rule ${r.ruleNumber}** (2021 master PDF pages ${r.pdfPages.join(', ')}; ${psr2021PageLinks(5,r.pdfPages)})\n\n${r.fullText}`).join('\n\n---\n\n') :
       'The requested Chapter 5 rule was not located in the supplied PSR 2021 pages 42–50. Please confirm the rule number.';
   }
   const hasChapter=/\bchapter\s*(?:0?5|five)\b/i.test(query);
-  const pageMatch=q.match(/\b(?:pdf\s*)?page\s*(4[2-9]|50)\b/);
+  const pageMatch=q.match(/\b(?:pdf\s*)?page\s*(59|6[0-5])\b/);
   if (hasChapter && pageMatch) {
-    const page=PSR2021_CHAPTER5_PAGES.find(p=>p.pdfPage===Number(pageMatch[1]));
-    return page ? `### Revised PSR 2021 — Chapter 5 — PDF page ${page.pdfPage}\n\n${page.text}` : null;
+    const number=Number(pageMatch[1]);
+    const matching=PSR2021_CHAPTER5_RULES.filter(r=>r.pdfPages.includes(number));
+    return `PSR 2021 Chapter 5 — 157-page Library master PDF page ${number}: ${psr2021PageLinks(5,[number])}\n\nThe linked scan is authoritative. These rules intersect this page (entire rule transcriptions may continue across pages):\n\n${matching.map(r=>`Rule ${r.ruleNumber}:\n${r.fullText}`).join('\n\n')}`;
   }
   if (hasChapter && /\b(full|entire|all|copy|complete|verbatim|page by page|transcri)/.test(q)) {
-    return PSR2021_CHAPTER5_PAGES.map(p=>`### PDF page ${p.pdfPage}\n\n${p.text}`).join('\n\n---\n\n');
+    return 'Original scanned pages 59–65: '+Array.from({length:7},(_,i)=>psr2021PageLinks(5,[59+i])).join(' | ')+'\n\nSOURCE TRANSCRIPTION (rule order; original page boundaries differ from earlier transcription leaves):\n\n'+PSR2021_CHAPTER5_RULES.map(r=>`Rule ${r.ruleNumber} — ${psr2021PageLinks(5,r.pdfPages)}\n\n${r.fullText}`).join('\n\n---\n\n');
   }
   const words=q.match(/[a-z]{4,}/g)?.filter(w=>!STOP.has(w)) ?? [];
   // A chapter-overview question is not a request for an arbitrary top-scored rule.
@@ -66,5 +68,5 @@ export function retrievePSR2021Chapter5(query:string):string|null {
   }).filter(x=>x.score >= Math.min(2,words.length)).sort((a,b)=>b.score-a.score);
   if (!hasChapter && !/performance|appraisal|probation report|pms|underperformance|kpi|improvement plan|reporting officer/i.test(query)) return null;
   if (!scored.length) return null;
-  return scored.slice(0,3).map(({rule})=>`**PSR 2021 Rule ${rule.ruleNumber}** (source PDF pages ${rule.pdfPages.join(', ')})\n\n${rule.fullText}`).join('\n\n---\n\n');
+  return scored.slice(0,3).map(({rule})=>`**PSR 2021 Rule ${rule.ruleNumber}** (2021 master PDF pages ${rule.pdfPages.join(', ')}; ${psr2021PageLinks(5,rule.pdfPages)})\n\n${rule.fullText}`).join('\n\n---\n\n');
 }
