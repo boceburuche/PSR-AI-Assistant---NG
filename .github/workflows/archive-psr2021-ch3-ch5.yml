@@ -24,4 +24,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/psr2021/chapter3/ public/psr2021/chapter5/
-          git diff --cached --quiet || (git commit -m "Archive 2021 source scans for Chapters 3 and 5" && git push)
+          git diff --cached --quiet || (git commit -m "Archive 2021 source scans for Chapters 3 and 5" && git pull --rebase origin main && git push origin HEAD:main)
