@@ -65,7 +65,7 @@ function getLocalPSRAnswer(query: string): string | null {
   if (chapter10) return chapter10;
   const chapter5 = retrievePSR2021Chapter5(query);
   if (chapter5) return chapter5;
-  const chapter3 = retrievePSR2021Chapter3(query, /\bchapter\s*(?:0?3|three)\b/i.test(query) ? 17 : 2);
+  const chapter3 = retrievePSR2021Chapter3(query, /\b(full|entire|verbatim|page by page|transcript)\b/i.test(query) ? 17 : 3);
   if (chapter3.length > 0 || /\b03\d{4}\b|\bchapter\s*(?:0?3|three)\b/i.test(query)) {
     return RAGEngine.generateOfflineResponse(query, chapter3);
   }
