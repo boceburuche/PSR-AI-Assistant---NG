@@ -24,7 +24,7 @@ Utterances,
 Federal Government Public Service Rules
 Chapter 10
 
-100418,— Officers shall not, as a general rule, have access to official
+100418.— Officers shall not, as a general rule, have access to official
 and secret records relating personally to themselves.
 
 100419.— No Officer may, on leaving the Public Service take with him
@@ -38,7 +38,7 @@ shall not be appropriated to his own use, but their existence must be reported
 to Permanent Secretary/ Head of Extra Ministerial Office in order that steps
 may be taken for their examination and preservation.
 
-100421,— (i) Except in pursuance of his official duties, no Officer shall,
+100421.— (i) Except in pursuance of his official duties, no Officer shall,
 without the express permission of his Permanent Secretary/Head of Extra-
 Ministerial Office, whether on duty or on leave of absence :
 
@@ -50,7 +50,7 @@ or journal except the following :
 (ii) Professional journal ;
 (iii) Publication by voluntary organizations ;
 
-(6) contribute to, whether anonymous or otherwise, or publish in any
+(b) contribute to, whether anonymous or otherwise, or publish in any
 newspaper, magazine or periodical or otherwise cause to be published in
 
 any manner anything which may reasonably be regarded as of a political
@@ -70,7 +70,7 @@ Office shall have regard to the interest of the Government and the public, and
 may, if he considers it necessary, seek the opinion of other appropriate
 Permanent Secretaries/Heads of Extra-Ministerial Offices.
 
-(6) On the submission to the Permanent Secretary/Head of Extra-
+(b) On the submission to the Permanent Secretary/Head of Extra-
 Ministerial Office of a brief outline of the scope of the proposed publication
 and the method of the treatment to be applied thereto, the Permanent Secretary/
 Head of Extra-Ministerial Office, may give a provisional permission for the
