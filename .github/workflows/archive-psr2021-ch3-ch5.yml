@@ -1,0 +1,27 @@
+name: Archive 2021 PSR Chapter 3 and 5 source-page images
+on:
+  push:
+    paths:
+      - scripts/archive_psr_2021_ch3_ch5_scans.py
+      - .github/workflows/archive-psr2021-ch3-ch5.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install page tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr
+          python -m pip install pymupdf
+      - name: Check 157-page source and archive chapter images
+        run: python scripts/archive_psr_2021_ch3_ch5_scans.py
+      - name: Save authoritative page scans
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/psr2021/chapter3/ public/psr2021/chapter5/
+          git diff --cached --quiet || (git commit -m "Archive 2021 source scans for Chapters 3 and 5" && git push)
