@@ -24,7 +24,7 @@ OF THE STATE
 
 100501.— Where a Committee comprising members from the Federal
 Ministry of Justice, Office of the Head of the Civil Service of the Federation
-is Satisfied that an Officer has committed a misconduct involving the security
+is satisfied that an Officer has committed a misconduct involving the security
 of the State or prejudicial to it, the Officer shall be subject to the normal
 disciplinary procedure provided that the punishment for such misconduct
 shall be aggravated.
