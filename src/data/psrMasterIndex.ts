@@ -1,4 +1,5 @@
 import { PSRTableOfContentsItem, PSRIndexEntry } from '../types/psr';
+import { PSR2021_RULEBOOK_CH5, PSR2021_RULEBOOK_CH10 } from './psr2021RulebookChapters';
 
 export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   {
@@ -179,7 +180,7 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   }
 ];
 
-export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
+const LEGACY_PSR_MASTER_INDEX: PSRIndexEntry[] = [
   {"letter":"I","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Induction and compulsory confirmation examinations","ruleNumber":"030101"},
   {"letter":"R","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Responsibility for conducting and supervising examinations","ruleNumber":"030102"},
   {"letter":"E","mainCategory":"Prescribed Examination for Confirmation","subCategory":"Section 1","topic":"Examination Board membership","ruleNumber":"030103"},
@@ -532,4 +533,22 @@ export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
   { letter: 'P', mainCategory: 'APPLICATION OF THE PUBLIC SERVICE RULES TO FEDERAL GOVERNMENT PARASTATALS', subCategory: 'Discipline', topic: 'General Application of Disciplinary Rules in Parastatals', ruleNumber: '160502' },
   { letter: 'P', mainCategory: 'APPLICATION OF THE PUBLIC SERVICE RULES TO FEDERAL GOVERNMENT PARASTATALS', subCategory: 'Petitions and Appeals', topic: 'Petition to Head of Government in Parastatals', ruleNumber: '160601' }
 ];
+/**
+ * Replaces outdated APER and leave-index entries for Chapters 5 and 10
+ * with the complete Revised PSR 2021 rule index. Other chapter entries
+ * retain their previous data until they are individually reviewed.
+ */
+export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
+  ...LEGACY_PSR_MASTER_INDEX.filter(entry=>
+    !entry.ruleNumber.startsWith('05') && !entry.ruleNumber.startsWith('10')
+  ),
+  ...[...PSR2021_RULEBOOK_CH5,...PSR2021_RULEBOOK_CH10].map(rule=>({
+    letter: rule.title.replace(/^Rule\\s+\\d+\\s*[—:-]\\s*/,'')[0]?.toUpperCase() || 'R',
+    mainCategory: rule.chapterTitle.toUpperCase(),
+    subCategory: rule.section,
+    topic: rule.title,
+    ruleNumber: rule.ruleNumber
+  }))
+].sort((a,b)=>a.letter.localeCompare(b.letter)||a.topic.localeCompare(b.topic));
+
 
