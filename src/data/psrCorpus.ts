@@ -1,4 +1,5 @@
 import { PSR2021_CHAPTER3 } from './psr2021Chapter3';
+import { PSR2021_RULEBOOK_CH7 } from './psr2021RulebookChapter7';
 import { PSR2021_RULEBOOK_CH5, PSR2021_RULEBOOK_CH10 } from './psr2021RulebookChapters';
 import { PSRChapter, PSRRule, OfficerProfile, QueryRecord, PSRForeword, PSRPreamble } from '../types/psr';
 export { PSR_TABLE_OF_CONTENTS, PSR_MASTER_INDEX } from './psrMasterIndex';
@@ -122,11 +123,11 @@ export const PSR_CHAPTERS: PSRChapter[] = [
   },
   {
     number: 7,
-    title: 'Training, Staff Development & Examination',
-    description: 'Mandatory annual continuous professional development (CPD), ASCON courses, compulsory confirmation examinations, and government training bonds.',
+    title: 'Training and Staff Development Within and Outside Nigeria',
+    description: 'Revised PSR 2021 Chapter 7: training categories, courses of instruction, conditions for overseas training, sponsorship and technical assistance.',
     sectionsCount: 3,
-    rulesCount: 7,
-    keyTopics: ['Mandatory CPD', 'ASCON Programs', 'Compulsory Confirmation Exam', 'Training Bonds & Service Commitments']
+    rulesCount: 19,
+    keyTopics: ['General and Staff Development', 'Courses of Instruction Outside Nigeria', 'Externally Assisted Courses']
   },
   {
     number: 8,
@@ -973,7 +974,8 @@ are concerned, these Rules apply only to the extent that they are not inconsiste
  * Preserve all remaining legacy chapters unchanged until individually verified.
  */
 export const PSR_RULES_DATABASE: PSRRule[] = [
-  ...LEGACY_PSR_RULES_DATABASE.filter(rule=>rule.chapter !== 5 && rule.chapter !== 10),
+  ...LEGACY_PSR_RULES_DATABASE.filter(rule=>rule.chapter !== 5 && rule.chapter !== 7 && rule.chapter !== 10),
+  ...PSR2021_RULEBOOK_CH7,
   ...PSR2021_RULEBOOK_CH5,
   ...PSR2021_RULEBOOK_CH10
 ];
