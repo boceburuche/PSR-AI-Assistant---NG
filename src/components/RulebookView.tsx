@@ -1072,7 +1072,7 @@ export const RulebookView: React.FC<RulebookViewProps> = ({
             <div className="p-5 overflow-y-auto space-y-4 text-xs sm:text-sm">
               <div>
                 <h4 className="font-bold text-slate-900 uppercase tracking-wide text-xs mb-1">
-                  {[7,10,14].includes(activeModalRule.chapter) ? 'PSR 2021 Source Transcription (OCR Review Pending)' : 'Verbatim Statutory Text (PSR 2021)'}
+                  {activeModalRule.chapter === 10 ? 'PSR 2021 Source Transcription (OCR Review Pending)' : [7,14].includes(activeModalRule.chapter) ? 'PSR 2021 Source-Reviewed Transcription' : 'Verbatim Statutory Text (PSR 2021)'}
                 </h4>
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 font-serif leading-relaxed text-slate-800 whitespace-pre-line">
                   {activeModalRule.fullText}
@@ -1084,9 +1084,14 @@ export const RulebookView: React.FC<RulebookViewProps> = ({
                     Open authentic 2021 source page
                   </a>
                 )}
-                {[7,10,14].includes(activeModalRule.chapter) && (
+                {activeModalRule.chapter === 10 && (
                   <p className="mt-1 text-xs text-amber-800">
                     This chapter has been indexed from scanned pages; OCR spelling and punctuation are still being verified. The original scan is authoritative.
+                  </p>
+                )}
+                {[7,14].includes(activeModalRule.chapter) && (
+                  <p className="mt-1 text-xs text-amber-800">
+                    Reviewed against the 2021 source scan. The original scanned page remains authoritative for exact text and any applicable extant circulars.
                   </p>
                 )}
               </div>
