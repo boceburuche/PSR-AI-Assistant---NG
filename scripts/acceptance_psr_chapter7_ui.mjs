@@ -22,6 +22,8 @@ try {
   await page.getByText('PSR 2021 Source Transcription (OCR Review Pending)').first().waitFor();
   await page.getByRole('link',{name:/Open authentic 2021 source page/}).waitFor();
   console.log('PASS Chapter 7 Rulebook: 3 sections, 19 indexed rules, original scan link, OCR label');
+  // Close the rule-detail overlay; it intentionally blocks navigation behind it.
+  await page.getByRole('button',{name:'✕'}).last().click();
   await page.getByRole('button',{name:'AI Assistant'}).first().click();
   const input=page.getByPlaceholder(/Ask anything on Nigeria Public Service Rules/);
   const test=[
