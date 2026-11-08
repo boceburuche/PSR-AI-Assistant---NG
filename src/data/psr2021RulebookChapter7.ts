@@ -2,7 +2,7 @@ import type { PSRRule } from '../types/psr';
 import { PSR2021_CH7_RULES, PSR2021_CH7_SECTIONS } from './psr2021Chapter7';
 
 /** 2021 PSR chapter 7 source-linked, rule-level Rulebook records.
- * Text is manually cleaned OCR, not yet a certified verbatim transcription.
+ * Text has been cross-checked against scanned pages; original images remain controlling.
  */
 const headings:Record<string,string>={
   '070101':'Definition of Staff Development',
@@ -37,7 +37,7 @@ export const PSR2021_RULEBOOK_CH7:PSRRule[]=PSR2021_CH7_RULES.map(r=>{
     title,
     summary:`2021 PSR, Rule ${r.ruleNumber}, ${secTitle}; original PDF page(s) ${pages.join(', ')}.`,
     fullText:r.fullText,
-    keyPoints:['Source transcription is manually cleaned OCR. Verify exact wording against the original scanned source page.'],
+    keyPoints:['Source-reviewed transcription; original PSR 2021 scanned page remains authoritative.'],
     tags:[r.ruleNumber,'psr 2021','training',secTitle.toLowerCase(),title.toLowerCase()],
     referenceLink:pages.length ? `${import.meta.env.BASE_URL}psr2021/chapter7/page-${pages[0]}.png`:undefined
   };
