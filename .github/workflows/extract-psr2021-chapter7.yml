@@ -1,0 +1,30 @@
+name: PSR 2021 Chapter 7 page-level source extraction
+on:
+  push:
+    paths:
+      - scripts/extract_psr2021_chapter7.py
+      - .github/workflows/extract-psr2021-chapter7.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: psr2021-ch7-extract
+  cancel-in-progress: false
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install document tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr
+          python -m pip install pymupdf
+      - name: Extract and index three original Chapter 7 pages
+        run: python scripts/extract_psr2021_chapter7.py
+      - name: Store provisional pages for proofreading
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/psr2021-chapter7/ public/psr2021/chapter7/
+          git diff --cached --quiet || (git commit -m "Archive Chapter 7 three pages (OCR review, not verified)" && git pull --rebase origin main && git push origin HEAD:main)
