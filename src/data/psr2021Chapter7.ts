@@ -38,7 +38,7 @@ const caveat='Source: 2021 Library-master edition, cleaned OCR transcription; or
 const stop=new Set(['what','about','under','from','the','and','does','chapter','this','that','rule','psr','2021','which','explain','please','tell','show','give','officer','officers','training']);
 export function retrievePSR2021Chapter7(query:string):string|null{
   const q=query.toLowerCase();
-  const requested=[...q.matchAll(/\b070[1-3]\d{2}\b/g)].map(m=>m[0]);
+  const requested=[...q.matchAll(/\b07\d{4}\b/g)].map(m=>m[0]);
   if(requested.length){
     const found=PSR2021_CH7_RULES.filter(r=>requested.includes(r.ruleNumber));
     return found.length?found.map(r=>`**PSR 2021 Rule ${r.ruleNumber}** — ${pageLinks(r.pdfPages)}\n\n${r.fullText}\n\n${caveat}`).join('\n\n---\n\n'):'The requested Chapter 7 rule is not present in the 2021 edition (070101–070304).';
