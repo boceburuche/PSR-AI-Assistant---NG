@@ -25,7 +25,11 @@ def between(page,start,end=None):
 
 def sub_expected(s,old,new,page,number=1):
     count=s.count(old)
-    if count==0:\n        print(f"SKIP page {page}: original OCR already reads correctly or variant not present: {old!r}")\n        return s\n    if count!=number:raise RuntimeError(f"PDF page {page}: expected {number} occurrences of {old!r}, found {count}")
+    if count == 0:
+        print(f"SKIP page {page}: already-correct or variant not present: {old!r}")
+        return s
+    if count != number:
+        raise RuntimeError(f"Page {page}: expected {number} occurrences of {old!r}, got {count}")
     return s.replace(old,new)
 
 pages = {
