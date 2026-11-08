@@ -4,6 +4,9 @@ on:
     paths:
       - src/data/psr2021Chapter3.ts
       - src/data/psr2021Chapter5.ts
+      - src/data/psr2021Chapter7.ts
+      - src/data/psr2021RulebookChapter7.ts
+      - docs/psr2021-chapter7/**
       - src/data/psr2021Chapter10.ts
       - src/data/psr2021CanonicalSourcePages.ts
       - src/data/psr2021RulebookChapters.ts
@@ -14,6 +17,7 @@ on:
       - src/services/ragEngine.ts
       - scripts/acceptance_psr_ui.mjs
       - scripts/acceptance_psr_rulebook_ui.mjs
+      - scripts/acceptance_psr_chapter7_ui.mjs
       - .github/workflows/psr-chapters-acceptance.yml
   workflow_dispatch:
 permissions:
@@ -46,4 +50,5 @@ jobs:
             sleep 1
           done
           node scripts/acceptance_psr_rulebook_ui.mjs
+          node scripts/acceptance_psr_chapter7_ui.mjs
           node scripts/acceptance_psr_ui.mjs
