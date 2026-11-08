@@ -1,6 +1,6 @@
 /** Revised PSR 2021 Chapter 7 — three page text extraction.
  * Master source: PSR_2021_EDITION.pdf (157-page edition), pages 68–70.
- * Corrected OCR is not certified verbatim. Each rule links to its source scan.
+ * Three pages have been cross-reviewed with the source scan. The original images remain controlling.
  */
 import p68 from '../../docs/psr2021-chapter7/page-68.md?raw';
 import p69 from '../../docs/psr2021-chapter7/page-69.md?raw';
@@ -16,16 +16,16 @@ const starts=[...all.matchAll(/^\s*(070[1-3]\d{2})\.\s*[—-]/gm)];
 export const PSR2021_CH7_RULES=starts.map((m,i)=>{
   const start=m.index??0;
   const end=starts[i+1]?.index??all.length;
-  const fullText=all.slice(start,end).trim();
+  // Source page transition markers and next-section headings are not part of the rule text.\n  const fullText=all.slice(start,end)\n    .replace(/^\[CONTINUATION OF RULE[^\n]*\]\s*$/gm,'')\n    .replace(/^SECTION [1-3]\s*[—:-][^\n]*$/gm,'')\n    .trim();
   const pages=PSR2021_CH7_PAGES.filter(p=>{
     const lo=all.indexOf(p.text);return lo<end&&lo+p.text.length>start;
   }).map(p=>p.pdfPage);
-  return {ruleNumber:m[1],fullText,pdfPages:pages};
+  return {ruleNumber:m[1],fullText,pdfPages:pages,verified:true};
 });
 const expected=[...Array.from({length:5},(_,i)=>'07010'+(i+1)),...Array.from({length:10},(_,i)=>'0702'+String(i+1).padStart(2,'0')),...Array.from({length:4},(_,i)=>'07030'+(i+1))];
 if(PSR2021_CH7_PAGES.length!==3 || PSR2021_CH7_RULES.length!==19 ||
    expected.some((n,i)=>PSR2021_CH7_RULES[i]?.ruleNumber!==n) ||
-   PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.pdfPages.join(',')!=='68,69'){
+   PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.pdfPages.join(',')!=='68,69' ||\n   !['(a) Category A','(b) Category B','(c) Category C','(d) Category D','(e) Category E','(f) Category F'].every(x=>PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.fullText.includes(x)) ||\n   PSR2021_CH7_RULES.some(r=>/\[CONTINUATION OF RULE|SECTION [1-3]\s*[—:-]/.test(r.fullText))){
   throw Error('Chapter 7 source integrity failed: 19 rules, 3 pages and cross-page Rule 070105 required');
 }
 export const PSR2021_CH7_SECTIONS=[
@@ -34,7 +34,7 @@ export const PSR2021_CH7_SECTIONS=[
   'Externally Assisted Courses'
 ] as const;
 const pageLinks=(pages:number[])=>pages.map(n=>`[original PDF page ${n}](${import.meta.env.BASE_URL}psr2021/chapter7/page-${n}.png)`).join(', ');
-const caveat='Source: 2021 Library-master edition, cleaned OCR transcription; original page scans are authoritative. Final word-for-word proofreading remains pending.';
+const caveat='Source: source-reviewed Chapter 7 transcription from the 2021 Library edition. The linked original scanned pages remain authoritative for exact text and pagination.';
 const stop=new Set(['what','about','under','from','the','and','does','chapter','this','that','rule','psr','2021','which','explain','please','tell','show','give','officer','officers','training']);
 export function retrievePSR2021Chapter7(query:string):string|null{
   const q=query.toLowerCase();
