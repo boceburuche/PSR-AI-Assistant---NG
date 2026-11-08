@@ -20,7 +20,7 @@ try {
   console.log('PASS Chapter 14 Rulebook: 44 rules including 140144');
   const card=page.getByText('Rule 140144',{exact:true}).first().locator('xpath=ancestor::div[contains(@class,"group")][1]');
   await card.getByRole('button',{name:'View Rule Source Transcription'}).click();
-  await page.getByText('PSR 2021 Source Transcription (OCR Review Pending)').first().waitFor();
+  await page.getByText('PSR 2021 Source-Reviewed Transcription').first().waitFor();
   await page.getByRole('link',{name:/Open authentic 2021 source page/}).waitFor();
   await page.getByRole('button',{name:'✕'}).last().click();
   console.log('PASS Chapter 14 original scan source link');
