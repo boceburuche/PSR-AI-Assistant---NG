@@ -1,5 +1,6 @@
 import { PSR2021_CHAPTER3 } from './psr2021Chapter3';
 import { PSR2021_RULEBOOK_CH7 } from './psr2021RulebookChapter7';
+import { PSR2021_RULEBOOK_CH14 } from './psr2021RulebookChapter14';
 import { PSR2021_RULEBOOK_CH5, PSR2021_RULEBOOK_CH10 } from './psr2021RulebookChapters';
 import { PSRChapter, PSRRule, OfficerProfile, QueryRecord, PSRForeword, PSRPreamble } from '../types/psr';
 export { PSR_TABLE_OF_CONTENTS, PSR_MASTER_INDEX } from './psrMasterIndex';
@@ -179,11 +180,11 @@ export const PSR_CHAPTERS: PSRChapter[] = [
   },
   {
     number: 14,
-    title: 'Virtual / Digital Governance & Teleworking',
-    description: 'Electronic Document Management Systems (EDMS), teleworking protocols, official government email (.gov.ng) mandate, and cyber hygiene in public operations.',
-    sectionsCount: 2,
-    rulesCount: 6,
-    keyTopics: ['Electronic Document System (EDMS)', 'Teleworking & Remote Hours', 'Official .gov.ng Email Mandate', 'Cybersecurity Protocols']
+    title: 'Allowances',
+    description: '2021 PSR Chapter 14: 44 allowance rules, 140101–140144, on original PDF pages 116–123. Extant circulars specify applicable rates.',
+    sectionsCount: 0,
+    rulesCount: 44,
+    keyTopics: ['Types of Allowances', 'Acting Allowance', 'Duty Tour Allowance', 'Estacode', 'Overtime', 'Resettlement', 'Training Allowance', 'Non-Accident Bonus']
   }
 ];
 
@@ -974,7 +975,8 @@ are concerned, these Rules apply only to the extent that they are not inconsiste
  * Preserve all remaining legacy chapters unchanged until individually verified.
  */
 export const PSR_RULES_DATABASE: PSRRule[] = [
-  ...LEGACY_PSR_RULES_DATABASE.filter(rule=>rule.chapter !== 5 && rule.chapter !== 7 && rule.chapter !== 10),
+  ...LEGACY_PSR_RULES_DATABASE.filter(rule=>rule.chapter !== 5 && rule.chapter !== 7 && rule.chapter !== 10 && rule.chapter !== 14),
+  ...PSR2021_RULEBOOK_CH14,
   ...PSR2021_RULEBOOK_CH7,
   ...PSR2021_RULEBOOK_CH5,
   ...PSR2021_RULEBOOK_CH10

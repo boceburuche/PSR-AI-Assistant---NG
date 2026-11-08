@@ -1,6 +1,7 @@
 import { PSRTableOfContentsItem, PSRIndexEntry } from '../types/psr';
 import { PSR2021_RULEBOOK_CH5, PSR2021_RULEBOOK_CH10 } from './psr2021RulebookChapters';
 import { PSR2021_RULEBOOK_CH7 } from './psr2021RulebookChapter7';
+import { PSR2021_RULEBOOK_CH14 } from './psr2021RulebookChapter14';
 
 export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   {
@@ -150,9 +151,9 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   },
   {
     chapter: 14,
-    subject: 'Inventions and Awards Committee (Petitions and Award Committee)',
-    subSections: ['Section 01: Inventions, Patent Rights & Commercial Proceeds'],
-    keyTopics: ['Functions of Inventions Committee', 'Controlling Rights in Patents', 'Government Rights', 'Commercial Shares for Inventors']
+    subject: 'Allowances',
+    subSections: [],
+    keyTopics: ['Types of Allowances', 'Duty Tour Allowance', 'Estacode', 'Acting Allowance', 'Overtime', 'Resettlement', 'Teaching Allowances', 'Non-Accident Bonus']
   },
   {
     chapter: 15,
@@ -540,9 +541,9 @@ const LEGACY_PSR_MASTER_INDEX: PSRIndexEntry[] = [
  */
 export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
   ...LEGACY_PSR_MASTER_INDEX.filter(entry=>
-    !entry.ruleNumber.startsWith('05') && !entry.ruleNumber.startsWith('07') && !entry.ruleNumber.startsWith('10')
+    !entry.ruleNumber.startsWith('05') && !entry.ruleNumber.startsWith('07') && !entry.ruleNumber.startsWith('10') && !entry.ruleNumber.startsWith('14')
   ),
-  ...[...PSR2021_RULEBOOK_CH5,...PSR2021_RULEBOOK_CH7,...PSR2021_RULEBOOK_CH10].map(rule=>({
+  ...[...PSR2021_RULEBOOK_CH5,...PSR2021_RULEBOOK_CH7,...PSR2021_RULEBOOK_CH10,...PSR2021_RULEBOOK_CH14].map(rule=>({
     letter: rule.title.replace(/^Rule\\s+\\d+\\s*[—:-]\\s*/,'')[0]?.toUpperCase() || 'R',
     mainCategory: rule.chapterTitle.toUpperCase(),
     subCategory: rule.section,
