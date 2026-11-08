@@ -53,7 +53,7 @@ export const PSR2021_RULEBOOK_CH14:PSRRule[]=PSR2021_CH14_RULES.map(r=>({
   title:titles[r.ruleNumber]??'Rule '+r.ruleNumber,
   summary:'2021 PSR Chapter 14 allowance provision; original PDF page(s): '+r.pdfPages.join(', ')+'.',
   fullText:r.fullText,
-  keyPoints:['PROVISIONAL OCR: exact wording and figures must be compared with the original scan before official citation.'],
+  keyPoints:['Source-reviewed text; original 2021 scans remain authoritative for exact wording and extant circulars.'],
   tags:[r.ruleNumber,'psr 2021','allowances',(titles[r.ruleNumber]??'').toLowerCase()],
   referenceLink:import.meta.env.BASE_URL+'psr2021/chapter14/page-'+r.pdfPages[0]+'.png'
 }));
