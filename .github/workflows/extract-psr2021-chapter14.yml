@@ -1,0 +1,30 @@
+name: PSR 2021 Chapter 14 page extraction
+on:
+  push:
+    paths:
+      - scripts/extract_psr2021_chapter14.py
+      - .github/workflows/extract-psr2021-chapter14.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: psr2021-ch14-extract
+  cancel-in-progress: false
+jobs:
+  source-extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF and image tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr
+          python -m pip install pymupdf
+      - name: Extract Chapter 14 source pages
+        run: python scripts/extract_psr2021_chapter14.py
+      - name: Commit non-authoritative OCR draft and original page scans
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/psr2021-chapter14/ public/psr2021/chapter14/
+          git diff --cached --quiet || (git commit -m "Archive eight Chapter 14 pages for OCR proofreading" && git pull --rebase origin main && git push origin HEAD:main)
