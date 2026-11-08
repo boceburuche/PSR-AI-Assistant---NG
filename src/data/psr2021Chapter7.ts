@@ -16,7 +16,11 @@ const starts=[...all.matchAll(/^\s*(070[1-3]\d{2})\.\s*[—-]/gm)];
 export const PSR2021_CH7_RULES=starts.map((m,i)=>{
   const start=m.index??0;
   const end=starts[i+1]?.index??all.length;
-  // Source page transition markers and next-section headings are not part of the rule text.\n  const fullText=all.slice(start,end)\n    .replace(/^\[CONTINUATION OF RULE[^\n]*\]\s*$/gm,'')\n    .replace(/^SECTION [1-3]\s*[—:-][^\n]*$/gm,'')\n    .trim();
+  // Source page transition markers and next-section headings are not part of the rule text.
+  const fullText=all.slice(start,end)
+    .replace(/^\[CONTINUATION OF RULE[^\n]*\]\s*$/gm,'')
+    .replace(/^SECTION [1-3]\s*[—:-][^\n]*$/gm,'')
+    .trim();
   const pages=PSR2021_CH7_PAGES.filter(p=>{
     const lo=all.indexOf(p.text);return lo<end&&lo+p.text.length>start;
   }).map(p=>p.pdfPage);
@@ -25,7 +29,9 @@ export const PSR2021_CH7_RULES=starts.map((m,i)=>{
 const expected=[...Array.from({length:5},(_,i)=>'07010'+(i+1)),...Array.from({length:10},(_,i)=>'0702'+String(i+1).padStart(2,'0')),...Array.from({length:4},(_,i)=>'07030'+(i+1))];
 if(PSR2021_CH7_PAGES.length!==3 || PSR2021_CH7_RULES.length!==19 ||
    expected.some((n,i)=>PSR2021_CH7_RULES[i]?.ruleNumber!==n) ||
-   PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.pdfPages.join(',')!=='68,69' ||\n   !['(a) Category A','(b) Category B','(c) Category C','(d) Category D','(e) Category E','(f) Category F'].every(x=>PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.fullText.includes(x)) ||\n   PSR2021_CH7_RULES.some(r=>/\[CONTINUATION OF RULE|SECTION [1-3]\s*[—:-]/.test(r.fullText))){
+   PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.pdfPages.join(',')!=='68,69' ||
+   !['(a) Category A','(b) Category B','(c) Category C','(d) Category D','(e) Category E','(f) Category F'].every(x=>PSR2021_CH7_RULES.find(r=>r.ruleNumber==='070105')?.fullText.includes(x)) ||
+   PSR2021_CH7_RULES.some(r=>/\[CONTINUATION OF RULE|SECTION [1-3]\s*[—:-]/.test(r.fullText))){
   throw Error('Chapter 7 source integrity failed: 19 rules, 3 pages and cross-page Rule 070105 required');
 }
 export const PSR2021_CH7_SECTIONS=[
