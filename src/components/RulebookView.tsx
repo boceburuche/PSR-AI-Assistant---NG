@@ -410,7 +410,7 @@ export const RulebookView: React.FC<RulebookViewProps> = ({
                         onClick={() => setActiveModalRule(rule)}
                         className="text-xs font-semibold text-emerald-800 hover:text-emerald-900 hover:underline"
                       >
-                        {rule.chapter === 10 ? 'View Rule Source Transcription' : 'View Verbatim Rule Text'}
+                        {[7,10].includes(rule.chapter) ? 'View Rule Source Transcription' : 'View Verbatim Rule Text'}
                       </button>
                       <button
                         onClick={() => onAskAIAboutRule(rule)}
@@ -1072,21 +1072,21 @@ export const RulebookView: React.FC<RulebookViewProps> = ({
             <div className="p-5 overflow-y-auto space-y-4 text-xs sm:text-sm">
               <div>
                 <h4 className="font-bold text-slate-900 uppercase tracking-wide text-xs mb-1">
-                  {activeModalRule.chapter === 10 ? 'PSR 2021 Source Transcription (OCR Review Pending)' : 'Verbatim Statutory Text (PSR 2021)'}
+                  {[7,10].includes(activeModalRule.chapter) ? 'PSR 2021 Source Transcription (OCR Review Pending)' : 'Verbatim Statutory Text (PSR 2021)'}
                 </h4>
                 <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 font-serif leading-relaxed text-slate-800 whitespace-pre-line">
                   {activeModalRule.fullText}
                 </div>
-                {(activeModalRule.chapter === 5 || activeModalRule.chapter === 10) && activeModalRule.referenceLink && (
+                {([5,7,10].includes(activeModalRule.chapter)) && activeModalRule.referenceLink && (
                   <a href={activeModalRule.referenceLink} target="_blank" rel="noopener noreferrer"
                      className="inline-flex items-center gap-1 mt-2 text-xs text-emerald-800 underline underline-offset-2">
                     <ExternalLink className="w-3.5 h-3.5" />
                     Open authentic 2021 source page
                   </a>
                 )}
-                {activeModalRule.chapter === 10 && (
+                {[7,10].includes(activeModalRule.chapter) && (
                   <p className="mt-1 text-xs text-amber-800">
-                    Chapter 10 has been indexed from scanned pages; OCR spelling and punctuation are still being verified. The original scan is authoritative.
+                    This chapter has been indexed from scanned pages; OCR spelling and punctuation are still being verified. The original scan is authoritative.
                   </p>
                 )}
               </div>
