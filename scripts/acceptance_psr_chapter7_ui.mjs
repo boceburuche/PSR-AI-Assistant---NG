@@ -19,7 +19,7 @@ try {
   await page.getByText('Rule 070105',{exact:true}).first().waitFor();
   const card=page.getByText('Rule 070105',{exact:true}).first().locator('xpath=ancestor::div[contains(@class,"group")][1]');
   await card.getByRole('button',{name:'View Rule Source Transcription'}).click();
-  await page.getByText('PSR 2021 Source Transcription (OCR Review Pending)').first().waitFor();
+  await page.getByText('PSR 2021 Source-Reviewed Transcription').first().waitFor();
   await page.getByRole('link',{name:/Open authentic 2021 source page/}).waitFor();
   console.log('PASS Chapter 7 Rulebook: 3 sections, 19 indexed rules, original scan link, OCR label');
   // Close the rule-detail overlay; it intentionally blocks navigation behind it.
