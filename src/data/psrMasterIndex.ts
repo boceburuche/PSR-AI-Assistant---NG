@@ -1,5 +1,6 @@
 import { PSRTableOfContentsItem, PSRIndexEntry } from '../types/psr';
 import { PSR2021_RULEBOOK_CH5, PSR2021_RULEBOOK_CH10 } from './psr2021RulebookChapters';
+import { PSR2021_RULEBOOK_CH7 } from './psr2021RulebookChapter7';
 
 export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   {
@@ -78,14 +79,13 @@ export const PSR_TABLE_OF_CONTENTS: PSRTableOfContentsItem[] = [
   },
   {
     chapter: 7,
-    subject: 'Medical and Dental Procedures',
+    subject: 'Training and Staff Development Within and Outside Nigeria',
     subSections: [
-      'Section 01: Medical Treatment & Confidentiality',
-      'Section 02: Facilities for Medical Treatment (Local & Overseas)',
-      'Section 03: Absence from Duty on Account of Illness & Medical Boards',
-      'Section 04: Death Benefits & Workmen Compensation'
+      'Section 01: General',
+      'Section 02: Courses of Instruction Outside Nigeria',
+      'Section 03: Externally Assisted Courses'
     ],
-    keyTopics: ['Medical Fitness on Entry', 'Overseas Treatment Clearances', 'Medical Board Appointment', 'Sick Leave Limits', 'Death in Active Service']
+    keyTopics: ['Staff Development', 'Training Categories A–F', 'Course Sponsorship Bonds', 'Overseas Courses', 'Externally Assisted Training']
   },
   {
     chapter: 8,
@@ -540,9 +540,9 @@ const LEGACY_PSR_MASTER_INDEX: PSRIndexEntry[] = [
  */
 export const PSR_MASTER_INDEX: PSRIndexEntry[] = [
   ...LEGACY_PSR_MASTER_INDEX.filter(entry=>
-    !entry.ruleNumber.startsWith('05') && !entry.ruleNumber.startsWith('10')
+    !entry.ruleNumber.startsWith('05') && !entry.ruleNumber.startsWith('07') && !entry.ruleNumber.startsWith('10')
   ),
-  ...[...PSR2021_RULEBOOK_CH5,...PSR2021_RULEBOOK_CH10].map(rule=>({
+  ...[...PSR2021_RULEBOOK_CH5,...PSR2021_RULEBOOK_CH7,...PSR2021_RULEBOOK_CH10].map(rule=>({
     letter: rule.title.replace(/^Rule\\s+\\d+\\s*[—:-]\\s*/,'')[0]?.toUpperCase() || 'R',
     mainCategory: rule.chapterTitle.toUpperCase(),
     subCategory: rule.section,
