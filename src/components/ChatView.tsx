@@ -1,6 +1,7 @@
 import { RAGEngine } from '../services/ragEngine';
 import { retrievePSR2021Chapter3 } from '../data/psr2021Chapter3';
 import { retrievePSR2021Chapter5 } from '../data/psr2021Chapter5';
+import { retrievePSR2021Chapter7 } from '../data/psr2021Chapter7';
 import { retrievePSR2021Chapter10 } from '../data/psr2021Chapter10';
 import React, { useState, useRef, useEffect } from 'react';
 import { PSR2021_VERIFIED_PAGES } from '../data/psr2021VerifiedPages';
@@ -61,6 +62,8 @@ const locallyReviewedRules: Array<{ruleNumber:string;topic:string;text:string;co
   }))
 ];
 function getLocalPSRAnswer(query: string): string | null {
+  const chapter7 = retrievePSR2021Chapter7(query);
+  if (chapter7) return chapter7;
   const chapter10 = retrievePSR2021Chapter10(query);
   if (chapter10) return chapter10;
   const chapter5 = retrievePSR2021Chapter5(query);
@@ -278,7 +281,7 @@ How may I assist your administrative duties today?`,
         {
           id: 'err-' + Date.now(),
           sender: 'assistant',
-          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Chapters 3, 5 and 10 are available for local rule lookup; try an explicit rule number, such as 030104, 050701 or 100402.',
+          text: 'I could not retrieve a verified PSR 2021 provision for this question. The online AI service may be unavailable, and this topic is not yet covered by the locally indexed pages. Chapters 3, 5, 7 and 10 are available for local rule lookup; try an explicit rule number, such as 030104, 050701 or 100402.',
           timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         }
       ]);
