@@ -1,52 +1,30 @@
 /** Revised PSR 2021, Chapter 14 — Allowances. PDF pages 116–123.
- * This is an OCR index and is not certified as word-for-word verbatim.
+ * These pages have been source-reviewed; the original 2021 scan remains authoritative.
  * The original source scans remain authoritative.
  */
-import p116 from '../../docs/psr2021-chapter14/page-116.md?raw';
-import p117 from '../../docs/psr2021-chapter14/page-117.md?raw';
-import p118 from '../../docs/psr2021-chapter14/page-118.md?raw';
-import p119 from '../../docs/psr2021-chapter14/page-119.md?raw';
-import p120 from '../../docs/psr2021-chapter14/page-120.md?raw';
-import p121 from '../../docs/psr2021-chapter14/page-121.md?raw';
-import p122 from '../../docs/psr2021-chapter14/page-122.md?raw';
-import p123 from '../../docs/psr2021-chapter14/page-123.md?raw';
+import p116 from '../../docs/psr2021-chapter14/source-reviewed/page-116.md?raw';
+import p117 from '../../docs/psr2021-chapter14/source-reviewed/page-117.md?raw';
+import p118 from '../../docs/psr2021-chapter14/source-reviewed/page-118.md?raw';
+import p119 from '../../docs/psr2021-chapter14/source-reviewed/page-119.md?raw';
+import p120 from '../../docs/psr2021-chapter14/source-reviewed/page-120.md?raw';
+import p121 from '../../docs/psr2021-chapter14/source-reviewed/page-121.md?raw';
+import p122 from '../../docs/psr2021-chapter14/source-reviewed/page-122.md?raw';
+import p123 from '../../docs/psr2021-chapter14/source-reviewed/page-123.md?raw';
 
-function segment(text:string,start:string,end?:string):string {
-  const a=text.indexOf(start);
-  if(a<0)throw Error('PSR Chapter 14 source anchor missing: '+start);
-  const b=end ? text.indexOf(end,a+start.length) : -1;
-  if(end&&b<0)throw Error('PSR Chapter 14 end marker missing: '+end);
-  return text.slice(a,b<0?undefined:b).trim();
-}
-// Remove side-margin OCR noise; retain sequential paragraphs and continuations.
-// Raw OCR and source scans are separately archived without alteration.
-const source=[
-  segment(p116,'CHAPTER 14\nALLOWANCES','\nDefinition.\n'),
-  segment(p117,'(iii) GL. 07'),
-  segment(p118,'undertake course of instruction','\nOfficial\nVisit while'),
-  segment(p119,'concerned shall be entitled'),
-  segment(p120,'to 30 per cent','\nLocal\nTraining\nAllowance.'),
-  segment(p121,'140124.—'),
-  segment(p122,'140133.—','\nContract\nOfficer and'),
-  segment(p123,'140144.—')
-];
-// On page 117, marginal text precedes the body, but the body itself has no
-// marginal text after its first paragraph. Fix a few unambiguous OCR tokens.
-source[1]=source[1].replace(/Daty Tour/g,'Duty Tour');
-source[7]=source[7]
-  .replace('N50,000.00\nNepean per annum','N50,000.00\nper annum')
-  .replace('Pita Rat involvement','involvement');
-export const PSR2021_CH14_PAGES=source.map((raw,i)=>({
-  pdfPage:116+i,
-  text:raw.replace(/^1401(\d{2}),—/gm,'1401$1.—')
-          .replace(/\bvacation leaye\b/g,'vacation leave')
-          .replace(/\bhote! accommodation\b/g,'hotel accommodation'),
-  sourceImage:import.meta.env.BASE_URL+'psr2021/chapter14/page-'+(116+i)+'.png'
-}));
-// Fix the source-image properties after transforming the draft records.
-export const PSR2021_CH14_SOURCE_IMAGES=PSR2021_CH14_PAGES.map(p=>
-  import.meta.env.BASE_URL+'psr2021/chapter14/page-'+p.pdfPage+'.png'
-);
+// Reviewed page records preserve the original PDF boundaries and exclude side-column OCR noise.
+const reviewFiles=[p116,p117,p118,p119,p120,p121,p122,p123];
+export const PSR2021_CH14_PAGES=reviewFiles.map((markdown,i)=>{
+  const marker=/\nSCAN:[^\n]*\n\n/;
+  const parts=markdown.split(marker);
+  if(parts.length!==2||!parts[1].trim())throw Error('Reviewed Chapter 14 page missing authoritative source boundary: '+(116+i));
+  return {
+    pdfPage:116+i,
+    text:parts[1].trim(),
+    sourceImage:import.meta.env.BASE_URL+'psr2021/chapter14/page-'+(116+i)+'.png',
+    sourceStatus:'SOURCE_REVIEWED' as const,
+  };
+});
+export const PSR2021_CH14_SOURCE_IMAGES=PSR2021_CH14_PAGES.map(p=>p.sourceImage);
 const full=PSR2021_CH14_PAGES.map(p=>p.text).join('\n\n');
 const markers=[...full.matchAll(/^1401(\d{2})\.—/gm)];
 export const PSR2021_CH14_RULES=markers.map((marker,i)=>{
@@ -56,7 +34,7 @@ export const PSR2021_CH14_RULES=markers.map((marker,i)=>{
     const first=full.indexOf(p.text);
     return first<end && first+p.text.length>start;
   }).map(p=>p.pdfPage);
-  return {ruleNumber:marker[0].slice(0,6),fullText:full.slice(start,end).trim(),pdfPages:pages,verified:false};
+  return {ruleNumber:marker[0].slice(0,6),fullText:full.slice(start,end).trim(),pdfPages:pages,verified:true};
 });
 const expected=Array.from({length:44},(_,i)=>'1401'+String(i+1).padStart(2,'0'));
 if(PSR2021_CH14_PAGES.length!==8||PSR2021_CH14_RULES.length!==44||
@@ -65,7 +43,7 @@ if(PSR2021_CH14_PAGES.length!==8||PSR2021_CH14_RULES.length!==44||
    PSR2021_CH14_RULES.at(-1)?.pdfPages.at(-1)!==123) {
   throw Error('PSR 2021 Chapter 14 integrity failure: expected 8 pages and 44 sequential rules');
 }
-const caveat='**OCR review required:** This is a provisional transcription, not certified verbatim. Verify amounts, item markers, conditions and wording against the original 2021 source scan.';
+const caveat='**Source reference:** Reviewed transcription from the 2021 PSR edition. The linked original scanned page remains authoritative for exact wording, typography and applicable circulars.';
 const links=(nums:number[])=>nums.map(n=>'[original PDF page '+n+']('+import.meta.env.BASE_URL+'psr2021/chapter14/page-'+n+'.png)').join(', ');
 const stop=new Set(['what','does','rule','about','chapter','the','under','2021','psr','which','are','officer','officers','allowance','allowances','explain']);
 export function retrievePSR2021Chapter14(question:string):string|null {
